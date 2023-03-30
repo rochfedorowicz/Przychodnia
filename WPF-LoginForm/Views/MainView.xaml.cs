@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApp1.app_windows
+namespace WPF_LoginForm.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy LabTechnicianWindow.xaml
+    /// Interaction logic for MainWindowView.xaml
     /// </summary>
-    public partial class LabTechnicianWindow : Window
+    public partial class MainView : Window
     {
-        public LabTechnicianWindow()
+        public MainView()
         {
             InitializeComponent();
         }
