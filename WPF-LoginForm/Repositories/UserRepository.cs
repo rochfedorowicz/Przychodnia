@@ -25,7 +25,7 @@ namespace WPF_LoginForm.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "select *from [User] where username=@username and [password]=@password";
+                command.CommandText = "select * from [Logowanie] where Loginn=@username and [Haslo]=@password";
                 command.Parameters.Add("@username", SqlDbType.NVarChar).Value = credential.UserName;
                 command.Parameters.Add("@password", SqlDbType.NVarChar).Value = credential.Password;
                 validUser = command.ExecuteScalar() == null ? false : true;
@@ -53,7 +53,7 @@ namespace WPF_LoginForm.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "select *from [User] where username=@username";
+                command.CommandText = "select * from [Logowanie] where Loginn=@username";
                 command.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
                 using (var reader = command.ExecuteReader())
                 {
@@ -61,12 +61,12 @@ namespace WPF_LoginForm.Repositories
                     {
                         user = new UserModel()
                         {
-                            Id = reader[0].ToString(),
-                            Username = reader[1].ToString(),
-                            Password = string.Empty,
-                            Name = reader[3].ToString(),
-                            LastName = reader[4].ToString(),
-                            Email = reader[5].ToString(),
+                            //Id = reader[0].ToString(),
+                            //Username = reader[1].ToString(),
+                            //Password = string.Empty,
+                            //Name = reader[3].ToString(),
+                            //LastName = reader[4].ToString(),
+                            //Email = reader[5].ToString(),
                         };
                     }
                 }
