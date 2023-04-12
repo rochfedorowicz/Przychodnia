@@ -186,7 +186,7 @@
                              Height="28"
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0">
+                             Padding="20,0,0,0" TextChanged="txtUser_TextChanged">
 
                         <TextBox.Background>
                             <ImageBrush ImageSource="/Images/user-icon.png"
