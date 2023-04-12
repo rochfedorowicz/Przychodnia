@@ -61,12 +61,11 @@ namespace WPF_LoginForm.Repositories
                     {
                         user = new UserModel()
                         {
-                            //Id = reader[0].ToString(),
-                            //Username = reader[1].ToString(),
-                            //Password = string.Empty,
-                            //Name = reader[3].ToString(),
-                            //LastName = reader[4].ToString(),
-                            //Email = reader[5].ToString(),
+                            Login = reader[0].ToString(),
+                            Password = string.Empty,
+                            Function = reader[2].ToString(),
+                            Name = reader[3].ToString(),
+                            LastName = reader[4].ToString(),
                         };
                     }
                 }

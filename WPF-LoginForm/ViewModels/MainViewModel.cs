@@ -42,14 +42,13 @@ namespace WPF_LoginForm.ViewModels
             var user = userRepository.GetByUsername(Thread.CurrentPrincipal.Identity.Name);
             if (user != null)
             {
-                CurrentUserAccount.Username = user.Username;
-                CurrentUserAccount.DisplayName = $"Welcome {user.Name} {user.LastName} ;)";
+                CurrentUserAccount.Username = user.Login;
+                CurrentUserAccount.Info = $"Witaj {user.Name} {user.LastName} ;) Jesteś zalogowany jako {user.Function}";
                 CurrentUserAccount.ProfilePicture = null;               
             }
             else
             {
-                CurrentUserAccount.DisplayName="Invalid user, not logged in";
-                //Hide child views.
+                CurrentUserAccount.Info="Nie zalogowano";
             }
         }
     }
