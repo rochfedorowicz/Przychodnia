@@ -1,17 +1,17 @@
-﻿<Window x:Class="WPF_LoginForm.Views.MakeTest"
+﻿<Window x:Class="WPF_LoginForm.Views.NewPatient"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_LoginForm.Views"
         mc:Ignorable="d"
-        Title="MakeTest" Height="450" Width="800"
+        Title="Receptionis" Height="450" Width="800"
         WindowStyle="None"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        Background="Transparent"
-        AllowsTransparency="True">
-
+      ResizeMode="NoResize"
+      WindowStartupLocation="CenterScreen"
+      Background="Transparent"
+      AllowsTransparency="True"
+      >
 
 
     <Window.Resources>
@@ -58,13 +58,46 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock
+                    <TextBlock Text="Receptionist"
                                    Foreground="DarkGray"
                                    FontSize="10"
                                    FontFamily="Montserrat"
                                    Grid.Column="0"
                                    VerticalAlignment="Center"
-                                   Margin="10,0,0,0"><Run Text="Lab "/><Run Language="pl-pl" Text="Assistant"/></TextBlock>
+                                   Margin="10,0,0,0"/>
+
+                    <Button x:Name="btnBack"                           
+                                BorderThickness="0"
+                                Content="↶"
+                                Foreground="White"
+                                FontSize="16"
+                                FontFamily="Montserrat"
+                                Cursor="Hand"
+                                Margin="716,0,0,0">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#C18620"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                            CornerRadius="9"
+                                            Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
 
                     <Button x:Name="btnMinimize"                           
                                 BorderThickness="0"
@@ -100,40 +133,6 @@
 
                     </Button>
 
-                    <Button x:Name="btnBack"                           
-                                BorderThickness="0"
-                                Content="↶"
-                                Foreground="White"
-                                FontSize="16"
-                                FontFamily="Montserrat"
-                                Cursor="Hand"
-                                Margin="716,0,0,0">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#C18620"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                            CornerRadius="9"
-                                            Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                          HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-
-                    </Button>
-
-
                     <Button x:Name="btnClose"                          
                                 BorderThickness="0"
                                 Content="X"
@@ -142,7 +141,7 @@
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
                                 Grid.Column="2"
-                               >
+                                >
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -167,44 +166,8 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-
+                <Label Content="Imię i Nazwisko :" HorizontalAlignment="Left" Margin="37,38,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="97" Visibility="Visible"/>
                 <TextBox x:Name="txtUser"
-                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="195,46,415,342"
-                             Padding="20,0,0,0"  Grid.Row="1">
-
-                    <TextBox.Background>
-                        <ImageBrush     Stretch="None"
-                                        AlignmentX="Left"/>
-                    </TextBox.Background>
-
-                </TextBox>
-                <Label Content="Uwagi :" 
-                       HorizontalAlignment="Left" 
-                       Margin="31,48,0,0" 
-                       Grid.Row="1" 
-                       VerticalAlignment="Top" 
-                       Foreground="White"
-
-                       Width="113"/>
-                <Label Content="Wynik :" 
-                    HorizontalAlignment="Left" 
-                    Margin="31,133,0,0" 
-                    Grid.Row="1" 
-                    VerticalAlignment="Top" 
-                    Foreground="White"
-
-                    Width="113"/>
-                <TextBox x:Name="txtUser_Copy"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
                     FontWeight="Medium"
@@ -215,8 +178,8 @@
                     BorderThickness="0,0,0,2"
                     Height="28"
                     VerticalContentAlignment="Center"
-                    Margin="195,131,415,257"
-                    Padding="20,0,0,0"  Grid.Row="1">
+                    Margin="240,36,375,352"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
 
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
@@ -224,7 +187,7 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Button Content="Anuluj badanie" 
+                <Button Content="Potwierdź i zarejestruj" 
                     Foreground="White"
                     Margin="544,312,0,0" 
                     Grid.Row="1" Background="#FFDC3030" Visibility="Visible">
@@ -251,7 +214,132 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <TextBox x:Name="txtUser_Copy"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    Height="28"
+                    VerticalContentAlignment="Center"
+                    Margin="446,36,169,352"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
 
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
+                <Label Content="Pesel :" HorizontalAlignment="Left" Margin="37,101,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="97" Visibility="Visible"/>
+                <Label Content="Miejscowość i kod pocztowy :" HorizontalAlignment="Left" Margin="37,154,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="171" Visibility="Visible"/>
+                <TextBox x:Name="txtUser_Copy1"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    Height="28"
+                    VerticalContentAlignment="Center"
+                    Margin="240,99,375,289"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
+
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
+                <TextBox x:Name="txtUser_Copy2"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    Height="28"
+                    VerticalContentAlignment="Center"
+                    Margin="240,152,375,236"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
+
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
+                <TextBox x:Name="txtUser_Copy3"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    Height="28"
+                    VerticalContentAlignment="Center"
+                    Margin="446,152,169,236"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
+
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
+                <Label Content="Numer domu/Numer lokalu :" HorizontalAlignment="Left" Margin="37,208,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="171" Visibility="Visible"/>
+                <TextBox x:Name="txtUser_Copy4"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    Height="28"
+                    VerticalContentAlignment="Center"
+                    Margin="240,206,375,182"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
+
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
+                <TextBox x:Name="txtUser_Copy5"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    Height="28"
+                    VerticalContentAlignment="Center"
+                    Margin="446,206,169,182"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
+
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
+                <Label Content="*" HorizontalAlignment="Left" Margin="37,320,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFDC3030" Width="35" Visibility="Visible" FontSize="36"/>
+                <Label Content="Pola wymagane" HorizontalAlignment="Left" Margin="54,338,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="172" Visibility="Visible"/>
+                <Label Content="*" HorizontalAlignment="Left" Margin="10,22,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFDC3030" Width="34" Visibility="Visible" FontSize="36"/>
             </Grid>
         </Border>
     </Border>
