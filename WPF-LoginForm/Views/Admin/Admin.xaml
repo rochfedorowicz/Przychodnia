@@ -164,6 +164,113 @@
                     </Button>
 
                 </Grid>
+                <ListView d:ItemsSource="{d:SampleData ItemCount=20}" x:Name="reception" Grid.Row="1" Foreground="White" OpacityMask="#FF52144F" HorizontalAlignment="Left" BorderBrush="#FFE0E1E4" UseLayoutRounding="False" SelectionMode="Single" Background="{x:Null}" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="347" Width="471" Margin="30,45,0,0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="BorderBrush" Value="LightGray" />
+                            <Setter Property="BorderThickness" Value="0,0,0,1" />
+
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="id_user" Width="60" DisplayMemberBinding="{Binding id_user}" />
+                            <GridViewColumn Header="Login_U" Width="80" DisplayMemberBinding="{Binding Login_U}" />
+                            <GridViewColumn Header="Imie" Width="80" DisplayMemberBinding="{Binding Imie}"/>
+                            <GridViewColumn Header="Nazwisko" Width="120" DisplayMemberBinding="{Binding Nazwisko}"/>
+                            <GridViewColumn Header="Rola" Width="120" DisplayMemberBinding="{Binding Rola}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Content="Dodaj użytkownika" 
+                    Foreground="White"
+                    Margin="513,82,0,264" 
+                    Grid.Row="1" HorizontalAlignment="Left" Width="273">
+
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#168972"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="250" Height="60"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}" Margin="-24,5,-13,5">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Usuń użytkownika" 
+                    Foreground="White"
+                    Margin="506,283,0,63" 
+                    Grid.Row="1" HorizontalAlignment="Left" Width="280" Background="#FFDC3030">
+
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#168972"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="250" Height="60"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Edytuj użytkownika" 
+                    Foreground="White"
+                    Margin="506,182,0,164" 
+                    Grid.Row="1" HorizontalAlignment="Left" Width="280" Background="#FFF57910">
+
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#168972"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="250" Height="60"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Label Content="Użytkownicy" 
+                    HorizontalAlignment="Left" 
+                    Margin="17,4,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Foreground="White"
+
+                    Width="484" Height="36" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20"/>
             </Grid>
         </Border>
     </Border>

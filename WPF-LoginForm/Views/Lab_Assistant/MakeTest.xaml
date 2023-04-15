@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_LoginForm.Views"
         mc:Ignorable="d"
-        Title="MakeTest" Height="450" Width="800"
+        Title="MakeTest" Height="238" Width="575"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -107,7 +107,15 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Margin="716,0,0,0">
+                                Margin="491,0,0,0" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -167,71 +175,22 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-
-                <TextBox x:Name="txtUser"
-                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="195,46,415,342"
-                             Padding="20,0,0,0"  Grid.Row="1">
-
-                    <TextBox.Background>
-                        <ImageBrush     Stretch="None"
-                                        AlignmentX="Left"/>
-                    </TextBox.Background>
-
-                </TextBox>
-                <Label Content="Uwagi :" 
+                <Label Content="Wynik :" 
                        HorizontalAlignment="Left" 
-                       Margin="31,48,0,0" 
+                       Margin="10,10,0,0" 
                        Grid.Row="1" 
                        VerticalAlignment="Top" 
                        Foreground="White"
 
                        Width="113"/>
-                <Label Content="Wynik :" 
-                    HorizontalAlignment="Left" 
-                    Margin="31,133,0,0" 
-                    Grid.Row="1" 
-                    VerticalAlignment="Top" 
+                <Button x:Name="register_btn" Content="Zakończ badanie" 
                     Foreground="White"
-
-                    Width="113"/>
-                <TextBox x:Name="txtUser_Copy"
-                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
-                    FontSize="13"
-                    FontWeight="Medium"
-                    FontFamily="Montserrat"                            
-                    Foreground="White"
-                    CaretBrush="LightGray"
-                    BorderBrush="DarkGray"
-                    BorderThickness="0,0,0,2"
-                    Height="28"
-                    VerticalContentAlignment="Center"
-                    Margin="195,131,415,257"
-                    Padding="20,0,0,0"  Grid.Row="1">
-
-                    <TextBox.Background>
-                        <ImageBrush     Stretch="None"
-                            AlignmentX="Left"/>
-                    </TextBox.Background>
-
-                </TextBox>
-                <Button Content="Anuluj badanie" 
-                    Foreground="White"
-                    Margin="544,312,0,0" 
-                    Grid.Row="1" Background="#FFDC3030" Visibility="Visible">
+                    Margin="0,124,233,7" 
+                    Grid.Row="1" HorizontalAlignment="Right" Width="318">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Background" Value="#168972"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#28AEED"/>
@@ -242,15 +201,67 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="200" Height="40"
+                            <Border Width="230" Height="50"
                                 CornerRadius="20"
-                                Background="{TemplateBinding Background}" Margin="-6,-12,15,3">
+                                Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
                                     HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <Button x:Name="register_btn_Copy" Content="Anuluj badanie" 
+                    Foreground="White"
+                    Margin="0,129,11,13" 
+                    Grid.Row="1" HorizontalAlignment="Right" Width="239" Background="#FFDC3030">
+
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#168972"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="230" Height="50"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <TextBox 
+                    HorizontalAlignment="Left" 
+                    Margin="66,18,0,0" 
+                    Grid.Row="1" 
+                    TextWrapping="Wrap" 
+                    Text="Miejsce na wynik" 
+                    VerticalAlignment="Top" 
+                    Width="490" 
+                    Height="101"
+                    TextChanged="TextBox_TextChanged"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="2,2,2,2"
+                    VerticalContentAlignment="Top"
+                    Padding="0,0,0,0"   
+                    Visibility="Visible" 
+                    IsEnabled="True">
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+                </TextBox>
 
             </Grid>
         </Border>

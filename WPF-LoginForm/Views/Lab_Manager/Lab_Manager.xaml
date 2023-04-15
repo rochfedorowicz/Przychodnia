@@ -215,7 +215,7 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Button Content="Zatwierdź badanie laboratoryjne" 
+                <Button Content="Sprawdź badanie laboratoryjne" 
                     HorizontalAlignment="Center" 
                     Foreground="White"
                     Margin="0,330,0,10" 

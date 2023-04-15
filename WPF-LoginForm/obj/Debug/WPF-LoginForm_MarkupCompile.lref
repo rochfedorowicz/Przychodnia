@@ -1,12 +1,16 @@
 ﻿
 
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\CustomControls\BindablePasswordBox.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\Admin\Admin.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\Doctor\Doctor.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\Lab_Assistant\Lab_Assistant.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\Lab_Assistant\MakeTest.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\Lab_Manager\Lab_Manager.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\LoginView.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\MainView.xaml;;
-FD:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\Views\Receptionist\Receptionist.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\CustomControls\BindablePasswordBox.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Admin\Admin.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Doctor\Doctor.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Lab_Assistant\Lab_Assistant.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Lab_Assistant\MakeTest.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Lab_Manager\Lab_Manager.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\LoginView.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\MainView.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Receptionist\Receptionist.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Admin\Admin_Edit_User.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Doctor\Doctor_Visit.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Lab_Manager\Lab_Manager_Approve.xaml;;
+FW:\repos\Przychodnia\WPF-LoginForm\Views\Receptionist\Receptionist_Register.xaml;;
 

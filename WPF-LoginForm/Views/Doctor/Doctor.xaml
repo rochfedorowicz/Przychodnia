@@ -167,8 +167,8 @@
                 </Grid>
                 <Button Content="Zrealizuj  wizytę" 
                     Foreground="White"
-                    Margin="0,279,0,-31" 
-                    Grid.Row="1" HorizontalAlignment="Center" Width="392">
+                    Margin="193,328,0,18" 
+                    Grid.Row="1" HorizontalAlignment="Left" Width="310">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -183,7 +183,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="300" Height="60"
+                            <Border Width="280" Height="60"
                                 CornerRadius="20"
                                 Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
@@ -231,7 +231,7 @@
                     BorderThickness="0,0,0,2"
                     Height="28"
                     VerticalContentAlignment="Center"
-                    Margin="128,354,583,34"
+                    Margin="92,349,620,39"
                     Padding="20,0,0,0"  Grid.Row="1">
 
                     <TextBox.Background>
@@ -240,6 +240,33 @@
                     </TextBox.Background>
 
                 </TextBox>
+                <Button Content="Anuluj wizytę" 
+                    Foreground="White"
+                    Margin="487,329,0,22" 
+                    Grid.Row="1" HorizontalAlignment="Left" Width="309" Click="Button_Click" Background="#FFDC3030">
+
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#168972"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="280" Height="60"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
         </Border>
     </Border>

@@ -69,6 +69,12 @@
     <Compile Include="Views\Admin\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Admin_Edit_User.xaml.cs">
+      <DependentUpon>Admin_Edit_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Doctor\Doctor_Visit.xaml.cs">
+      <DependentUpon>Doctor_Visit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Doctor\Doctor.xaml.cs">
       <DependentUpon>Doctor.xaml</DependentUpon>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Views\Lab_Manager\Lab_Manager.xaml.cs">
       <DependentUpon>Lab_Manager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Lab_Manager\Lab_Manager_Approve.xaml.cs">
+      <DependentUpon>Lab_Manager_Approve.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -90,6 +99,9 @@
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receptionist\Receptionist_Register.xaml.cs">
+      <DependentUpon>Receptionist_Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Receptionist\Receptionist.xaml.cs">
       <DependentUpon>Receptionist.xaml</DependentUpon>
@@ -101,6 +113,14 @@
     <Page Include="Views\Admin\Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Admin_Edit_User.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Doctor\Doctor_Visit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Doctor\Doctor.xaml">
       <SubType>Designer</SubType>
@@ -118,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Lab_Manager\Lab_Manager_Approve.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +149,10 @@
     <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Receptionist\Receptionist_Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Receptionist\Receptionist.xaml">
       <SubType>Designer</SubType>
