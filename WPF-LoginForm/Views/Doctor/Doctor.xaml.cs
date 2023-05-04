@@ -21,7 +21,7 @@ namespace WPF_LoginForm.Views
     {
         public Doctor()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
 
         private void Button_Click()

@@ -22,7 +22,7 @@ namespace WPF_LoginForm.ViewModels
         private string _errorMessage;
         private bool _isViewVisible = true;
 
-        private IUserRepository userRepository;
+       // private IUserRepository userRepository;
 
         //Properties
         public string Username

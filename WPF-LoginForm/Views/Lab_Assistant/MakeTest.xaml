@@ -246,7 +246,7 @@
                     VerticalAlignment="Top" 
                     Width="490" 
                     Height="101"
-                    TextChanged="TextBox_TextChanged"
+                    
                     FontWeight="Medium"
                     FontFamily="Montserrat"                            
                     Foreground="White"

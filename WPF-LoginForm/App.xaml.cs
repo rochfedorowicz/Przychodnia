@@ -32,7 +32,7 @@ namespace WPF_LoginForm
                       switch (Funkcja)
                       {
                           case "REJ":
-                              nextScreen = new Receptionis();
+                              nextScreen = new Receptionist();
                               break;
                           case "LEK":
                               nextScreen = new Doctor();
