@@ -64,6 +64,22 @@ namespace WPF_LoginForm.Views {
         #line default
         #line hidden
         
+        
+        #line 195 "..\..\..\..\Views\Doctor\Doctor.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.ListView reception;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 223 "..\..\..\..\Views\Doctor\Doctor.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox txtUser;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -102,6 +118,20 @@ namespace WPF_LoginForm.Views {
             return;
             case 3:
             this.btnBack = ((System.Windows.Controls.Button)(target));
+            return;
+            case 4:
+            this.reception = ((System.Windows.Controls.ListView)(target));
+            return;
+            case 5:
+            this.txtUser = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 6:
+            
+            #line 246 "..\..\..\..\Views\Doctor\Doctor.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
+            
+            #line default
+            #line hidden
             return;
             }
             this._contentLoaded = true;

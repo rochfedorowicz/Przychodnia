@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace WPF_LoginForm.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy Doctor.xaml
+    /// Logika interakcji dla klasy MakeTest.xaml
     /// </summary>
-    public partial class Doctor : Window
+    public partial class Admin_Edit_User : Window
     {
-        public Doctor()
+        public Admin_Edit_User()
         {
             //InitializeComponent();
         }
 
-        private void Button_Click()
+        private void register_btn_Click(object sender, RoutedEventArgs e)
         {
 
         }

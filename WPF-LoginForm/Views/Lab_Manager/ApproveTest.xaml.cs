@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace WPF_LoginForm.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy Doctor.xaml
+    /// Logika interakcji dla klasy ApproveTest.xaml
     /// </summary>
-    public partial class Doctor : Window
+    public partial class ApproveTest : Window
     {
-        public Doctor()
+        public ApproveTest()
         {
-            //InitializeComponent();
-        }
-
-        private void Button_Click()
-        {
-
+            InitializeComponent();
         }
     }
 }

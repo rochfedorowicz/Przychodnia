@@ -17,14 +17,24 @@ namespace WPF_LoginForm.Views
     /// <summary>
     /// Logika interakcji dla klasy Doctor.xaml
     /// </summary>
-    public partial class Doctor : Window
+    public partial class Doctor_Visit : Window
     {
-        public Doctor()
+        public Doctor_Visit()
         {
             //InitializeComponent();
         }
 
         private void Button_Click()
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

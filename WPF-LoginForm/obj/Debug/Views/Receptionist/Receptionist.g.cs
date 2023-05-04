@@ -43,15 +43,39 @@ namespace WPF_LoginForm.Views {
         
         #line 70 "..\..\..\..\Views\Receptionist\Receptionist.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnBack;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 102 "..\..\..\..\Views\Receptionist\Receptionist.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnMinimize;
         
         #line default
         #line hidden
         
         
-        #line 104 "..\..\..\..\Views\Receptionist\Receptionist.xaml"
+        #line 136 "..\..\..\..\Views\Receptionist\Receptionist.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnClose;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 229 "..\..\..\..\Views\Receptionist\Receptionist.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.ListView reception;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 255 "..\..\..\..\Views\Receptionist\Receptionist.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox txtUser;
         
         #line default
         #line hidden
@@ -87,10 +111,19 @@ namespace WPF_LoginForm.Views {
             switch (connectionId)
             {
             case 1:
-            this.btnMinimize = ((System.Windows.Controls.Button)(target));
+            this.btnBack = ((System.Windows.Controls.Button)(target));
             return;
             case 2:
+            this.btnMinimize = ((System.Windows.Controls.Button)(target));
+            return;
+            case 3:
             this.btnClose = ((System.Windows.Controls.Button)(target));
+            return;
+            case 4:
+            this.reception = ((System.Windows.Controls.ListView)(target));
+            return;
+            case 5:
+            this.txtUser = ((System.Windows.Controls.TextBox)(target));
             return;
             }
             this._contentLoaded = true;
