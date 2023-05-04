@@ -23,10 +23,6 @@ namespace WPF_LoginForm
               {
                   if (loginView.IsVisible == false && loginView.IsLoaded)
                   {
-                     // var mainView = new MainView();
-
-                      //mainView.Show();
-
                       Window nextScreen;
 
                       switch (Funkcja)

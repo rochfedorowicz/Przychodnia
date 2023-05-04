@@ -41,7 +41,6 @@ C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assis
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LoginView.g.cs
-C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\MainView.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\App.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -54,7 +53,6 @@ C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assis
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.baml
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.baml
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LoginView.baml
-C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\MainView.baml
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.baml
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.g.resources
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF_LoginForm.Properties.Resources.resources

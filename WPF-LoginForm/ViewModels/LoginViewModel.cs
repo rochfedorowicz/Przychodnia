@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using WPF_LoginForm.Models;
-using WPF_LoginForm.Repositories;
+//using WPF_LoginForm.Models;
+//using WPF_LoginForm.Repositories;
 using WPF_LoginForm;
 
 namespace WPF_LoginForm.ViewModels
