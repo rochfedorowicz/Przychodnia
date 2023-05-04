@@ -24,6 +24,8 @@ namespace WPF_LoginForm.Views
             InitializeComponent();
         }
 
+        public static string funkcja = "";
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)

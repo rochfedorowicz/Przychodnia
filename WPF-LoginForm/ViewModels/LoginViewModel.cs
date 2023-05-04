@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF_LoginForm.Models;
 using WPF_LoginForm.Repositories;
+using WPF_LoginForm;
 
 namespace WPF_LoginForm.ViewModels
 {
@@ -89,7 +90,7 @@ namespace WPF_LoginForm.ViewModels
         //Constructor
         public LoginViewModel()
         {
-            userRepository = new UserRepository();
+            //userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new ViewModelCommand(p => ExecuteRecoverPassCommand("", ""));
         }
@@ -107,8 +108,7 @@ namespace WPF_LoginForm.ViewModels
 
         private void ExecuteLoginCommand(object obj)
         {
-            var isValidUser = userRepository.AuthenticateUser(new NetworkCredential(Username, Password));
-            if (isValidUser)
+            if (AuthenticateUser(new NetworkCredential(Username, Password)))
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
                     new GenericIdentity(Username), null);
@@ -116,7 +116,22 @@ namespace WPF_LoginForm.ViewModels
             }
             else
             {
-                ErrorMessage = "* Nie poprawne dane logowania";
+                ErrorMessage = "* Invalid username or password";
+            }
+        }
+
+        private bool AuthenticateUser(NetworkCredential credential)
+        {
+            using (var pe = new PrzychodniaEntities())
+            {
+                var user = pe.Logowanie.Where(el => el.Loginn == credential.UserName && el.Haslo == credential.Password).SingleOrDefault();
+
+                if (user!=null)
+                {
+                    App.Funkcja = user.Funkcja;
+                }
+
+                return user == null ? false : true;
             }
         }
 

@@ -62,3 +62,9 @@ C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.Generate
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CoreCompileInputs.cache
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.exe
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.pdb
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.dll
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.xml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm_Content.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CopyComplete

@@ -10,7 +10,7 @@ using WPF_LoginForm.Models;
 
 namespace WPF_LoginForm.Repositories
 {
-    public class UserRepository : RepositoryBase, IUserRepository
+    public class UserRepository : RepositoryBase
     {
         public void Add(UserModel userModel)
         {
@@ -20,17 +20,13 @@ namespace WPF_LoginForm.Repositories
         public bool AuthenticateUser(NetworkCredential credential)
         {
             bool validUser;
-            using (var connection = GetConnection())
-            using (var command = new SqlCommand())
+
+            using (var pe = new PrzychodniaEntities())
             {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "select * from [Logowanie] where Loginn=@username and [Haslo]=@password";
-                command.Parameters.Add("@username", SqlDbType.NVarChar).Value = credential.UserName;
-                command.Parameters.Add("@password", SqlDbType.NVarChar).Value = credential.Password;
-                validUser = command.ExecuteScalar() == null ? false : true;
+                var user = pe.Logowanie.Where(el => el.Loginn == credential.UserName && el.Haslo == credential.Password).SingleOrDefault();
+
+                return user==null ? false : true;
             }
-            return validUser;
         }
 
         public void Edit(UserModel userModel)
@@ -45,32 +41,14 @@ namespace WPF_LoginForm.Repositories
         {
             throw new NotImplementedException();
         }
-        public UserModel GetByUsername(string username)
+        public Logowanie GetByUsername(string username)
         {
-            UserModel user = null;
-            using (var connection = GetConnection())
-            using (var command = new SqlCommand())
+            using (var pe = new PrzychodniaEntities())
             {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "select * from [Logowanie] where Loginn=@username";
-                command.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
-                using (var reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        user = new UserModel()
-                        {
-                            Login = reader[0].ToString(),
-                            Password = string.Empty,
-                            Function = reader[2].ToString(),
-                            Name = reader[3].ToString(),
-                            LastName = reader[4].ToString(),
-                        };
-                    }
-                }
+                var loggedUser = pe.Logowanie.Where(el => el.Loginn == username).SingleOrDefault();
+
+                return loggedUser;
             }
-            return user;
         }
         public void Remove(int id)
         {

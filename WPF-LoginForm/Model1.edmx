@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PrzychodniaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Przychodnia.dbo.Adres' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Adres">
+          <Property Name="Id_Pac" Type="int" />
+          <Property Name="Miejscowosc" Type="varchar" MaxLength="50" />
+          <Property Name="Ulica" Type="varchar" MaxLength="50" />
+          <Property Name="Nr_dom" Type="int" />
+          <Property Name="Nr_lokalu" Type="int" />
+          <Property Name="Kod_pocztowy" Type="varchar" MaxLength="6" />
+        </EntityType>-->
+        <EntityType Name="BadaniaFizyczne">
+          <Key>
+            <PropertyRef Name="Id_bad_fiz" />
+          </Key>
+          <Property Name="Id_bad_fiz" Type="int" Nullable="false" />
+          <Property Name="Id_wizyta" Type="int" />
+          <Property Name="Kod" Type="varchar" MaxLength="10" />
+          <Property Name="Wynik" Type="text" />
+        </EntityType>
+        <EntityType Name="BadaniaLaboratoryjne">
+          <Key>
+            <PropertyRef Name="Id_bad_lab" />
+          </Key>
+          <Property Name="Id_bad_lab" Type="int" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="10" />
+          <Property Name="Przydz_Kierow" Type="int" />
+          <Property Name="Przydz_lab" Type="int" />
+          <Property Name="Id_wizyty" Type="int" />
+          <Property Name="Uwagi_lek" Type="text" />
+          <Property Name="Dat_zlec" Type="date" Nullable="false" />
+          <Property Name="Wynik" Type="text" />
+          <Property Name="Dat_wyk_anul" Type="date" />
+          <Property Name="Uwagi_kier" Type="text" />
+          <Property Name="Dat_zatw_anul" Type="date" />
+          <Property Name="Stat" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KierownikLab">
+          <Key>
+            <PropertyRef Name="Id_klab" />
+          </Key>
+          <Property Name="Id_klab" Type="int" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Laborant">
+          <Key>
+            <PropertyRef Name="Id_lab" />
+          </Key>
+          <Property Name="Id_lab" Type="int" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lekarz">
+          <Key>
+            <PropertyRef Name="Id_lek" />
+          </Key>
+          <Property Name="Id_lek" Type="int" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NPWZ" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logowanie">
+          <Key>
+            <PropertyRef Name="Loginn" />
+          </Key>
+          <Property Name="Loginn" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Haslo" Type="varchar" MaxLength="50" />
+          <Property Name="Funkcja" Type="varchar" MaxLength="4" />
+          <Property Name="Imie" Type="varchar" MaxLength="20" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pacjent">
+          <Key>
+            <PropertyRef Name="Id_pac" />
+          </Key>
+          <Property Name="Id_pac" Type="int" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pesel" Type="int" />
+        </EntityType>
+        <EntityType Name="Rejestracja">
+          <Key>
+            <PropertyRef Name="Id_rej" />
+          </Key>
+          <Property Name="Id_rej" Type="int" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SlownikBadan">
+          <Key>
+            <PropertyRef Name="Kod" />
+          </Key>
+          <Property Name="Kod" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Typ" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Wizyta">
+          <Key>
+            <PropertyRef Name="Id_wiz" />
+          </Key>
+          <Property Name="Id_wiz" Type="int" Nullable="false" />
+          <Property Name="Lek_wyk" Type="int" />
+          <Property Name="Id_pacj" Type="int" />
+          <Property Name="Opis" Type="text" Nullable="false" />
+          <Property Name="Diagnoza" Type="text" />
+          <Property Name="Stat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dat_rej" Type="date" Nullable="false" />
+          <Property Name="Dat_zak_anul" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'Przychodnia.dbo.Adres' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Adres__Id_Pac__3C69FB99" />-->
+        <Association Name="FK__BadaniaFi__Id_wi__398D8EEE">
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BadaniaFizyczne" Type="Self.BadaniaFizyczne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wizyta">
+              <PropertyRef Name="Id_wiz" />
+            </Principal>
+            <Dependent Role="BadaniaFizyczne">
+              <PropertyRef Name="Id_wizyta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaFizy__Kod__3A81B327">
+          <End Role="SlownikBadan" Type="Self.SlownikBadan" Multiplicity="0..1" />
+          <End Role="BadaniaFizyczne" Type="Self.BadaniaFizyczne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlownikBadan">
+              <PropertyRef Name="Kod" />
+            </Principal>
+            <Dependent Role="BadaniaFizyczne">
+              <PropertyRef Name="Kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLa__Id_wi__36B12243">
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wizyta">
+              <PropertyRef Name="Id_wiz" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Id_wizyty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLa__Przyd__34C8D9D1">
+          <End Role="KierownikLab" Type="Self.KierownikLab" Multiplicity="0..1" />
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KierownikLab">
+              <PropertyRef Name="Id_klab" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Przydz_Kierow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLa__Przyd__35BCFE0A">
+          <End Role="Laborant" Type="Self.Laborant" Multiplicity="0..1" />
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laborant">
+              <PropertyRef Name="Id_lab" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Przydz_lab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLabo__Kod__33D4B598">
+          <End Role="SlownikBadan" Type="Self.SlownikBadan" Multiplicity="0..1" />
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlownikBadan">
+              <PropertyRef Name="Kod" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wizyta__Id_pacj__2B3F6F97">
+          <End Role="Pacjent" Type="Self.Pacjent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacjent">
+              <PropertyRef Name="Id_pac" />
+            </Principal>
+            <Dependent Role="Wizyta">
+              <PropertyRef Name="Id_pacj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wizyta__Lek_wyk__2A4B4B5E">
+          <End Role="Lekarz" Type="Self.Lekarz" Multiplicity="0..1" />
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lekarz">
+              <PropertyRef Name="Id_lek" />
+            </Principal>
+            <Dependent Role="Wizyta">
+              <PropertyRef Name="Lek_wyk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrzychodniaModelStoreContainer">
+          <EntitySet Name="BadaniaFizyczne" EntityType="Self.BadaniaFizyczne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BadaniaLaboratoryjne" EntityType="Self.BadaniaLaboratoryjne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KierownikLab" EntityType="Self.KierownikLab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Laborant" EntityType="Self.Laborant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lekarz" EntityType="Self.Lekarz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logowanie" EntityType="Self.Logowanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacjent" EntityType="Self.Pacjent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rejestracja" EntityType="Self.Rejestracja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlownikBadan" EntityType="Self.SlownikBadan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wizyta" EntityType="Self.Wizyta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BadaniaFi__Id_wi__398D8EEE" Association="Self.FK__BadaniaFi__Id_wi__398D8EEE">
+            <End Role="Wizyta" EntitySet="Wizyta" />
+            <End Role="BadaniaFizyczne" EntitySet="BadaniaFizyczne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaFizy__Kod__3A81B327" Association="Self.FK__BadaniaFizy__Kod__3A81B327">
+            <End Role="SlownikBadan" EntitySet="SlownikBadan" />
+            <End Role="BadaniaFizyczne" EntitySet="BadaniaFizyczne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLa__Id_wi__36B12243" Association="Self.FK__BadaniaLa__Id_wi__36B12243">
+            <End Role="Wizyta" EntitySet="Wizyta" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLa__Przyd__34C8D9D1" Association="Self.FK__BadaniaLa__Przyd__34C8D9D1">
+            <End Role="KierownikLab" EntitySet="KierownikLab" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLa__Przyd__35BCFE0A" Association="Self.FK__BadaniaLa__Przyd__35BCFE0A">
+            <End Role="Laborant" EntitySet="Laborant" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLabo__Kod__33D4B598" Association="Self.FK__BadaniaLabo__Kod__33D4B598">
+            <End Role="SlownikBadan" EntitySet="SlownikBadan" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wizyta__Id_pacj__2B3F6F97" Association="Self.FK__Wizyta__Id_pacj__2B3F6F97">
+            <End Role="Pacjent" EntitySet="Pacjent" />
+            <End Role="Wizyta" EntitySet="Wizyta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wizyta__Lek_wyk__2A4B4B5E" Association="Self.FK__Wizyta__Lek_wyk__2A4B4B5E">
+            <End Role="Lekarz" EntitySet="Lekarz" />
+            <End Role="Wizyta" EntitySet="Wizyta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrzychodniaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BadaniaFizyczne">
+          <Key>
+            <PropertyRef Name="Id_bad_fiz" />
+          </Key>
+          <Property Name="Id_bad_fiz" Type="Int32" Nullable="false" />
+          <Property Name="Id_wizyta" Type="Int32" />
+          <Property Name="Kod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Wynik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Wizyta" Relationship="Self.FK__BadaniaFi__Id_wi__398D8EEE" FromRole="BadaniaFizyczne" ToRole="Wizyta" />
+          <NavigationProperty Name="SlownikBadan" Relationship="Self.FK__BadaniaFizy__Kod__3A81B327" FromRole="BadaniaFizyczne" ToRole="SlownikBadan" />
+        </EntityType>
+        <EntityType Name="BadaniaLaboratoryjne">
+          <Key>
+            <PropertyRef Name="Id_bad_lab" />
+          </Key>
+          <Property Name="Id_bad_lab" Type="Int32" Nullable="false" />
+          <Property Name="Kod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Przydz_Kierow" Type="Int32" />
+          <Property Name="Przydz_lab" Type="Int32" />
+          <Property Name="Id_wizyty" Type="Int32" />
+          <Property Name="Uwagi_lek" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dat_zlec" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Wynik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dat_wyk_anul" Type="DateTime" Precision="0" />
+          <Property Name="Uwagi_kier" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dat_zatw_anul" Type="DateTime" Precision="0" />
+          <Property Name="Stat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Wizyta" Relationship="Self.FK__BadaniaLa__Id_wi__36B12243" FromRole="BadaniaLaboratoryjne" ToRole="Wizyta" />
+          <NavigationProperty Name="KierownikLab" Relationship="Self.FK__BadaniaLa__Przyd__34C8D9D1" FromRole="BadaniaLaboratoryjne" ToRole="KierownikLab" />
+          <NavigationProperty Name="Laborant" Relationship="Self.FK__BadaniaLa__Przyd__35BCFE0A" FromRole="BadaniaLaboratoryjne" ToRole="Laborant" />
+          <NavigationProperty Name="SlownikBadan" Relationship="Self.FK__BadaniaLabo__Kod__33D4B598" FromRole="BadaniaLaboratoryjne" ToRole="SlownikBadan" />
+        </EntityType>
+        <EntityType Name="KierownikLab">
+          <Key>
+            <PropertyRef Name="Id_klab" />
+          </Key>
+          <Property Name="Id_klab" Type="Int32" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BadaniaLaboratoryjne" Relationship="Self.FK__BadaniaLa__Przyd__34C8D9D1" FromRole="KierownikLab" ToRole="BadaniaLaboratoryjne" />
+        </EntityType>
+        <EntityType Name="Laborant">
+          <Key>
+            <PropertyRef Name="Id_lab" />
+          </Key>
+          <Property Name="Id_lab" Type="Int32" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BadaniaLaboratoryjne" Relationship="Self.FK__BadaniaLa__Przyd__35BCFE0A" FromRole="Laborant" ToRole="BadaniaLaboratoryjne" />
+        </EntityType>
+        <EntityType Name="Lekarz">
+          <Key>
+            <PropertyRef Name="Id_lek" />
+          </Key>
+          <Property Name="Id_lek" Type="Int32" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NPWZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Wizyta" Relationship="Self.FK__Wizyta__Lek_wyk__2A4B4B5E" FromRole="Lekarz" ToRole="Wizyta" />
+        </EntityType>
+        <EntityType Name="Logowanie">
+          <Key>
+            <PropertyRef Name="Loginn" />
+          </Key>
+          <Property Name="Loginn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Haslo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Funkcja" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Pacjent">
+          <Key>
+            <PropertyRef Name="Id_pac" />
+          </Key>
+          <Property Name="Id_pac" Type="Int32" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pesel" Type="Int32" />
+          <NavigationProperty Name="Wizyta" Relationship="Self.FK__Wizyta__Id_pacj__2B3F6F97" FromRole="Pacjent" ToRole="Wizyta" />
+        </EntityType>
+        <EntityType Name="Rejestracja">
+          <Key>
+            <PropertyRef Name="Id_rej" />
+          </Key>
+          <Property Name="Id_rej" Type="Int32" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SlownikBadan">
+          <Key>
+            <PropertyRef Name="Kod" />
+          </Key>
+          <Property Name="Kod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Typ" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BadaniaFizyczne" Relationship="Self.FK__BadaniaFizy__Kod__3A81B327" FromRole="SlownikBadan" ToRole="BadaniaFizyczne" />
+          <NavigationProperty Name="BadaniaLaboratoryjne" Relationship="Self.FK__BadaniaLabo__Kod__33D4B598" FromRole="SlownikBadan" ToRole="BadaniaLaboratoryjne" />
+        </EntityType>
+        <EntityType Name="Wizyta">
+          <Key>
+            <PropertyRef Name="Id_wiz" />
+          </Key>
+          <Property Name="Id_wiz" Type="Int32" Nullable="false" />
+          <Property Name="Lek_wyk" Type="Int32" />
+          <Property Name="Id_pacj" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Diagnoza" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Stat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dat_rej" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Dat_zak_anul" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="BadaniaFizyczne" Relationship="Self.FK__BadaniaFi__Id_wi__398D8EEE" FromRole="Wizyta" ToRole="BadaniaFizyczne" />
+          <NavigationProperty Name="BadaniaLaboratoryjne" Relationship="Self.FK__BadaniaLa__Id_wi__36B12243" FromRole="Wizyta" ToRole="BadaniaLaboratoryjne" />
+          <NavigationProperty Name="Lekarz" Relationship="Self.FK__Wizyta__Lek_wyk__2A4B4B5E" FromRole="Wizyta" ToRole="Lekarz" />
+          <NavigationProperty Name="Pacjent" Relationship="Self.FK__Wizyta__Id_pacj__2B3F6F97" FromRole="Wizyta" ToRole="Pacjent" />
+        </EntityType>
+        <Association Name="FK__BadaniaFi__Id_wi__398D8EEE">
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BadaniaFizyczne" Type="Self.BadaniaFizyczne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wizyta">
+              <PropertyRef Name="Id_wiz" />
+            </Principal>
+            <Dependent Role="BadaniaFizyczne">
+              <PropertyRef Name="Id_wizyta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaFizy__Kod__3A81B327">
+          <End Role="SlownikBadan" Type="Self.SlownikBadan" Multiplicity="0..1" />
+          <End Role="BadaniaFizyczne" Type="Self.BadaniaFizyczne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlownikBadan">
+              <PropertyRef Name="Kod" />
+            </Principal>
+            <Dependent Role="BadaniaFizyczne">
+              <PropertyRef Name="Kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLa__Id_wi__36B12243">
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wizyta">
+              <PropertyRef Name="Id_wiz" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Id_wizyty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLa__Przyd__34C8D9D1">
+          <End Role="KierownikLab" Type="Self.KierownikLab" Multiplicity="0..1" />
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KierownikLab">
+              <PropertyRef Name="Id_klab" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Przydz_Kierow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLa__Przyd__35BCFE0A">
+          <End Role="Laborant" Type="Self.Laborant" Multiplicity="0..1" />
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laborant">
+              <PropertyRef Name="Id_lab" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Przydz_lab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BadaniaLabo__Kod__33D4B598">
+          <End Role="SlownikBadan" Type="Self.SlownikBadan" Multiplicity="0..1" />
+          <End Role="BadaniaLaboratoryjne" Type="Self.BadaniaLaboratoryjne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlownikBadan">
+              <PropertyRef Name="Kod" />
+            </Principal>
+            <Dependent Role="BadaniaLaboratoryjne">
+              <PropertyRef Name="Kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wizyta__Lek_wyk__2A4B4B5E">
+          <End Role="Lekarz" Type="Self.Lekarz" Multiplicity="0..1" />
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lekarz">
+              <PropertyRef Name="Id_lek" />
+            </Principal>
+            <Dependent Role="Wizyta">
+              <PropertyRef Name="Lek_wyk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wizyta__Id_pacj__2B3F6F97">
+          <End Role="Pacjent" Type="Self.Pacjent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wizyta" Type="Self.Wizyta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacjent">
+              <PropertyRef Name="Id_pac" />
+            </Principal>
+            <Dependent Role="Wizyta">
+              <PropertyRef Name="Id_pacj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrzychodniaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BadaniaFizyczne" EntityType="Self.BadaniaFizyczne" />
+          <EntitySet Name="BadaniaLaboratoryjne" EntityType="Self.BadaniaLaboratoryjne" />
+          <EntitySet Name="KierownikLab" EntityType="Self.KierownikLab" />
+          <EntitySet Name="Laborant" EntityType="Self.Laborant" />
+          <EntitySet Name="Lekarz" EntityType="Self.Lekarz" />
+          <EntitySet Name="Logowanie" EntityType="Self.Logowanie" />
+          <EntitySet Name="Pacjent" EntityType="Self.Pacjent" />
+          <EntitySet Name="Rejestracja" EntityType="Self.Rejestracja" />
+          <EntitySet Name="SlownikBadan" EntityType="Self.SlownikBadan" />
+          <EntitySet Name="Wizyta" EntityType="Self.Wizyta" />
+          <AssociationSet Name="FK__BadaniaFi__Id_wi__398D8EEE" Association="Self.FK__BadaniaFi__Id_wi__398D8EEE">
+            <End Role="Wizyta" EntitySet="Wizyta" />
+            <End Role="BadaniaFizyczne" EntitySet="BadaniaFizyczne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaFizy__Kod__3A81B327" Association="Self.FK__BadaniaFizy__Kod__3A81B327">
+            <End Role="SlownikBadan" EntitySet="SlownikBadan" />
+            <End Role="BadaniaFizyczne" EntitySet="BadaniaFizyczne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLa__Id_wi__36B12243" Association="Self.FK__BadaniaLa__Id_wi__36B12243">
+            <End Role="Wizyta" EntitySet="Wizyta" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLa__Przyd__34C8D9D1" Association="Self.FK__BadaniaLa__Przyd__34C8D9D1">
+            <End Role="KierownikLab" EntitySet="KierownikLab" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLa__Przyd__35BCFE0A" Association="Self.FK__BadaniaLa__Przyd__35BCFE0A">
+            <End Role="Laborant" EntitySet="Laborant" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BadaniaLabo__Kod__33D4B598" Association="Self.FK__BadaniaLabo__Kod__33D4B598">
+            <End Role="SlownikBadan" EntitySet="SlownikBadan" />
+            <End Role="BadaniaLaboratoryjne" EntitySet="BadaniaLaboratoryjne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wizyta__Lek_wyk__2A4B4B5E" Association="Self.FK__Wizyta__Lek_wyk__2A4B4B5E">
+            <End Role="Lekarz" EntitySet="Lekarz" />
+            <End Role="Wizyta" EntitySet="Wizyta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wizyta__Id_pacj__2B3F6F97" Association="Self.FK__Wizyta__Id_pacj__2B3F6F97">
+            <End Role="Pacjent" EntitySet="Pacjent" />
+            <End Role="Wizyta" EntitySet="Wizyta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrzychodniaModelStoreContainer" CdmEntityContainer="PrzychodniaEntities">
+          <EntitySetMapping Name="BadaniaFizyczne">
+            <EntityTypeMapping TypeName="PrzychodniaModel.BadaniaFizyczne">
+              <MappingFragment StoreEntitySet="BadaniaFizyczne">
+                <ScalarProperty Name="Id_bad_fiz" ColumnName="Id_bad_fiz" />
+                <ScalarProperty Name="Id_wizyta" ColumnName="Id_wizyta" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Wynik" ColumnName="Wynik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BadaniaLaboratoryjne">
+            <EntityTypeMapping TypeName="PrzychodniaModel.BadaniaLaboratoryjne">
+              <MappingFragment StoreEntitySet="BadaniaLaboratoryjne">
+                <ScalarProperty Name="Id_bad_lab" ColumnName="Id_bad_lab" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Przydz_Kierow" ColumnName="Przydz_Kierow" />
+                <ScalarProperty Name="Przydz_lab" ColumnName="Przydz_lab" />
+                <ScalarProperty Name="Id_wizyty" ColumnName="Id_wizyty" />
+                <ScalarProperty Name="Uwagi_lek" ColumnName="Uwagi_lek" />
+                <ScalarProperty Name="Dat_zlec" ColumnName="Dat_zlec" />
+                <ScalarProperty Name="Wynik" ColumnName="Wynik" />
+                <ScalarProperty Name="Dat_wyk_anul" ColumnName="Dat_wyk_anul" />
+                <ScalarProperty Name="Uwagi_kier" ColumnName="Uwagi_kier" />
+                <ScalarProperty Name="Dat_zatw_anul" ColumnName="Dat_zatw_anul" />
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KierownikLab">
+            <EntityTypeMapping TypeName="PrzychodniaModel.KierownikLab">
+              <MappingFragment StoreEntitySet="KierownikLab">
+                <ScalarProperty Name="Id_klab" ColumnName="Id_klab" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Laborant">
+            <EntityTypeMapping TypeName="PrzychodniaModel.Laborant">
+              <MappingFragment StoreEntitySet="Laborant">
+                <ScalarProperty Name="Id_lab" ColumnName="Id_lab" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lekarz">
+            <EntityTypeMapping TypeName="PrzychodniaModel.Lekarz">
+              <MappingFragment StoreEntitySet="Lekarz">
+                <ScalarProperty Name="Id_lek" ColumnName="Id_lek" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="NPWZ" ColumnName="NPWZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logowanie">
+            <EntityTypeMapping TypeName="PrzychodniaModel.Logowanie">
+              <MappingFragment StoreEntitySet="Logowanie">
+                <ScalarProperty Name="Loginn" ColumnName="Loginn" />
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+                <ScalarProperty Name="Funkcja" ColumnName="Funkcja" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacjent">
+            <EntityTypeMapping TypeName="PrzychodniaModel.Pacjent">
+              <MappingFragment StoreEntitySet="Pacjent">
+                <ScalarProperty Name="Id_pac" ColumnName="Id_pac" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rejestracja">
+            <EntityTypeMapping TypeName="PrzychodniaModel.Rejestracja">
+              <MappingFragment StoreEntitySet="Rejestracja">
+                <ScalarProperty Name="Id_rej" ColumnName="Id_rej" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlownikBadan">
+            <EntityTypeMapping TypeName="PrzychodniaModel.SlownikBadan">
+              <MappingFragment StoreEntitySet="SlownikBadan">
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wizyta">
+            <EntityTypeMapping TypeName="PrzychodniaModel.Wizyta">
+              <MappingFragment StoreEntitySet="Wizyta">
+                <ScalarProperty Name="Id_wiz" ColumnName="Id_wiz" />
+                <ScalarProperty Name="Lek_wyk" ColumnName="Lek_wyk" />
+                <ScalarProperty Name="Id_pacj" ColumnName="Id_pacj" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Diagnoza" ColumnName="Diagnoza" />
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+                <ScalarProperty Name="Dat_rej" ColumnName="Dat_rej" />
+                <ScalarProperty Name="Dat_zak_anul" ColumnName="Dat_zak_anul" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
