@@ -1,0 +1,136 @@
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe.config
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\bin\Debug\WPF-LoginForm.pdb
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.AssemblyReference.cache
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\LoginView.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\MainView.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\App.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.cache
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.lref
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\LoginView.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\MainView.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm.g.resources
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF_LoginForm.Properties.Resources.resources
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.GenerateResource.cache
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CoreCompileInputs.cache
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm.exe
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\WPF-LoginForm.pdb
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Admin\Admin.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Admin\Admin.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.baml
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.g.cs
+D:\Whole Studia Sem. VI\TAB\Przychodnia-master\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe.config
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\WPF-LoginForm.pdb
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.AssemblyReference.cache
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Admin\Admin.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LoginView.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\App.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.cache
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.lref
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Admin\Admin.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LoginView.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.baml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.g.resources
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF_LoginForm.Properties.Resources.resources
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.GenerateResource.cache
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CoreCompileInputs.cache
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.exe
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.pdb
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.dll
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.xml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm_Content.g.cs
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CopyComplete
+W:\repos\Przychodnia\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe.config
+W:\repos\Przychodnia\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe
+W:\repos\Przychodnia\WPF-LoginForm\bin\Debug\WPF-LoginForm.pdb
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.AssemblyReference.cache
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Admin\Admin.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\LoginView.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\MainView.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\App.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.cache
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.lref
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Admin\Admin.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\LoginView.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\MainView.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.baml
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.g.resources
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF_LoginForm.Properties.Resources.resources
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.GenerateResource.cache
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CoreCompileInputs.cache
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.exe
+W:\repos\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.pdb
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe.config
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\bin\Debug\WPF-LoginForm.exe
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\bin\Debug\WPF-LoginForm.pdb
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\bin\Debug\EntityFramework.dll
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\bin\Debug\EntityFramework.SqlServer.dll
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\bin\Debug\EntityFramework.xml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\bin\Debug\EntityFramework.SqlServer.xml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.AssemblyReference.cache
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Admin\Admin.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\LoginView.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\App.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm_Content.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.cache
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm_MarkupCompile.lref
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\CustomControls\BindablePasswordBox.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Admin\Admin.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Doctor\Doctor.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\Lab_Assistant.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Assistant\MakeTest.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Lab_Manager\Lab_Manager.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\LoginView.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\Views\Receptionist\Receptionist.baml
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.g.resources
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF_LoginForm.Properties.Resources.resources
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.GenerateResource.cache
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CoreCompileInputs.cache
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.csproj.CopyComplete
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.exe
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\WPF-LoginForm.pdb
