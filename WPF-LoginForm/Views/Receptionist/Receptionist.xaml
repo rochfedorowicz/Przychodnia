@@ -64,7 +64,7 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Margin="716,0,0,0">
+                                Margin="716,0,0,0" Click="btnBack_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -97,7 +97,7 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="1"
+                                Grid.Column="1" Height="30" VerticalAlignment="Top" Click="btnMinimize_Click"
                                >
 
                         <Button.Style>
@@ -131,7 +131,7 @@
                                 FontSize="12"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="2"
+                                Grid.Column="2" Height="30" VerticalAlignment="Top" Click="btnClose_Click"
                                 >
 
                         <Button.Style>
@@ -158,10 +158,10 @@
                     </Button>
                 </Grid>
 
-                <Button Content="Anuluj wizytę" 
+                <Button x:Name="btnCancel" Content="Anuluj wizytę" 
                         Foreground="White"
                         Margin="248,289,73,-41" 
-                        Grid.Row="1" Background="#FFDC3030">
+                        Grid.Row="1" Background="#FFDC3030" Click="btnCancel_Click">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -187,7 +187,7 @@
                 </Button>
 
 
-                <Button Content="Rejestruj wizytę" 
+                <Button x:Name="btnRegister" Content="Rejestruj wizytę" 
                         Foreground="White"
                         Margin="0,289,438,-41" 
                         Grid.Row="1" HorizontalAlignment="Right" Width="392">
@@ -243,7 +243,7 @@
                     </ListView.View>
                 </ListView>
                 <Label Content="Podaj id wizyty :" HorizontalAlignment="Left" Margin="674,315,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#FF141136" Foreground="White" Width="97" Visibility="Visible"/>
-                <TextBox x:Name="txtUser"
+                <TextBox x:Name="appointmentIdBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
                     FontWeight="Medium"
@@ -263,7 +263,7 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Button Content="Potwierdź" 
+                <Button x:Name="btnConfirm" Content="Potwierdź" 
                     Foreground="White"
                     Margin="674,391,10,0" 
                     Grid.Row="1" Background="#FFDC3030" Visibility="Visible">

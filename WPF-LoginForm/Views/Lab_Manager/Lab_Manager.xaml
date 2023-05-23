@@ -70,7 +70,7 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="1">
+                                Grid.Column="1" Click="btnMinimize_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -137,7 +137,7 @@
                                 FontSize="12"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="2"
+                                Grid.Column="2" Click="btnClose_Click"
                                 >
 
                         <Button.Style>
@@ -191,7 +191,7 @@
                     </ListView.View>
                 </ListView>
                 <Label Content="     Podaj&#xA;id__badania :" HorizontalAlignment="Left" Margin="24,342,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Height="52" Width="90"/>
-                <TextBox x:Name="txtUser"
+                <TextBox x:Name="testIdBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
                     FontWeight="Medium"
@@ -211,7 +211,7 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Button Content="Sprawdź badanie laboratoryjne" 
+                <Button x:Name="checkTest" Content="Sprawdź badanie laboratoryjne" 
                     HorizontalAlignment="Center" 
                     Foreground="White"
                     Margin="0,330,0,10" 

@@ -24,7 +24,23 @@ namespace WPF_LoginForm.Views
             InitializeComponent();
         }
 
-        private void Button_Click()
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void acknowledgeAppoinment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cancelAppointment_Click(object sender, RoutedEventArgs e)
         {
 
         }

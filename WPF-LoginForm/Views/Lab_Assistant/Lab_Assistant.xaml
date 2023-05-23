@@ -18,9 +18,9 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </Window.Resources>
 
-    <Window.Visibility>
+    <!--<Window.Visibility>
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
-    </Window.Visibility>
+    </Window.Visibility>-->
 
     <Border CornerRadius="12">
 
@@ -73,7 +73,7 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="1"
+                                Grid.Column="1" Click="btnMinimize_Click"
                                 >
 
                         <Button.Style>
@@ -140,7 +140,7 @@
                                 FontSize="12"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="2"
+                                Grid.Column="2" Click="btnClose_Click"
                                 >
 
                         <Button.Style>
@@ -166,11 +166,11 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <Button Content="Wykonaj badanie" 
+                <Button x:Name="doTest" Content="Wykonaj badanie" 
                     HorizontalAlignment="Center" 
                     Foreground="White"
                     Margin="0,330,0,10" 
-                    Width="302" Grid.Row="1">
+                    Width="302" Grid.Row="1" Click="doTest_Click" Cursor="Hand">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -221,7 +221,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <TextBox x:Name="txtUser"
+                <TextBox x:Name="testIdBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
                     FontWeight="Medium"
@@ -232,7 +232,7 @@
                     BorderThickness="0,0,0,2"
                     Height="28"
                     VerticalContentAlignment="Center"
-                    Margin="128,354,583,34"
+                    Margin="128,354,598,34"
                     Padding="20,0,0,0"  Grid.Row="1">
 
                     <TextBox.Background>

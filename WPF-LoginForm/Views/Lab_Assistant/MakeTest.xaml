@@ -18,9 +18,9 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </Window.Resources>
 
-    <Window.Visibility>
+    <!--<Window.Visibility>
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
-    </Window.Visibility>
+    </Window.Visibility>-->
 
     <Border CornerRadius="12">
 
@@ -73,7 +73,7 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="1"
+                                Grid.Column="1" HorizontalAlignment="Left" Width="25" Click="btnMinimize_Click"
                                >
 
                         <Button.Style>
@@ -149,7 +149,7 @@
                                 FontSize="12"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="2"
+                                Grid.Column="2" Click="btnClose_Click"
                                >
 
                         <Button.Style>
@@ -183,7 +183,7 @@
                        Foreground="White"
 
                        Width="113"/>
-                <Button x:Name="register_btn" Content="Zakończ badanie" 
+                <Button x:Name="fininshTest" Content="Zakończ badanie" 
                     Foreground="White"
                     Margin="0,124,233,7" 
                     Grid.Row="1" HorizontalAlignment="Right" Width="318">
@@ -210,7 +210,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="register_btn_Copy" Content="Anuluj badanie" 
+                <Button x:Name="cancelTest" Content="Anuluj badanie" 
                     Foreground="White"
                     Margin="0,129,11,13" 
                     Grid.Row="1" HorizontalAlignment="Right" Width="239" Background="#FFDC3030">

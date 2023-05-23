@@ -66,7 +66,7 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="1">
+                                Grid.Column="1" Click="btnMinimize_Click">
 
 
                         <Button.Style>
@@ -100,7 +100,7 @@
                                 FontSize="12"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="2">
+                                Grid.Column="2" Click="btnClose_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -159,10 +159,10 @@
                     </Button>
 
                 </Grid>
-                <Button Content="Zrealizuj  wizytę" 
+                <Button x:Name="acknowledgeAppoinment" Content="Zrealizuj  wizytę" 
                     Foreground="White"
                     Margin="193,328,0,18" 
-                    Grid.Row="1" HorizontalAlignment="Left" Width="310">
+                    Grid.Row="1" HorizontalAlignment="Left" Width="310" Click="acknowledgeAppoinment_Click">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -214,7 +214,7 @@
                     </ListView.View>
                 </ListView>
                 <Label Content="   Podaj&#xA;id__wizyty :" HorizontalAlignment="Left" Margin="24,342,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Height="52" Width="90"/>
-                <TextBox x:Name="txtUser"
+                <TextBox x:Name="appoinmentIdBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
                     FontWeight="Medium"
@@ -234,10 +234,10 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Button Content="Anuluj wizytę" 
+                <Button x:Name="cancelAppointment" Content="Anuluj wizytę" 
                     Foreground="White"
                     Margin="487,329,0,22" 
-                    Grid.Row="1" HorizontalAlignment="Left" Width="309"  Background="#FFDC3030">
+                    Grid.Row="1" HorizontalAlignment="Left" Width="309"  Background="#FFDC3030" Click="cancelAppointment_Click">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">

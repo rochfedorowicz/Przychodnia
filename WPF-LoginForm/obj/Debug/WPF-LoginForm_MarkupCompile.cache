@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\obj\Debug\
 WPF_LoginForm
 none
 false
 DEBUG;TRACE
-C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\App.xaml
-8-1005240870
-21750853300
-281064006631
-18135471518
+E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\App.xaml
+8-1831277234
+2-1957146511
+2891130587
+18-1926078005
 CustomControls\BindablePasswordBox.xaml;Views\Admin\Admin.xaml;Views\Doctor\Doctor.xaml;Views\Lab_Assistant\Lab_Assistant.xaml;Views\Lab_Assistant\MakeTest.xaml;Views\Lab_Manager\Lab_Manager.xaml;Views\LoginView.xaml;Views\Receptionist\Receptionist.xaml;
 
 False

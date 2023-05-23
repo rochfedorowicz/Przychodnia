@@ -17,6 +17,10 @@ namespace WPF_LoginForm
         static public string Funkcja;
         protected void ApplicationStart(object sender, StartupEventArgs e)
         {
+
+            //Static Entrence
+            //Funkcja = "LAB";
+
             var loginView = new LoginView();
             loginView.Show();
             loginView.IsVisibleChanged += (s, ev) =>

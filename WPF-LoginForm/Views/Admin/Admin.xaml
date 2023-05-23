@@ -69,7 +69,7 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="1">
+                                Grid.Column="1" Click="btnMinimize_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -102,7 +102,7 @@
                                 FontSize="12"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="2">
+                                Grid.Column="2" Click="btnClose_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -179,10 +179,10 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Content="Dodaj użytkownika" 
+                <Button x:Name="addUser" Content="Dodaj użytkownika" 
                     Foreground="White"
                     Margin="513,82,0,264" 
-                    Grid.Row="1" HorizontalAlignment="Left" Width="273">
+                    Grid.Row="1" HorizontalAlignment="Left" Width="273" Click="addUser_Click">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -206,10 +206,10 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Usuń użytkownika" 
+                <Button x:Name="deleteUser" Content="Usuń użytkownika" 
                     Foreground="White"
                     Margin="506,283,0,63" 
-                    Grid.Row="1" HorizontalAlignment="Left" Width="280" Background="#FFDC3030">
+                    Grid.Row="1" HorizontalAlignment="Left" Width="280" Background="#FFDC3030" Click="deleteUser_Click">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -233,10 +233,10 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Edytuj użytkownika" 
+                <Button x:Name="editUser" Content="Edytuj użytkownika" 
                     Foreground="White"
                     Margin="506,182,0,164" 
-                    Grid.Row="1" HorizontalAlignment="Left" Width="280" Background="#FFF57910">
+                    Grid.Row="1" HorizontalAlignment="Left" Width="280" Background="#FFF57910" Click="editUser_Click">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
