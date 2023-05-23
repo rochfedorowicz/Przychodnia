@@ -21,7 +21,7 @@ namespace WPF_LoginForm.Views
     {
         public MakeTest()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
     }
 }
