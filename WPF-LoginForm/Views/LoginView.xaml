@@ -31,7 +31,7 @@
                         Stretch="Fill"/>
         </Border.Background>
 
-        <Border CornerRadius="10"                    
+        <Border x:Name="WindowNameTxtBox" CornerRadius="10"                    
             BorderThickness="2"
             Opacity="0.75">
 

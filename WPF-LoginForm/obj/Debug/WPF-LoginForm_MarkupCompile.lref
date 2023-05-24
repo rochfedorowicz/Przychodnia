@@ -1,11 +1,12 @@
 ﻿
 
 FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\CustomControls\BindablePasswordBox.xaml;;
-FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\Admin\Admin.xaml;;
-FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\Doctor\Doctor.xaml;;
-FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\Lab_Assistant\Lab_Assistant.xaml;;
-FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\Lab_Assistant\MakeTest.xaml;;
-FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\Lab_Manager\Lab_Manager.xaml;;
+FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\LabAssistantViews\MakeTest.xaml;;
+FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\LabManagerViews\ApproveTest.xaml;;
+FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\LabManagerViews\LabManager.xaml;;
+FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\LabManagerViews\LabManagerApprove.xaml;;
 FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\LoginView.xaml;;
-FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\Receptionist\Receptionist.xaml;;
+FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\ReceptionistViews\Receptionist.xaml;;
+FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\ReceptionistViews\ReceptionistRegister.xaml;;
+FE:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\Views\ReceptionistViews\RegisterVisit.xaml;;
 
