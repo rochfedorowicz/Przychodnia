@@ -36,13 +36,13 @@ namespace WPF_LoginForm
 
                       switch (Funkcja)
                       {
-                          case "REJ":
+                          case "REG":
                               nextScreen = new Receptionist();
                               break;
-                          case "LEK":
+                          case "DOC":
                               nextScreen = new Doctor();
                               break;
-                          case "KLAB":
+                          case "LABM":
                               nextScreen = new LabManager();
                               break;
                           case "LAB":

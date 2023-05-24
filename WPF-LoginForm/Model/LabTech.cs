@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_LoginForm
+namespace WPF_LoginForm.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class BadaniaFizyczne
+    public partial class LabTech
     {
-        public int Id_bad_fiz { get; set; }
-        public Nullable<int> Id_wizyta { get; set; }
-        public string Kod { get; set; }
-        public string Wynik { get; set; }
+        public int Id_labTech { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
     
-        public virtual Wizyta Wizyta { get; set; }
-        public virtual SlownikBadan SlownikBadan { get; set; }
+        public virtual Logging Logging { get; set; }
     }
 }

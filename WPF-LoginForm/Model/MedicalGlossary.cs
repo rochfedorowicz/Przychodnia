@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_LoginForm
+namespace WPF_LoginForm.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SlownikBadan
+    public partial class MedicalGlossary
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SlownikBadan()
+        public MedicalGlossary()
         {
-            this.BadaniaFizyczne = new HashSet<BadaniaFizyczne>();
-            this.BadaniaLaboratoryjne = new HashSet<BadaniaLaboratoryjne>();
+            this.LaboratoryTests = new HashSet<LaboratoryTest>();
+            this.PhysicalExaminations = new HashSet<PhysicalExamination>();
         }
     
-        public string Kod { get; set; }
-        public string Typ { get; set; }
-        public string Nazwa { get; set; }
+        public string Code { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BadaniaFizyczne> BadaniaFizyczne { get; set; }
+        public virtual ICollection<LaboratoryTest> LaboratoryTests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BadaniaLaboratoryjne> BadaniaLaboratoryjne { get; set; }
+        public virtual ICollection<PhysicalExamination> PhysicalExaminations { get; set; }
     }
 }

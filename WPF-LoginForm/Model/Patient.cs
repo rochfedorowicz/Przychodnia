@@ -7,24 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_LoginForm
+namespace WPF_LoginForm.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Laborant
+    public partial class Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Laborant()
+        public Patient()
         {
-            this.BadaniaLaboratoryjne = new HashSet<BadaniaLaboratoryjne>();
+            this.Appointments = new HashSet<Appointment>();
         }
     
-        public int Id_lab { get; set; }
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
+        public int Id_pat { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Pesel { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BadaniaLaboratoryjne> BadaniaLaboratoryjne { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

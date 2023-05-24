@@ -7,15 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_LoginForm
+namespace WPF_LoginForm.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Rejestracja
+    public partial class LaboratoryManager
     {
-        public int Id_rej { get; set; }
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
+        public int Id_labM { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+    
+        public virtual Logging Logging { get; set; }
     }
 }

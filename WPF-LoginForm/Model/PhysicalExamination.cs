@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_LoginForm
+namespace WPF_LoginForm.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Logowanie
+    public partial class PhysicalExamination
     {
-        public string Loginn { get; set; }
-        public string Haslo { get; set; }
-        public string Funkcja { get; set; }
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
+        public int Id_exam { get; set; }
+        public int Id_app { get; set; }
+        public string Code { get; set; }
+        public string Result { get; set; }
+    
+        public virtual Appointment Appointment { get; set; }
+        public virtual MedicalGlossary MedicalGlossary { get; set; }
     }
 }

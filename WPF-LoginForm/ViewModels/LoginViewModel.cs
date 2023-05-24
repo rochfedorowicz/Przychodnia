@@ -11,6 +11,7 @@ using System.Windows.Input;
 //using WPF_LoginForm.Models;
 //using WPF_LoginForm.Repositories;
 using WPF_LoginForm;
+using WPF_LoginForm.Model;
 
 namespace WPF_LoginForm.ViewModels
 {
@@ -110,7 +111,7 @@ namespace WPF_LoginForm.ViewModels
         {
             //Static entrence
             if (true)
-            //if (AuthenticateUser(new NetworkCredential(Username, Password)))
+            if (AuthenticateUser(new NetworkCredential(Username, Password)))
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
                     new GenericIdentity(Username), null);
@@ -124,13 +125,13 @@ namespace WPF_LoginForm.ViewModels
 
         private bool AuthenticateUser(NetworkCredential credential)
         {
-            using (var pe = new PrzychodniaEntities())
+            using (var pe = new ClinicEntities())
             {
-                var user = pe.Logowanie.Where(el => el.Loginn == credential.UserName && el.Haslo == credential.Password).SingleOrDefault();
+                var user = pe.Loggings.Where(el => el.Login == credential.UserName && el.Password == credential.Password).SingleOrDefault();
 
                 if (user!=null)
                 {
-                    App.Funkcja = user.Funkcja;
+                    App.Funkcja = user.Role;
                 }
 
                 return user == null ? false : true;

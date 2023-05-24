@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ClinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Clinic.dbo.Address' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id_Pat" />
+          </Key>
+          <Property Name="Id_Pat" Type="int" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Street" Type="varchar" MaxLength="50" />
+          <Property Name="HouseNr" Type="int" />
+          <Property Name="FlatNr" Type="int" />
+          <Property Name="Postcode" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Clinic.dbo.Admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id_adm" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_adm" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Id_app" />
+          </Key>
+          <Property Name="Id_app" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_reg" Type="int" />
+          <Property Name="Id_doc" Type="int" />
+          <Property Name="Id_pat" Type="int" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Diagnosis" Type="text" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Reg_date" Type="date" Nullable="false" />
+          <Property Name="End_date" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Clinic.dbo.Doctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id_doc" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="NPWZ" />
+          </Key>
+          <Property Name="Id_doc" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NPWZ" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Clinic.dbo.LaboratoryManager' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LaboratoryManager">
+          <Key>
+            <PropertyRef Name="Id_labM" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_labM" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LaboratoryTests">
+          <Key>
+            <PropertyRef Name="Id_labTest" />
+          </Key>
+          <Property Name="Id_labTest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LabManager" Type="int" />
+          <Property Name="LabTech" Type="int" />
+          <Property Name="Id_app" Type="int" />
+          <Property Name="DoctorsNote" Type="text" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="Result" Type="text" />
+          <Property Name="DateTaken" Type="date" />
+          <Property Name="ManagersNote" Type="text" />
+          <Property Name="ApprovalDate" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Clinic.dbo.LabTech' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LabTech">
+          <Key>
+            <PropertyRef Name="Id_labTech" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_labTech" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logging">
+          <Key>
+            <PropertyRef Name="Id_user" />
+          </Key>
+          <Property Name="Id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="30" />
+          <Property Name="Role" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicalGlossary">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Type" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id_pat" />
+          </Key>
+          <Property Name="Id_pat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pesel" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="PhysicalExamination">
+          <Key>
+            <PropertyRef Name="Id_exam" />
+          </Key>
+          <Property Name="Id_exam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_app" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Result" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="Id_reg" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_reg" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Address__Id_Pat__30F848ED">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id_pat" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Id_Pat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Admin__Id_adm__25869641">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Id_adm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Id_do__36B12243">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Id_pa__37A5467C">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id_pat" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_pat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Id_re__35BCFE0A">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_reg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Id_doc__276EDEB3">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__Id_ap__3D5E1FD2">
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="Id_app" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="Id_app" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__Id_la__2B3F6F97">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LaboratoryManager">
+              <PropertyRef Name="Id_labM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__LabMa__3B75D760">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="LabManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__LabTe__3C69FB99">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="LabTech" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laboratory__Code__3A81B327">
+          <End Role="MedicalGlossary" Type="Self.MedicalGlossary" Multiplicity="1" />
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalGlossary">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LabTech__Id_labT__2D27B809">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LabTech" Type="Self.LabTech" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LabTech">
+              <PropertyRef Name="Id_labTech" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhysicalE__Id_ap__403A8C7D">
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PhysicalExamination" Type="Self.PhysicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="Id_app" />
+            </Principal>
+            <Dependent Role="PhysicalExamination">
+              <PropertyRef Name="Id_app" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhysicalEx__Code__412EB0B6">
+          <End Role="MedicalGlossary" Type="Self.MedicalGlossary" Multiplicity="1" />
+          <End Role="PhysicalExamination" Type="Self.PhysicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalGlossary">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="PhysicalExamination">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__Id_re__29572725">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="Id_reg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClinicModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaboratoryTests" EntityType="Self.LaboratoryTests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logging" EntityType="Self.Logging" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalGlossary" EntityType="Self.MedicalGlossary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhysicalExamination" EntityType="Self.PhysicalExamination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Address].[Id_Pat] AS [Id_Pat], 
+    [Address].[City] AS [City], 
+    [Address].[Street] AS [Street], 
+    [Address].[HouseNr] AS [HouseNr], 
+    [Address].[FlatNr] AS [FlatNr], 
+    [Address].[Postcode] AS [Postcode]
+    FROM [dbo].[Address] AS [Address]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Admin].[Id_adm] AS [Id_adm], 
+    [Admin].[Name] AS [Name], 
+    [Admin].[Surname] AS [Surname]
+    FROM [dbo].[Admin] AS [Admin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Doctor].[Id_doc] AS [Id_doc], 
+    [Doctor].[Name] AS [Name], 
+    [Doctor].[Surname] AS [Surname], 
+    [Doctor].[NPWZ] AS [NPWZ]
+    FROM [dbo].[Doctor] AS [Doctor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LaboratoryManager" EntityType="Self.LaboratoryManager" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LaboratoryManager].[Id_labM] AS [Id_labM], 
+    [LaboratoryManager].[Name] AS [Name], 
+    [LaboratoryManager].[Surname] AS [Surname]
+    FROM [dbo].[LaboratoryManager] AS [LaboratoryManager]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LabTech" EntityType="Self.LabTech" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LabTech].[Id_labTech] AS [Id_labTech], 
+    [LabTech].[Name] AS [Name], 
+    [LabTech].[Surname] AS [Surname]
+    FROM [dbo].[LabTech] AS [LabTech]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Registration" EntityType="Self.Registration" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Registration].[Id_reg] AS [Id_reg], 
+    [Registration].[Name] AS [Name], 
+    [Registration].[Surname] AS [Surname]
+    FROM [dbo].[Registration] AS [Registration]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Address__Id_Pat__30F848ED" Association="Self.FK__Address__Id_Pat__30F848ED">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Admin__Id_adm__25869641" Association="Self.FK__Admin__Id_adm__25869641">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Id_do__36B12243" Association="Self.FK__Appointme__Id_do__36B12243">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Id_pa__37A5467C" Association="Self.FK__Appointme__Id_pa__37A5467C">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Id_re__35BCFE0A" Association="Self.FK__Appointme__Id_re__35BCFE0A">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Id_doc__276EDEB3" Association="Self.FK__Doctor__Id_doc__276EDEB3">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__Id_ap__3D5E1FD2" Association="Self.FK__Laborator__Id_ap__3D5E1FD2">
+            <End Role="Appointment" EntitySet="Appointment" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__Id_la__2B3F6F97" Association="Self.FK__Laborator__Id_la__2B3F6F97">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="LaboratoryManager" EntitySet="LaboratoryManager" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__LabMa__3B75D760" Association="Self.FK__Laborator__LabMa__3B75D760">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__LabTe__3C69FB99" Association="Self.FK__Laborator__LabTe__3C69FB99">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laboratory__Code__3A81B327" Association="Self.FK__Laboratory__Code__3A81B327">
+            <End Role="MedicalGlossary" EntitySet="MedicalGlossary" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LabTech__Id_labT__2D27B809" Association="Self.FK__LabTech__Id_labT__2D27B809">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="LabTech" EntitySet="LabTech" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhysicalE__Id_ap__403A8C7D" Association="Self.FK__PhysicalE__Id_ap__403A8C7D">
+            <End Role="Appointment" EntitySet="Appointment" />
+            <End Role="PhysicalExamination" EntitySet="PhysicalExamination" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhysicalEx__Code__412EB0B6" Association="Self.FK__PhysicalEx__Code__412EB0B6">
+            <End Role="MedicalGlossary" EntitySet="MedicalGlossary" />
+            <End Role="PhysicalExamination" EntitySet="PhysicalExamination" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__Id_re__29572725" Association="Self.FK__Registrat__Id_re__29572725">
+            <End Role="Logging" EntitySet="Logging" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Id_app" />
+          </Key>
+          <Property Name="Id_app" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_reg" Type="Int32" />
+          <Property Name="Id_doc" Type="Int32" />
+          <Property Name="Id_pat" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Diagnosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Reg_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="End_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Appointme__Id_do__36B12243" FromRole="Appointment" ToRole="Logging" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Id_pa__37A5467C" FromRole="Appointment" ToRole="Patient" />
+          <NavigationProperty Name="Logging1" Relationship="Self.FK__Appointme__Id_re__35BCFE0A" FromRole="Appointment" ToRole="Logging" />
+          <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__Id_ap__3D5E1FD2" FromRole="Appointment" ToRole="LaboratoryTests" />
+          <NavigationProperty Name="PhysicalExaminations" Relationship="Self.FK__PhysicalE__Id_ap__403A8C7D" FromRole="Appointment" ToRole="PhysicalExamination" />
+        </EntityType>
+        <EntityType Name="LaboratoryTest">
+          <Key>
+            <PropertyRef Name="Id_labTest" />
+          </Key>
+          <Property Name="Id_labTest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LabManager" Type="Int32" />
+          <Property Name="LabTech" Type="Int32" />
+          <Property Name="Id_app" Type="Int32" />
+          <Property Name="DoctorsNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateTaken" Type="DateTime" Precision="0" />
+          <Property Name="ManagersNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ApprovalDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Appointment" Relationship="Self.FK__Laborator__Id_ap__3D5E1FD2" FromRole="LaboratoryTests" ToRole="Appointment" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Laborator__LabMa__3B75D760" FromRole="LaboratoryTests" ToRole="Logging" />
+          <NavigationProperty Name="Logging1" Relationship="Self.FK__Laborator__LabTe__3C69FB99" FromRole="LaboratoryTests" ToRole="Logging" />
+          <NavigationProperty Name="MedicalGlossary" Relationship="Self.FK__Laboratory__Code__3A81B327" FromRole="LaboratoryTests" ToRole="MedicalGlossary" />
+        </EntityType>
+        <EntityType Name="Logging">
+          <Key>
+            <PropertyRef Name="Id_user" />
+          </Key>
+          <Property Name="Id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_do__36B12243" FromRole="Logging" ToRole="Appointment" />
+          <NavigationProperty Name="Appointments1" Relationship="Self.FK__Appointme__Id_re__35BCFE0A" FromRole="Logging" ToRole="Appointment" />
+          <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__LabMa__3B75D760" FromRole="Logging" ToRole="LaboratoryTests" />
+          <NavigationProperty Name="LaboratoryTests1" Relationship="Self.FK__Laborator__LabTe__3C69FB99" FromRole="Logging" ToRole="LaboratoryTests" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK__Admin__Id_adm__25869641" FromRole="Logging" ToRole="Admin" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Logging" ToRole="Doctor" />
+          <NavigationProperty Name="LaboratoryManagers" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="Logging" ToRole="LaboratoryManager" />
+          <NavigationProperty Name="LabTeches" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="Logging" ToRole="LabTech" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__Id_re__29572725" FromRole="Logging" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="MedicalGlossary">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laboratory__Code__3A81B327" FromRole="MedicalGlossary" ToRole="LaboratoryTests" />
+          <NavigationProperty Name="PhysicalExaminations" Relationship="Self.FK__PhysicalEx__Code__412EB0B6" FromRole="MedicalGlossary" ToRole="PhysicalExamination" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id_pat" />
+          </Key>
+          <Property Name="Id_pat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pesel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_pa__37A5467C" FromRole="Patient" ToRole="Appointment" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__Id_Pat__30F848ED" FromRole="Patient" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="PhysicalExamination">
+          <Key>
+            <PropertyRef Name="Id_exam" />
+          </Key>
+          <Property Name="Id_exam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_app" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Appointment" Relationship="Self.FK__PhysicalE__Id_ap__403A8C7D" FromRole="PhysicalExamination" ToRole="Appointment" />
+          <NavigationProperty Name="MedicalGlossary" Relationship="Self.FK__PhysicalEx__Code__412EB0B6" FromRole="PhysicalExamination" ToRole="MedicalGlossary" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id_Pat" />
+          </Key>
+          <Property Name="Id_Pat" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HouseNr" Type="Int32" />
+          <Property Name="FlatNr" Type="Int32" />
+          <Property Name="Postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Address__Id_Pat__30F848ED" FromRole="Address" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id_adm" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_adm" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Admin__Id_adm__25869641" FromRole="Admin" ToRole="Logging" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id_doc" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="NPWZ" />
+          </Key>
+          <Property Name="Id_doc" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NPWZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Doctor" ToRole="Logging" />
+        </EntityType>
+        <EntityType Name="LaboratoryManager">
+          <Key>
+            <PropertyRef Name="Id_labM" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_labM" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="LaboratoryManager" ToRole="Logging" />
+        </EntityType>
+        <EntityType Name="LabTech">
+          <Key>
+            <PropertyRef Name="Id_labTech" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_labTech" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="LabTech" ToRole="Logging" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="Id_reg" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Surname" />
+          </Key>
+          <Property Name="Id_reg" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Registrat__Id_re__29572725" FromRole="Registration" ToRole="Logging" />
+        </EntityType>
+        <Association Name="FK__Appointme__Id_do__36B12243">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Id_pa__37A5467C">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id_pat" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_pat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Id_re__35BCFE0A">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Id_reg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__Id_ap__3D5E1FD2">
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="Id_app" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="Id_app" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhysicalE__Id_ap__403A8C7D">
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PhysicalExamination" Type="Self.PhysicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="Id_app" />
+            </Principal>
+            <Dependent Role="PhysicalExamination">
+              <PropertyRef Name="Id_app" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__LabMa__3B75D760">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="LabManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__LabTe__3C69FB99">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="LabTech" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laboratory__Code__3A81B327">
+          <End Role="MedicalGlossary" Type="Self.MedicalGlossary" Multiplicity="1" />
+          <End Role="LaboratoryTests" Type="Self.LaboratoryTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalGlossary">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="LaboratoryTests">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Admin__Id_adm__25869641">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Id_adm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Id_doc__276EDEB3">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__Id_la__2B3F6F97">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LaboratoryManager">
+              <PropertyRef Name="Id_labM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LabTech__Id_labT__2D27B809">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LabTech" Type="Self.LabTech" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LabTech">
+              <PropertyRef Name="Id_labTech" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__Id_re__29572725">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="Id_reg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhysicalEx__Code__412EB0B6">
+          <End Role="MedicalGlossary" Type="Self.MedicalGlossary" Multiplicity="1" />
+          <End Role="PhysicalExamination" Type="Self.PhysicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalGlossary">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="PhysicalExamination">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__Id_Pat__30F848ED">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id_pat" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Id_Pat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClinicEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="LaboratoryTests" EntityType="Self.LaboratoryTest" />
+          <EntitySet Name="Loggings" EntityType="Self.Logging" />
+          <EntitySet Name="MedicalGlossaries" EntityType="Self.MedicalGlossary" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="PhysicalExaminations" EntityType="Self.PhysicalExamination" />
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="LaboratoryManagers" EntityType="Self.LaboratoryManager" />
+          <EntitySet Name="LabTeches" EntityType="Self.LabTech" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <AssociationSet Name="FK__Appointme__Id_do__36B12243" Association="Self.FK__Appointme__Id_do__36B12243">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Id_pa__37A5467C" Association="Self.FK__Appointme__Id_pa__37A5467C">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Id_re__35BCFE0A" Association="Self.FK__Appointme__Id_re__35BCFE0A">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__Id_ap__3D5E1FD2" Association="Self.FK__Laborator__Id_ap__3D5E1FD2">
+            <End Role="Appointment" EntitySet="Appointments" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhysicalE__Id_ap__403A8C7D" Association="Self.FK__PhysicalE__Id_ap__403A8C7D">
+            <End Role="Appointment" EntitySet="Appointments" />
+            <End Role="PhysicalExamination" EntitySet="PhysicalExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__LabMa__3B75D760" Association="Self.FK__Laborator__LabMa__3B75D760">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__LabTe__3C69FB99" Association="Self.FK__Laborator__LabTe__3C69FB99">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laboratory__Code__3A81B327" Association="Self.FK__Laboratory__Code__3A81B327">
+            <End Role="MedicalGlossary" EntitySet="MedicalGlossaries" />
+            <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Admin__Id_adm__25869641" Association="Self.FK__Admin__Id_adm__25869641">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Id_doc__276EDEB3" Association="Self.FK__Doctor__Id_doc__276EDEB3">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__Id_la__2B3F6F97" Association="Self.FK__Laborator__Id_la__2B3F6F97">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="LaboratoryManager" EntitySet="LaboratoryManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LabTech__Id_labT__2D27B809" Association="Self.FK__LabTech__Id_labT__2D27B809">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="LabTech" EntitySet="LabTeches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__Id_re__29572725" Association="Self.FK__Registrat__Id_re__29572725">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhysicalEx__Code__412EB0B6" Association="Self.FK__PhysicalEx__Code__412EB0B6">
+            <End Role="MedicalGlossary" EntitySet="MedicalGlossaries" />
+            <End Role="PhysicalExamination" EntitySet="PhysicalExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__Id_Pat__30F848ED" Association="Self.FK__Address__Id_Pat__30F848ED">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClinicModelStoreContainer" CdmEntityContainer="ClinicEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="ClinicModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="Id_app" ColumnName="Id_app" />
+                <ScalarProperty Name="Id_reg" ColumnName="Id_reg" />
+                <ScalarProperty Name="Id_doc" ColumnName="Id_doc" />
+                <ScalarProperty Name="Id_pat" ColumnName="Id_pat" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Reg_date" ColumnName="Reg_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LaboratoryTests">
+            <EntityTypeMapping TypeName="ClinicModel.LaboratoryTest">
+              <MappingFragment StoreEntitySet="LaboratoryTests">
+                <ScalarProperty Name="Id_labTest" ColumnName="Id_labTest" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="LabManager" ColumnName="LabManager" />
+                <ScalarProperty Name="LabTech" ColumnName="LabTech" />
+                <ScalarProperty Name="Id_app" ColumnName="Id_app" />
+                <ScalarProperty Name="DoctorsNote" ColumnName="DoctorsNote" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="DateTaken" ColumnName="DateTaken" />
+                <ScalarProperty Name="ManagersNote" ColumnName="ManagersNote" />
+                <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loggings">
+            <EntityTypeMapping TypeName="ClinicModel.Logging">
+              <MappingFragment StoreEntitySet="Logging">
+                <ScalarProperty Name="Id_user" ColumnName="Id_user" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalGlossaries">
+            <EntityTypeMapping TypeName="ClinicModel.MedicalGlossary">
+              <MappingFragment StoreEntitySet="MedicalGlossary">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="ClinicModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Id_pat" ColumnName="Id_pat" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhysicalExaminations">
+            <EntityTypeMapping TypeName="ClinicModel.PhysicalExamination">
+              <MappingFragment StoreEntitySet="PhysicalExamination">
+                <ScalarProperty Name="Id_exam" ColumnName="Id_exam" />
+                <ScalarProperty Name="Id_app" ColumnName="Id_app" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ClinicModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Id_Pat" ColumnName="Id_Pat" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="HouseNr" ColumnName="HouseNr" />
+                <ScalarProperty Name="FlatNr" ColumnName="FlatNr" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ClinicModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id_adm" ColumnName="Id_adm" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="ClinicModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="Id_doc" ColumnName="Id_doc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="NPWZ" ColumnName="NPWZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LaboratoryManagers">
+            <EntityTypeMapping TypeName="ClinicModel.LaboratoryManager">
+              <MappingFragment StoreEntitySet="LaboratoryManager">
+                <ScalarProperty Name="Id_labM" ColumnName="Id_labM" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LabTeches">
+            <EntityTypeMapping TypeName="ClinicModel.LabTech">
+              <MappingFragment StoreEntitySet="LabTech">
+                <ScalarProperty Name="Id_labTech" ColumnName="Id_labTech" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="ClinicModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="Id_reg" ColumnName="Id_reg" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
