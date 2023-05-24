@@ -109,8 +109,8 @@ namespace WPF_LoginForm.ViewModels
         private void ExecuteLoginCommand(object obj)
         {
             //Static entrence
-            //if (true)
-            if (AuthenticateUser(new NetworkCredential(Username, Password)))
+            if (true)
+            //if (AuthenticateUser(new NetworkCredential(Username, Password)))
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
                     new GenericIdentity(Username), null);

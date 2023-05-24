@@ -114,20 +114,41 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelCommand.cs" />
-    <Compile Include="Views\Admin\Admin.xaml.cs">
+    <Compile Include="Views\AdminViews\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Doctor\Doctor.xaml.cs">
+    <Compile Include="Views\AdminViews\AdminEditUser.xaml.cs">
+      <DependentUpon>AdminEditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorViews\Doctor.xaml.cs">
       <DependentUpon>Doctor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Lab_Assistant\Lab_Assistant.xaml.cs">
-      <DependentUpon>Lab_Assistant.xaml</DependentUpon>
+    <Compile Include="Views\DoctorViews\DoctorVisit.xaml.cs">
+      <DependentUpon>DoctorVisit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Lab_Assistant\MakeTest.xaml.cs">
+    <Compile Include="Views\DoctorViews\InterviewWithThePatient.xaml.cs">
+      <DependentUpon>InterviewWithThePatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorViews\LabTest.xaml.cs">
+      <DependentUpon>LabTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorViews\PhysicalTest.xaml.cs">
+      <DependentUpon>PhysicalTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LabAssistantViews\LabAssistant.xaml.cs">
+      <DependentUpon>LabAssistant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LabAssistantViews\MakeTest.xaml.cs">
       <DependentUpon>MakeTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Lab_Manager\Lab_Manager.xaml.cs">
-      <DependentUpon>Lab_Manager.xaml</DependentUpon>
+    <Compile Include="Views\LabManagerViews\ApproveTest.xaml.cs">
+      <DependentUpon>ApproveTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LabManagerViews\LabManager.xaml.cs">
+      <DependentUpon>LabManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LabManagerViews\LabManagerApprove.xaml.cs">
+      <DependentUpon>LabManagerApprove.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -136,8 +157,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Receptionist\Receptionist.xaml.cs">
+    <Compile Include="Views\ReceptionistViews\NewPatient.xaml.cs">
+      <DependentUpon>NewPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReceptionistViews\Receptionist.xaml.cs">
       <DependentUpon>Receptionist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReceptionistViews\ReceptionistRegister.xaml.cs">
+      <DependentUpon>ReceptionistRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReceptionistViews\RegisterVisit.xaml.cs">
+      <DependentUpon>RegisterVisit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wizyta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -146,33 +176,73 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Admin\Admin.xaml">
+    <Page Include="Views\AdminViews\Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Doctor\Doctor.xaml">
+    <Page Include="Views\AdminViews\AdminEditUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DoctorViews\Doctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Lab_Assistant\Lab_Assistant.xaml">
+    <Page Include="Views\DoctorViews\DoctorVisit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\DoctorViews\InterviewWithThePatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DoctorViews\LabTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DoctorViews\PhysicalTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LabAssistantViews\LabAssistant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Lab_Assistant\MakeTest.xaml">
+    <Page Include="Views\LabAssistantViews\MakeTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Lab_Manager\Lab_Manager.xaml">
+    <Page Include="Views\LabManagerViews\ApproveTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LabManagerViews\LabManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LabManagerViews\LabManagerApprove.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Receptionist\Receptionist.xaml">
+    <Page Include="Views\ReceptionistViews\NewPatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReceptionistViews\Receptionist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReceptionistViews\ReceptionistRegister.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReceptionistViews\RegisterVisit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

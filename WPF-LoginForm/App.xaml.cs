@@ -6,6 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using WPF_LoginForm.Views;
+using WPF_LoginForm.Views.AdminViews;
+using WPF_LoginForm.Views.DoctorViews;
+using WPF_LoginForm.Views.LabAssistantViews;
+using WPF_LoginForm.Views.LabManagerViews;
+using WPF_LoginForm.Views.ReceptionistViews;
 
 namespace WPF_LoginForm
 {
@@ -19,7 +24,7 @@ namespace WPF_LoginForm
         {
 
             //Static Entrence
-            //Funkcja = "LAB";
+            Funkcja = "ADM";
 
             var loginView = new LoginView();
             loginView.Show();
@@ -38,10 +43,10 @@ namespace WPF_LoginForm
                               nextScreen = new Doctor();
                               break;
                           case "KLAB":
-                              nextScreen = new Lab_Manager();
+                              nextScreen = new LabManager();
                               break;
                           case "LAB":
-                              nextScreen = new Lab_Assistant();
+                              nextScreen = new LabAssistant();
                               break;
                           case "ADM":
                               nextScreen = new Admin();
