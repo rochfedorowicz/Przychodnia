@@ -12,9 +12,9 @@ DEBUG;TRACE
 E:\VisualProjects\Przychodnia\Przychodnia\WPF-LoginForm\App.xaml
 18194950125
 2-1957146511
-38-1532103500
+39-2026463884
 18-1926078005
 CustomControls\BindablePasswordBox.xaml;Views\AdminViews\Admin.xaml;Views\AdminViews\AdminEditUser.xaml;Views\DoctorViews\Doctor.xaml;Views\DoctorViews\DoctorVisit.xaml;Views\DoctorViews\InterviewWithThePatient.xaml;Views\DoctorViews\LabTest.xaml;Views\DoctorViews\PhysicalTest.xaml;Views\LabAssistantViews\LabAssistant.xaml;Views\LabAssistantViews\MakeTest.xaml;Views\LabManagerViews\ApproveTest.xaml;Views\LabManagerViews\LabManager.xaml;Views\LabManagerViews\LabManagerApprove.xaml;Views\LoginView.xaml;Views\ReceptionistViews\NewPatient.xaml;Views\ReceptionistViews\Receptionist.xaml;Views\ReceptionistViews\ReceptionistRegister.xaml;Views\ReceptionistViews\RegisterVisit.xaml;
 
-False
+True
 
