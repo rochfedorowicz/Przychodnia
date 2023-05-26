@@ -21,11 +21,6 @@ namespace WPF_LoginForm.Model
             this.Appointments1 = new HashSet<Appointment>();
             this.LaboratoryTests = new HashSet<LaboratoryTest>();
             this.LaboratoryTests1 = new HashSet<LaboratoryTest>();
-            this.Admins = new HashSet<Admin>();
-            this.Doctors = new HashSet<Doctor>();
-            this.LaboratoryManagers = new HashSet<LaboratoryManager>();
-            this.LabTeches = new HashSet<LabTech>();
-            this.Registrations = new HashSet<Registration>();
         }
     
         public int Id_user { get; set; }
@@ -34,23 +29,18 @@ namespace WPF_LoginForm.Model
         public string Role { get; set; }
         public bool Active { get; set; }
     
+        public virtual Admin Admin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments1 { get; set; }
+        public virtual Doctor Doctor { get; set; }
+        public virtual LaboratoryManager LaboratoryManager { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LaboratoryTest> LaboratoryTests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LaboratoryTest> LaboratoryTests1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Admin> Admins { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Doctor> Doctors { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LaboratoryManager> LaboratoryManagers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LabTech> LabTeches { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Registration> Registrations { get; set; }
+        public virtual LabTech LabTech { get; set; }
+        public virtual Registration Registration { get; set; }
     }
 }

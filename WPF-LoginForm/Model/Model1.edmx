@@ -5,8 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ClinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Clinic.dbo.Address' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Id_Pat" />
@@ -18,13 +16,9 @@ warning 6002: The table/view 'Clinic.dbo.Address' does not have a primary key de
           <Property Name="FlatNr" Type="int" />
           <Property Name="Postcode" Type="varchar" MaxLength="6" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Clinic.dbo.Admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="Id_adm" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
           </Key>
           <Property Name="Id_adm" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
@@ -44,27 +38,18 @@ warning 6002: The table/view 'Clinic.dbo.Admin' does not have a primary key defi
           <Property Name="Reg_date" Type="date" Nullable="false" />
           <Property Name="End_date" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Clinic.dbo.Doctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Doctor">
           <Key>
             <PropertyRef Name="Id_doc" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
-            <PropertyRef Name="NPWZ" />
           </Key>
           <Property Name="Id_doc" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="NPWZ" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Clinic.dbo.LaboratoryManager' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="LaboratoryManager">
           <Key>
             <PropertyRef Name="Id_labM" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
           </Key>
           <Property Name="Id_labM" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
@@ -87,13 +72,9 @@ warning 6002: The table/view 'Clinic.dbo.LaboratoryManager' does not have a prim
           <Property Name="ApprovalDate" Type="date" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Clinic.dbo.LabTech' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="LabTech">
           <Key>
             <PropertyRef Name="Id_labTech" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
           </Key>
           <Property Name="Id_labTech" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
@@ -135,17 +116,23 @@ warning 6002: The table/view 'Clinic.dbo.LabTech' does not have a primary key de
           <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Result" Type="text" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Registration">
           <Key>
             <PropertyRef Name="Id_reg" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
           </Key>
           <Property Name="Id_reg" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK__Address__Id_Pat__30F848ED">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1">
@@ -165,7 +152,7 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <End Role="Logging" Type="Self.Logging" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logging">
               <PropertyRef Name="Id_user" />
@@ -217,7 +204,7 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <End Role="Logging" Type="Self.Logging" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logging">
               <PropertyRef Name="Id_user" />
@@ -245,7 +232,7 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <End Role="Logging" Type="Self.Logging" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="*" />
+          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logging">
               <PropertyRef Name="Id_user" />
@@ -295,7 +282,7 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <End Role="Logging" Type="Self.Logging" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="LabTech" Type="Self.LabTech" Multiplicity="*" />
+          <End Role="LabTech" Type="Self.LabTech" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logging">
               <PropertyRef Name="Id_user" />
@@ -335,7 +322,7 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <End Role="Logging" Type="Self.Logging" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logging">
               <PropertyRef Name="Id_user" />
@@ -346,58 +333,19 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ClinicModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaboratoryManager" EntityType="Self.LaboratoryManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LaboratoryTests" EntityType="Self.LaboratoryTests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LabTech" EntityType="Self.LabTech" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logging" EntityType="Self.Logging" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicalGlossary" EntityType="Self.MedicalGlossary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhysicalExamination" EntityType="Self.PhysicalExamination" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Address" EntityType="Self.Address" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Address].[Id_Pat] AS [Id_Pat], 
-    [Address].[City] AS [City], 
-    [Address].[Street] AS [Street], 
-    [Address].[HouseNr] AS [HouseNr], 
-    [Address].[FlatNr] AS [FlatNr], 
-    [Address].[Postcode] AS [Postcode]
-    FROM [dbo].[Address] AS [Address]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Admin].[Id_adm] AS [Id_adm], 
-    [Admin].[Name] AS [Name], 
-    [Admin].[Surname] AS [Surname]
-    FROM [dbo].[Admin] AS [Admin]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Doctor" EntityType="Self.Doctor" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Doctor].[Id_doc] AS [Id_doc], 
-    [Doctor].[Name] AS [Name], 
-    [Doctor].[Surname] AS [Surname], 
-    [Doctor].[NPWZ] AS [NPWZ]
-    FROM [dbo].[Doctor] AS [Doctor]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="LaboratoryManager" EntityType="Self.LaboratoryManager" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [LaboratoryManager].[Id_labM] AS [Id_labM], 
-    [LaboratoryManager].[Name] AS [Name], 
-    [LaboratoryManager].[Surname] AS [Surname]
-    FROM [dbo].[LaboratoryManager] AS [LaboratoryManager]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="LabTech" EntityType="Self.LabTech" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [LabTech].[Id_labTech] AS [Id_labTech], 
-    [LabTech].[Name] AS [Name], 
-    [LabTech].[Surname] AS [Surname]
-    FROM [dbo].[LabTech] AS [LabTech]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Registration" EntityType="Self.Registration" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Registration].[Id_reg] AS [Id_reg], 
-    [Registration].[Name] AS [Name], 
-    [Registration].[Surname] AS [Surname]
-    FROM [dbo].[Registration] AS [Registration]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Address__Id_Pat__30F848ED" Association="Self.FK__Address__Id_Pat__30F848ED">
             <End Role="Patient" EntitySet="Patient" />
             <End Role="Address" EntitySet="Address" />
@@ -464,6 +412,27 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id_Pat" />
+          </Key>
+          <Property Name="Id_Pat" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HouseNr" Type="Int32" />
+          <Property Name="FlatNr" Type="Int32" />
+          <Property Name="Postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Address__Id_Pat__30F848ED" FromRole="Address" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id_adm" />
+          </Key>
+          <Property Name="Id_adm" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Admin__Id_adm__25869641" FromRole="Admin" ToRole="Logging" />
+        </EntityType>
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="Id_app" />
@@ -482,6 +451,25 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <NavigationProperty Name="Logging1" Relationship="Self.FK__Appointme__Id_re__35BCFE0A" FromRole="Appointment" ToRole="Logging" />
           <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__Id_ap__3D5E1FD2" FromRole="Appointment" ToRole="LaboratoryTests" />
           <NavigationProperty Name="PhysicalExaminations" Relationship="Self.FK__PhysicalE__Id_ap__403A8C7D" FromRole="Appointment" ToRole="PhysicalExamination" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id_doc" />
+          </Key>
+          <Property Name="Id_doc" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NPWZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Doctor" ToRole="Logging" />
+        </EntityType>
+        <EntityType Name="LaboratoryManager">
+          <Key>
+            <PropertyRef Name="Id_labM" />
+          </Key>
+          <Property Name="Id_labM" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="LaboratoryManager" ToRole="Logging" />
         </EntityType>
         <EntityType Name="LaboratoryTest">
           <Key>
@@ -504,6 +492,15 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <NavigationProperty Name="Logging1" Relationship="Self.FK__Laborator__LabTe__3C69FB99" FromRole="LaboratoryTests" ToRole="Logging" />
           <NavigationProperty Name="MedicalGlossary" Relationship="Self.FK__Laboratory__Code__3A81B327" FromRole="LaboratoryTests" ToRole="MedicalGlossary" />
         </EntityType>
+        <EntityType Name="LabTech">
+          <Key>
+            <PropertyRef Name="Id_labTech" />
+          </Key>
+          <Property Name="Id_labTech" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logging" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="LabTech" ToRole="Logging" />
+        </EntityType>
         <EntityType Name="Logging">
           <Key>
             <PropertyRef Name="Id_user" />
@@ -513,15 +510,15 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Role" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK__Admin__Id_adm__25869641" FromRole="Logging" ToRole="Admin" />
           <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_do__36B12243" FromRole="Logging" ToRole="Appointment" />
           <NavigationProperty Name="Appointments1" Relationship="Self.FK__Appointme__Id_re__35BCFE0A" FromRole="Logging" ToRole="Appointment" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Logging" ToRole="Doctor" />
+          <NavigationProperty Name="LaboratoryManager" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="Logging" ToRole="LaboratoryManager" />
           <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__LabMa__3B75D760" FromRole="Logging" ToRole="LaboratoryTests" />
           <NavigationProperty Name="LaboratoryTests1" Relationship="Self.FK__Laborator__LabTe__3C69FB99" FromRole="Logging" ToRole="LaboratoryTests" />
-          <NavigationProperty Name="Admins" Relationship="Self.FK__Admin__Id_adm__25869641" FromRole="Logging" ToRole="Admin" />
-          <NavigationProperty Name="Doctors" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Logging" ToRole="Doctor" />
-          <NavigationProperty Name="LaboratoryManagers" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="Logging" ToRole="LaboratoryManager" />
-          <NavigationProperty Name="LabTeches" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="Logging" ToRole="LabTech" />
-          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__Id_re__29572725" FromRole="Logging" ToRole="Registration" />
+          <NavigationProperty Name="LabTech" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="Logging" ToRole="LabTech" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK__Registrat__Id_re__29572725" FromRole="Logging" ToRole="Registration" />
         </EntityType>
         <EntityType Name="MedicalGlossary">
           <Key>
@@ -541,8 +538,8 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Pesel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_pa__37A5467C" FromRole="Patient" ToRole="Appointment" />
           <NavigationProperty Name="Address" Relationship="Self.FK__Address__Id_Pat__30F848ED" FromRole="Patient" ToRole="Address" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_pa__37A5467C" FromRole="Patient" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="PhysicalExamination">
           <Key>
@@ -555,75 +552,53 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <NavigationProperty Name="Appointment" Relationship="Self.FK__PhysicalE__Id_ap__403A8C7D" FromRole="PhysicalExamination" ToRole="Appointment" />
           <NavigationProperty Name="MedicalGlossary" Relationship="Self.FK__PhysicalEx__Code__412EB0B6" FromRole="PhysicalExamination" ToRole="MedicalGlossary" />
         </EntityType>
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="Id_Pat" />
-          </Key>
-          <Property Name="Id_Pat" Type="Int32" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HouseNr" Type="Int32" />
-          <Property Name="FlatNr" Type="Int32" />
-          <Property Name="Postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK__Address__Id_Pat__30F848ED" FromRole="Address" ToRole="Patient" />
-        </EntityType>
-        <EntityType Name="Admin">
-          <Key>
-            <PropertyRef Name="Id_adm" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
-          </Key>
-          <Property Name="Id_adm" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Logging" Relationship="Self.FK__Admin__Id_adm__25869641" FromRole="Admin" ToRole="Logging" />
-        </EntityType>
-        <EntityType Name="Doctor">
-          <Key>
-            <PropertyRef Name="Id_doc" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
-            <PropertyRef Name="NPWZ" />
-          </Key>
-          <Property Name="Id_doc" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NPWZ" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Logging" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Doctor" ToRole="Logging" />
-        </EntityType>
-        <EntityType Name="LaboratoryManager">
-          <Key>
-            <PropertyRef Name="Id_labM" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
-          </Key>
-          <Property Name="Id_labM" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Logging" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="LaboratoryManager" ToRole="Logging" />
-        </EntityType>
-        <EntityType Name="LabTech">
-          <Key>
-            <PropertyRef Name="Id_labTech" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
-          </Key>
-          <Property Name="Id_labTech" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Logging" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="LabTech" ToRole="Logging" />
-        </EntityType>
         <EntityType Name="Registration">
           <Key>
             <PropertyRef Name="Id_reg" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Surname" />
           </Key>
           <Property Name="Id_reg" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Logging" Relationship="Self.FK__Registrat__Id_re__29572725" FromRole="Registration" ToRole="Logging" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Address__Id_Pat__30F848ED">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id_pat" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Id_Pat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Admin__Id_adm__25869641">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Id_adm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Appointme__Id_do__36B12243">
           <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
@@ -690,6 +665,34 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Doctor__Id_doc__276EDEB3">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Laborator__Id_la__2B3F6F97">
+          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Logging">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="LaboratoryManager">
+              <PropertyRef Name="Id_labM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Laborator__LabMa__3B75D760">
           <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
           <End Role="LaboratoryTests" Type="Self.LaboratoryTest" Multiplicity="*" />
@@ -726,53 +729,11 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Admin__Id_adm__25869641">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
-            </Principal>
-            <Dependent Role="Admin">
-              <PropertyRef Name="Id_adm" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Doctor__Id_doc__276EDEB3">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
-            </Principal>
-            <Dependent Role="Doctor">
-              <PropertyRef Name="Id_doc" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Laborator__Id_la__2B3F6F97">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
-            </Principal>
-            <Dependent Role="LaboratoryManager">
-              <PropertyRef Name="Id_labM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__LabTech__Id_labT__2D27B809">
           <End Role="Logging" Type="Self.Logging" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="LabTech" Type="Self.LabTech" Multiplicity="*" />
+          <End Role="LabTech" Type="Self.LabTech" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logging">
               <PropertyRef Name="Id_user" />
@@ -786,7 +747,7 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <End Role="Logging" Type="Self.Logging" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logging">
               <PropertyRef Name="Id_user" />
@@ -808,33 +769,28 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Address__Id_Pat__30F848ED">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="Id_pat" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="Id_Pat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ClinicEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="LaboratoryManagers" EntityType="Self.LaboratoryManager" />
           <EntitySet Name="LaboratoryTests" EntityType="Self.LaboratoryTest" />
+          <EntitySet Name="LabTeches" EntityType="Self.LabTech" />
           <EntitySet Name="Loggings" EntityType="Self.Logging" />
           <EntitySet Name="MedicalGlossaries" EntityType="Self.MedicalGlossary" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="PhysicalExaminations" EntityType="Self.PhysicalExamination" />
-          <EntitySet Name="Addresses" EntityType="Self.Address" />
-          <EntitySet Name="Admins" EntityType="Self.Admin" />
-          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
-          <EntitySet Name="LaboratoryManagers" EntityType="Self.LaboratoryManager" />
-          <EntitySet Name="LabTeches" EntityType="Self.LabTech" />
           <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__Address__Id_Pat__30F848ED" Association="Self.FK__Address__Id_Pat__30F848ED">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Admin__Id_adm__25869641" Association="Self.FK__Admin__Id_adm__25869641">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
           <AssociationSet Name="FK__Appointme__Id_do__36B12243" Association="Self.FK__Appointme__Id_do__36B12243">
             <End Role="Logging" EntitySet="Loggings" />
             <End Role="Appointment" EntitySet="Appointments" />
@@ -855,6 +811,14 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
             <End Role="Appointment" EntitySet="Appointments" />
             <End Role="PhysicalExamination" EntitySet="PhysicalExaminations" />
           </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Id_doc__276EDEB3" Association="Self.FK__Doctor__Id_doc__276EDEB3">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Laborator__Id_la__2B3F6F97" Association="Self.FK__Laborator__Id_la__2B3F6F97">
+            <End Role="Logging" EntitySet="Loggings" />
+            <End Role="LaboratoryManager" EntitySet="LaboratoryManagers" />
+          </AssociationSet>
           <AssociationSet Name="FK__Laborator__LabMa__3B75D760" Association="Self.FK__Laborator__LabMa__3B75D760">
             <End Role="Logging" EntitySet="Loggings" />
             <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
@@ -866,18 +830,6 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
           <AssociationSet Name="FK__Laboratory__Code__3A81B327" Association="Self.FK__Laboratory__Code__3A81B327">
             <End Role="MedicalGlossary" EntitySet="MedicalGlossaries" />
             <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Admin__Id_adm__25869641" Association="Self.FK__Admin__Id_adm__25869641">
-            <End Role="Logging" EntitySet="Loggings" />
-            <End Role="Admin" EntitySet="Admins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Doctor__Id_doc__276EDEB3" Association="Self.FK__Doctor__Id_doc__276EDEB3">
-            <End Role="Logging" EntitySet="Loggings" />
-            <End Role="Doctor" EntitySet="Doctors" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Laborator__Id_la__2B3F6F97" Association="Self.FK__Laborator__Id_la__2B3F6F97">
-            <End Role="Logging" EntitySet="Loggings" />
-            <End Role="LaboratoryManager" EntitySet="LaboratoryManagers" />
           </AssociationSet>
           <AssociationSet Name="FK__LabTech__Id_labT__2D27B809" Association="Self.FK__LabTech__Id_labT__2D27B809">
             <End Role="Logging" EntitySet="Loggings" />
@@ -891,10 +843,6 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
             <End Role="MedicalGlossary" EntitySet="MedicalGlossaries" />
             <End Role="PhysicalExamination" EntitySet="PhysicalExaminations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Address__Id_Pat__30F848ED" Association="Self.FK__Address__Id_Pat__30F848ED">
-            <End Role="Patient" EntitySet="Patients" />
-            <End Role="Address" EntitySet="Addresses" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -902,6 +850,27 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ClinicModelStoreContainer" CdmEntityContainer="ClinicEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ClinicModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Id_Pat" ColumnName="Id_Pat" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="HouseNr" ColumnName="HouseNr" />
+                <ScalarProperty Name="FlatNr" ColumnName="FlatNr" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ClinicModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id_adm" ColumnName="Id_adm" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Appointments">
             <EntityTypeMapping TypeName="ClinicModel.Appointment">
               <MappingFragment StoreEntitySet="Appointment">
@@ -914,6 +883,25 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Reg_date" ColumnName="Reg_date" />
                 <ScalarProperty Name="End_date" ColumnName="End_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="ClinicModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="Id_doc" ColumnName="Id_doc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="NPWZ" ColumnName="NPWZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LaboratoryManagers">
+            <EntityTypeMapping TypeName="ClinicModel.LaboratoryManager">
+              <MappingFragment StoreEntitySet="LaboratoryManager">
+                <ScalarProperty Name="Id_labM" ColumnName="Id_labM" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -932,6 +920,15 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
                 <ScalarProperty Name="ManagersNote" ColumnName="ManagersNote" />
                 <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LabTeches">
+            <EntityTypeMapping TypeName="ClinicModel.LabTech">
+              <MappingFragment StoreEntitySet="LabTech">
+                <ScalarProperty Name="Id_labTech" ColumnName="Id_labTech" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -975,61 +972,23 @@ warning 6002: The table/view 'Clinic.dbo.Registration' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="ClinicModel.Address">
-              <MappingFragment StoreEntitySet="Address">
-                <ScalarProperty Name="Id_Pat" ColumnName="Id_Pat" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="HouseNr" ColumnName="HouseNr" />
-                <ScalarProperty Name="FlatNr" ColumnName="FlatNr" />
-                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Admins">
-            <EntityTypeMapping TypeName="ClinicModel.Admin">
-              <MappingFragment StoreEntitySet="Admin">
-                <ScalarProperty Name="Id_adm" ColumnName="Id_adm" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Doctors">
-            <EntityTypeMapping TypeName="ClinicModel.Doctor">
-              <MappingFragment StoreEntitySet="Doctor">
-                <ScalarProperty Name="Id_doc" ColumnName="Id_doc" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="NPWZ" ColumnName="NPWZ" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LaboratoryManagers">
-            <EntityTypeMapping TypeName="ClinicModel.LaboratoryManager">
-              <MappingFragment StoreEntitySet="LaboratoryManager">
-                <ScalarProperty Name="Id_labM" ColumnName="Id_labM" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LabTeches">
-            <EntityTypeMapping TypeName="ClinicModel.LabTech">
-              <MappingFragment StoreEntitySet="LabTech">
-                <ScalarProperty Name="Id_labTech" ColumnName="Id_labTech" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Registrations">
             <EntityTypeMapping TypeName="ClinicModel.Registration">
               <MappingFragment StoreEntitySet="Registration">
                 <ScalarProperty Name="Id_reg" ColumnName="Id_reg" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ClinicModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

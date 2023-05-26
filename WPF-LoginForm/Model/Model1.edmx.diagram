@@ -4,34 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="02657206f1684aaa8109203ac32bad57" Name="Diagram1">
+      <Diagram DiagramId="8adc78290b7d4f979d6edd9dc6b716c5" Name="Diagram1">
+        <EntityTypeShape EntityType="ClinicModel.Address" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicModel.Admin" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicModel.Appointment" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicModel.LaboratoryTest" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicModel.Logging" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicModel.MedicalGlossary" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicModel.Patient" Width="1.5" PointX="3.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicModel.PhysicalExamination" Width="1.5" PointX="11.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicModel.Address" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicModel.Admin" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicModel.Doctor" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicModel.LaboratoryManager" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicModel.LaboratoryTest" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicModel.LabTech" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicModel.Logging" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicModel.MedicalGlossary" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicModel.Patient" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicModel.PhysicalExamination" Width="1.5" PointX="11.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicModel.Registration" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ClinicModel.FK__Address__Id_Pat__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicModel.FK__Admin__Id_adm__25869641" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Appointme__Id_do__36B12243" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Appointme__Id_pa__37A5467C" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Appointme__Id_re__35BCFE0A" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Laborator__Id_ap__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__PhysicalE__Id_ap__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicModel.FK__Doctor__Id_doc__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicModel.FK__Laborator__Id_la__2B3F6F97" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Laborator__LabMa__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Laborator__LabTe__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Laboratory__Code__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicModel.FK__Admin__Id_adm__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicModel.FK__Doctor__Id_doc__276EDEB3" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicModel.FK__Laborator__Id_la__2B3F6F97" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__LabTech__Id_labT__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__Registrat__Id_re__29572725" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicModel.FK__PhysicalEx__Code__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicModel.FK__Address__Id_Pat__30F848ED" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
