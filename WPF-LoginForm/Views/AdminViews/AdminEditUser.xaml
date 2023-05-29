@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MakeTest" Height="238" Width="366"
+        Title="MakeTest" Height="270" Width="368"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent"
+        Background="White"
         AllowsTransparency="True"
         MouseDown="Window_MouseDown"
         >
@@ -26,8 +26,7 @@
     <Border CornerRadius="12">
 
         <Border CornerRadius="10"                    
-            BorderThickness="2"
-            Opacity="0.75">
+            BorderThickness="2">
 
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -65,7 +64,7 @@
                                    FontFamily="Montserrat"
                                    Grid.Column="0"
                                    VerticalAlignment="Center"
-                                   Margin="10,0,0,0"><Run Language="pl-pl" Text="Edit user"/></TextBlock>
+                                   Margin="10,0,0,0"><Run Language="pl-pl" Text="Edytuj użytkownika"/></TextBlock>
 
                     <Button x:Name="btnMinimize"                           
                                 BorderThickness="0"
@@ -186,7 +185,7 @@
                        Width="38"/>
                 <Button x:Name="confirmUserChangesBtn" Content="Zatwierdź zmiany" 
                     Foreground="White"
-                    Margin="0,137,0,10" 
+                    Margin="10,179,10,-32" 
                     Grid.Row="1" HorizontalAlignment="Center" Width="342" Click="confirmUserChangesBtn_Click">
 
                     <Button.Style>
@@ -315,7 +314,46 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <ComboBox x:Name="userRoleComboBox" HorizontalAlignment="Left" Margin="93,116,0,0" Grid.Row="1" VerticalAlignment="Top" Width="237" Height="16"/>
+
+                <ComboBox x:Name="userRoleComboBox" HorizontalAlignment="Left" Margin="93,116,0,0" Grid.Row="1" VerticalAlignment="Top" Width="237" Height="24" SelectionChanged="userRoleComboBox_SelectionChanged" Visibility="Hidden"/>
+                <Label Content="NPWZ:" 
+                    
+                    HorizontalAlignment="Left" 
+                    Margin="26,144,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Foreground="White"
+
+                    Width="114"/>
+                <TextBox x:Name="NPWZTextBox"
+                    IsEnabled="False"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    VerticalContentAlignment="Center"
+                    Margin="93,154,32,35"
+                    PreviewTextInput="NumberValidationTextBox"
+                    Padding="20,0,0,0"  Grid.Row="1" >
+
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
+                <Label Content="RolaTekst" 
+                    x:Name="functionText"
+                    HorizontalAlignment="Left" 
+                    Margin="93,111,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Foreground="White"
+
+                    Width="114"/>
 
             </Grid>
         </Border>

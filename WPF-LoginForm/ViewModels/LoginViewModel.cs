@@ -127,7 +127,7 @@ namespace WPF_LoginForm.ViewModels
         {
             using (var pe = new ClinicEntities())
             {
-                var user = pe.Loggings.Where(el => el.Login == credential.UserName && el.Password == credential.Password).SingleOrDefault();
+                var user = pe.Loggings.Where(el => el.Login == credential.UserName && el.Password == credential.Password && el.Active).SingleOrDefault();
 
                 if (user!=null)
                 {
