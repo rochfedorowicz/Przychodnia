@@ -173,7 +173,8 @@
 
                 </Grid>
                 <ListView d:ItemsSource="{Binding Loggings}" 
-                          x:Name="users" Grid.Row="1" 
+                          x:Name="users" 
+                          Grid.Row="1" 
                           Foreground="White" 
                           HorizontalAlignment="Left" 
                           BorderBrush="Silver" 

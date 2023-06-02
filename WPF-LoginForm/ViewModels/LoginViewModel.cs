@@ -132,6 +132,7 @@ namespace WPF_LoginForm.ViewModels
                 if (user!=null)
                 {
                     App.Funkcja = user.Role;
+                    App.userId = user.Id_user;
                 }
 
                 return user == null ? false : true;

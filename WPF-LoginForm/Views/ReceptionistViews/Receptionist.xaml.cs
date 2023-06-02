@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_LoginForm.Model;
 using WPF_LoginForm.Views.LabManagerViews;
 
 namespace WPF_LoginForm.Views.ReceptionistViews
@@ -20,9 +23,18 @@ namespace WPF_LoginForm.Views.ReceptionistViews
     /// </summary>
     public partial class Receptionist : Window
     {
+        private ClinicEntities contextDB;
+
+        public ClinicEntities getContextDB()
+        {
+            return contextDB;
+        }
         public Receptionist()
         {
             InitializeComponent();
+            contextDB = new ClinicEntities();
+            contextDB.Appointments.Load();
+            receptionTable.ItemsSource = contextDB.Appointments.Local;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -50,34 +62,51 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             Application.Current.Shutdown();
         }
 
-        private void confirmBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void cancelAppoinmentBtn_Click(object sender, RoutedEventArgs e)
         {
+            Appointment selectedAppointment = (Appointment)receptionTable.SelectedItem;
 
+            selectedAppointment.Status = "Anulowana";
+            contextDB.SaveChanges();
+            refreshView();
+        }
+
+        private void addPatientBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NewPatient nextScreen = new NewPatient();
+            nextScreen.Show();
         }
 
         private void registerVisitBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Get ID
-            
-            int id;
+            ReceptionistRegister nextScreen = new ReceptionistRegister(this);
+            nextScreen.Show();
+        }
 
-
-            if (true)
-            {   //TODO: ID VERYFICATION
-                //TODO: GET TEST DATA AND SEND IT TO THE NEXT SCREEN
-                //TODO: Make Singleton out of next screen
-                ReceptionistRegister nextScreen = new ReceptionistRegister();
-                nextScreen.Show();
+        public void refreshView()
+        {
+            receptionTable.UnselectAll();
+            ICollectionView view = CollectionViewSource.GetDefaultView(contextDB.Appointments.Local);
+            view.Refresh();
+        }
+        private void receptionTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (receptionTable.SelectedItem != null && ((Appointment)receptionTable.SelectedItem).Status != "End")
+            {
+                enableButtons();
             }
             else
             {
-                //TODO: SHOW SOME ERROR OR CREATE PROPER VALIDTION ON THIS FIELD
+                disableButtons();
             }
+        }
+        private void disableButtons()
+        {
+            cancelAppoinmentBtn.IsEnabled = false;
+        }
+        private void enableButtons()
+        {
+            cancelAppoinmentBtn.IsEnabled = true;
         }
     }
 }

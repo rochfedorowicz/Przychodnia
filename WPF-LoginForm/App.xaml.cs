@@ -20,6 +20,7 @@ namespace WPF_LoginForm
     public partial class App : Application
     {
         static public string Funkcja;
+        static public int userId;
         protected void ApplicationStart(object sender, StartupEventArgs e)
         {
 

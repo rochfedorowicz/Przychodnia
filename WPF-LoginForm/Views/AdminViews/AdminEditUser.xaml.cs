@@ -29,7 +29,7 @@ namespace WPF_LoginForm.Views.AdminViews
             {
                 var userFullName = getUserFullName();
                 nameTextBox.Text = userFullName.Item1;
-                surnameTextBox.Text = userFullName.Item1;
+                surnameTextBox.Text = userFullName.Item2;
                 loginTextBox.Text = EditUser.Login;
                 passwordTextBox.Text = EditUser.Password;
                 functionText.Content = roleCodeToRole();
@@ -60,9 +60,9 @@ namespace WPF_LoginForm.Views.AdminViews
         }
         private void confirmUserChangesBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (AreAllFieldsFilled())
+            if (EditUser == null)
             {
-                if (EditUser == null)
+                if (AreAllFieldsFilled())
                 {
                     EditUser = new Logging();
                     EditUser.Role = getRoleCode();
@@ -79,21 +79,21 @@ namespace WPF_LoginForm.Views.AdminViews
                 }
                 else
                 {
-                    setUserFullName();
-                    EditUser.Login = loginTextBox.Text;
-                    EditUser.Password = passwordTextBox.Text;
-                    if (EditUser.Doctor != null)
-                        setNPWZ();
+                    MessageBox.Show("Nie wszystkie pola zostawły wypełnione", "Patrz uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-                contextDB.SaveChanges();
-                parentScreen.refreshView();
-                Close();
             }
             else
-            {
-                MessageBox.Show("Nie wszystkie pola zostawły wypełnione", "Patrz uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
+        {
+                setUserFullName();
+                EditUser.Login = loginTextBox.Text;
+                EditUser.Password = passwordTextBox.Text;
+                if (EditUser.Doctor != null)
+                    setNPWZ();
             }
-            
+
+            contextDB.SaveChanges();
+            parentScreen.refreshView();
+            Close();
         }
 
         private void setNPWZ()

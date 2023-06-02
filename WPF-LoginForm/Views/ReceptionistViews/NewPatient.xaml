@@ -248,6 +248,7 @@
                     Height="28"
                     VerticalContentAlignment="Center"
                     Margin="240,99,375,289"
+                    PreviewTextInput="NumberValidationTextBox"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
 
                     <TextBox.Background>
@@ -296,8 +297,8 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Label Content="Numer domu/Numer lokalu :" HorizontalAlignment="Left" Margin="37,208,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="171" Visibility="Visible"/>
-                <TextBox x:Name="streetNumberTextBox"
+                <Label Content="Ulica :" HorizontalAlignment="Left" Margin="37,208,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="171" Visibility="Visible"/>
+                <TextBox x:Name="streetTextBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
                     FontWeight="Medium"
@@ -317,6 +318,31 @@
                     </TextBox.Background>
 
                 </TextBox>
+                <Label Content="*" HorizontalAlignment="Left" Margin="37,320,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFDC3030" Width="35" Visibility="Visible" FontSize="36"/>
+                <Label Content="Pola wymagane" HorizontalAlignment="Left" Margin="54,338,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="172" Visibility="Visible"/>
+                <Label Content="*" HorizontalAlignment="Left" Margin="10,22,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFDC3030" Width="34" Visibility="Visible" FontSize="36"/>
+                <Label Content="Numer domu/Numer lokalu :" HorizontalAlignment="Left" Margin="37,260,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="171" Visibility="Visible"/>
+                <TextBox x:Name="streetNumberTextBox"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="White"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    Height="28"
+                    VerticalContentAlignment="Center"
+                    Margin="240,258,375,130"
+                    PreviewTextInput="NumberValidationTextBox"
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
+
+                    <TextBox.Background>
+                        <ImageBrush     Stretch="None"
+                            AlignmentX="Left"/>
+                    </TextBox.Background>
+
+                </TextBox>
                 <TextBox x:Name="flatNumberTextBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
@@ -328,7 +354,8 @@
                     BorderThickness="0,0,0,2"
                     Height="28"
                     VerticalContentAlignment="Center"
-                    Margin="446,206,169,182"
+                    Margin="446,258,169,130"
+                    PreviewTextInput="NumberValidationTextBox"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
 
                     <TextBox.Background>
@@ -337,9 +364,6 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Label Content="*" HorizontalAlignment="Left" Margin="37,320,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFDC3030" Width="35" Visibility="Visible" FontSize="36"/>
-                <Label Content="Pola wymagane" HorizontalAlignment="Left" Margin="54,338,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="172" Visibility="Visible"/>
-                <Label Content="*" HorizontalAlignment="Left" Margin="10,22,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFDC3030" Width="34" Visibility="Visible" FontSize="36"/>
             </Grid>
         </Border>
     </Border>

@@ -25,7 +25,7 @@ namespace WPF_LoginForm.Views.AdminViews
     /// </summary>
     public partial class Admin : Window
     {
-        ClinicEntities contextDB;
+        private ClinicEntities contextDB;
         private string password;
         private bool isPasswordVisible;
 
@@ -98,6 +98,7 @@ namespace WPF_LoginForm.Views.AdminViews
             ((Logging)users.SelectedItem).Active = !((Logging)users.SelectedItem).Active;
             refreshView();
             deactiveButton.Background = new SolidColorBrush(Colors.Gray);
+            contextDB.SaveChanges();
         }
 
         public void refreshView()
