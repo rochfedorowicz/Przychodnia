@@ -12,20 +12,18 @@ namespace WPF_LoginForm.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Registration
+    public partial class AppointmentState
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Registration()
+        public AppointmentState()
         {
             this.Appointments = new HashSet<Appointment>();
         }
     
-        public int Id_reg { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public int Id_state { get; set; }
+        public string State { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
-        public virtual Logging Logging { get; set; }
     }
 }

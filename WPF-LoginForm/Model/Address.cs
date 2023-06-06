@@ -17,7 +17,7 @@ namespace WPF_LoginForm.Model
         public int Id_Pat { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
-        public Nullable<int> HouseNr { get; set; }
+        public string HouseNr { get; set; }
         public Nullable<int> FlatNr { get; set; }
         public string Postcode { get; set; }
     

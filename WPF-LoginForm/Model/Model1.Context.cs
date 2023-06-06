@@ -28,6 +28,7 @@ namespace WPF_LoginForm.Model
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<AppointmentState> AppointmentStates { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<LaboratoryManager> LaboratoryManagers { get; set; }
         public virtual DbSet<LaboratoryTest> LaboratoryTests { get; set; }

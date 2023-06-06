@@ -58,13 +58,15 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             newAppoinment.Id_doc = ((Doctor)doctorComboBox.SelectedItem).Id_doc;
             newAppoinment.Id_pat = ((Patient)PatientTable.SelectedItem).Id_pat;
             newAppoinment.Description = appointmentDescTextBox.Text;
-            newAppoinment.Status = "In progress";
+            //TODO:
+            //enum with appoinment state
+            newAppoinment.Status = 1;
             newAppoinment.Diagnosis = null;
             newAppoinment.Reg_date = DateTime.Now;
             newAppoinment.End_date = null;
 
-            newAppoinment.Logging = ((Doctor)doctorComboBox.SelectedItem).Logging;
-            newAppoinment.Logging1 = contextDB.Loggings.Where(el => el.Id_user == App.userId).SingleOrDefault();
+            newAppoinment.Doctor = (Doctor)doctorComboBox.SelectedItem;
+            newAppoinment.Registration = contextDB.Registrations.Where(el => el.Id_reg == App.userId).SingleOrDefault();
 
             contextDB.Appointments.Add(newAppoinment);
             contextDB.SaveChanges();

@@ -27,13 +27,14 @@ namespace WPF_LoginForm.Model
         public Nullable<int> Id_pat { get; set; }
         public string Description { get; set; }
         public string Diagnosis { get; set; }
-        public string Status { get; set; }
-        public System.DateTime Reg_date { get; set; }
+        public Nullable<int> Status { get; set; }
+        public Nullable<System.DateTime> Reg_date { get; set; }
         public Nullable<System.DateTime> End_date { get; set; }
     
-        public virtual Logging Logging { get; set; }
+        public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }
-        public virtual Logging Logging1 { get; set; }
+        public virtual Registration Registration { get; set; }
+        public virtual AppointmentState AppointmentState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LaboratoryTest> LaboratoryTests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

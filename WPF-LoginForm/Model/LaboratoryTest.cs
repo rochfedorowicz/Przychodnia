@@ -16,20 +16,20 @@ namespace WPF_LoginForm.Model
     {
         public int Id_labTest { get; set; }
         public string Code { get; set; }
-        public Nullable<int> LabManager { get; set; }
-        public Nullable<int> LabTech { get; set; }
+        public Nullable<int> Id_labManager { get; set; }
+        public Nullable<int> Id_labTech { get; set; }
         public Nullable<int> Id_app { get; set; }
         public string DoctorsNote { get; set; }
-        public System.DateTime OrderDate { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
         public string Result { get; set; }
-        public Nullable<System.DateTime> DateTaken { get; set; }
+        public Nullable<System.DateTime> RealizationDate { get; set; }
         public string ManagersNote { get; set; }
-        public Nullable<System.DateTime> ApprovalDate { get; set; }
+        public Nullable<System.DateTime> ManagersApprovalDate { get; set; }
         public string Status { get; set; }
     
         public virtual Appointment Appointment { get; set; }
-        public virtual Logging Logging { get; set; }
-        public virtual Logging Logging1 { get; set; }
+        public virtual LaboratoryManager LaboratoryManager { get; set; }
+        public virtual LabTech LabTech { get; set; }
         public virtual MedicalGlossary MedicalGlossary { get; set; }
     }
 }

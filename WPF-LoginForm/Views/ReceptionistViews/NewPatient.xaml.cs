@@ -68,7 +68,9 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             newAdress.Id_Pat = newPatientId;
             newAdress.City = cityTextBox.Text;
             newAdress.Street = streetTextBox.Text;
-            newAdress.HouseNr = Int32.Parse(streetNumberTextBox.Text);
+            //TODO:
+            //check streen number validity
+            newAdress.HouseNr = streetNumberTextBox.Text;
             if (flatNumberTextBox.Text == "")
                 newAdress.FlatNr = null;
             else

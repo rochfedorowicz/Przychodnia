@@ -12,7 +12,7 @@
           <Property Name="Id_Pat" Type="int" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="50" />
           <Property Name="Street" Type="varchar" MaxLength="50" />
-          <Property Name="HouseNr" Type="int" />
+          <Property Name="HouseNr" Type="varchar" MaxLength="10" />
           <Property Name="FlatNr" Type="int" />
           <Property Name="Postcode" Type="varchar" MaxLength="6" />
         </EntityType>
@@ -34,9 +34,16 @@
           <Property Name="Id_pat" Type="int" />
           <Property Name="Description" Type="text" Nullable="false" />
           <Property Name="Diagnosis" Type="text" />
-          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Reg_date" Type="date" Nullable="false" />
-          <Property Name="End_date" Type="date" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Reg_date" Type="smalldatetime" />
+          <Property Name="End_date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="AppointmentState">
+          <Key>
+            <PropertyRef Name="Id_state" />
+          </Key>
+          <Property Name="Id_state" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State" Type="text" />
         </EntityType>
         <EntityType Name="Doctor">
           <Key>
@@ -61,15 +68,15 @@
           </Key>
           <Property Name="Id_labTest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="LabManager" Type="int" />
-          <Property Name="LabTech" Type="int" />
+          <Property Name="Id_labManager" Type="int" />
+          <Property Name="Id_labTech" Type="int" />
           <Property Name="Id_app" Type="int" />
           <Property Name="DoctorsNote" Type="text" />
-          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="CreateDate" Type="smalldatetime" />
           <Property Name="Result" Type="text" />
-          <Property Name="DateTaken" Type="date" />
+          <Property Name="RealizationDate" Type="smalldatetime" />
           <Property Name="ManagersNote" Type="text" />
-          <Property Name="ApprovalDate" Type="date" />
+          <Property Name="ManagersApprovalDate" Type="smalldatetime" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="LabTech">
@@ -162,22 +169,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Id_do__36B12243">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Appointme__Id_do__619B8048">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_doc" />
             </Principal>
             <Dependent Role="Appointment">
               <PropertyRef Name="Id_doc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Id_pa__37A5467C">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Appointme__Id_pa__60A75C0F">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patient">
@@ -188,15 +193,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Id_re__35BCFE0A">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Appointme__Id_re__5FB337D6">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="Registration">
+              <PropertyRef Name="Id_reg" />
             </Principal>
             <Dependent Role="Appointment">
               <PropertyRef Name="Id_reg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Statu__6477ECF3">
+          <End Role="AppointmentState" Type="Self.AppointmentState" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppointmentState">
+              <PropertyRef Name="Id_state" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Status" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -242,27 +259,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Laborator__LabMa__3B75D760">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Laborator__LabMa__5DCAEF64">
+          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="0..1" />
           <End Role="LaboratoryTests" Type="Self.LaboratoryTests" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="LaboratoryManager">
+              <PropertyRef Name="Id_labM" />
             </Principal>
             <Dependent Role="LaboratoryTests">
-              <PropertyRef Name="LabManager" />
+              <PropertyRef Name="Id_labManager" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Laborator__LabTe__3C69FB99">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Laborator__LabTe__5EBF139D">
+          <End Role="LabTech" Type="Self.LabTech" Multiplicity="0..1" />
           <End Role="LaboratoryTests" Type="Self.LaboratoryTests" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="LabTech">
+              <PropertyRef Name="Id_labTech" />
             </Principal>
             <Dependent Role="LaboratoryTests">
-              <PropertyRef Name="LabTech" />
+              <PropertyRef Name="Id_labTech" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -336,6 +353,7 @@
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppointmentState" EntityType="Self.AppointmentState" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LaboratoryManager" EntityType="Self.LaboratoryManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LaboratoryTests" EntityType="Self.LaboratoryTests" Schema="dbo" store:Type="Tables" />
@@ -354,16 +372,20 @@
             <End Role="Logging" EntitySet="Logging" />
             <End Role="Admin" EntitySet="Admin" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Id_do__36B12243" Association="Self.FK__Appointme__Id_do__36B12243">
-            <End Role="Logging" EntitySet="Logging" />
+          <AssociationSet Name="FK__Appointme__Id_do__619B8048" Association="Self.FK__Appointme__Id_do__619B8048">
+            <End Role="Doctor" EntitySet="Doctor" />
             <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Id_pa__37A5467C" Association="Self.FK__Appointme__Id_pa__37A5467C">
+          <AssociationSet Name="FK__Appointme__Id_pa__60A75C0F" Association="Self.FK__Appointme__Id_pa__60A75C0F">
             <End Role="Patient" EntitySet="Patient" />
             <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Id_re__35BCFE0A" Association="Self.FK__Appointme__Id_re__35BCFE0A">
-            <End Role="Logging" EntitySet="Logging" />
+          <AssociationSet Name="FK__Appointme__Id_re__5FB337D6" Association="Self.FK__Appointme__Id_re__5FB337D6">
+            <End Role="Registration" EntitySet="Registration" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Statu__6477ECF3" Association="Self.FK__Appointme__Statu__6477ECF3">
+            <End Role="AppointmentState" EntitySet="AppointmentState" />
             <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
           <AssociationSet Name="FK__Doctor__Id_doc__276EDEB3" Association="Self.FK__Doctor__Id_doc__276EDEB3">
@@ -378,12 +400,12 @@
             <End Role="Logging" EntitySet="Logging" />
             <End Role="LaboratoryManager" EntitySet="LaboratoryManager" />
           </AssociationSet>
-          <AssociationSet Name="FK__Laborator__LabMa__3B75D760" Association="Self.FK__Laborator__LabMa__3B75D760">
-            <End Role="Logging" EntitySet="Logging" />
+          <AssociationSet Name="FK__Laborator__LabMa__5DCAEF64" Association="Self.FK__Laborator__LabMa__5DCAEF64">
+            <End Role="LaboratoryManager" EntitySet="LaboratoryManager" />
             <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
           </AssociationSet>
-          <AssociationSet Name="FK__Laborator__LabTe__3C69FB99" Association="Self.FK__Laborator__LabTe__3C69FB99">
-            <End Role="Logging" EntitySet="Logging" />
+          <AssociationSet Name="FK__Laborator__LabTe__5EBF139D" Association="Self.FK__Laborator__LabTe__5EBF139D">
+            <End Role="LabTech" EntitySet="LabTech" />
             <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
           </AssociationSet>
           <AssociationSet Name="FK__Laboratory__Code__3A81B327" Association="Self.FK__Laboratory__Code__3A81B327">
@@ -419,7 +441,7 @@
           <Property Name="Id_Pat" Type="Int32" Nullable="false" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HouseNr" Type="Int32" />
+          <Property Name="HouseNr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="FlatNr" Type="Int32" />
           <Property Name="Postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Patient" Relationship="Self.FK__Address__Id_Pat__30F848ED" FromRole="Address" ToRole="Patient" />
@@ -443,14 +465,23 @@
           <Property Name="Id_pat" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Diagnosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Reg_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Reg_date" Type="DateTime" Precision="0" />
           <Property Name="End_date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Logging" Relationship="Self.FK__Appointme__Id_do__36B12243" FromRole="Appointment" ToRole="Logging" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Id_pa__37A5467C" FromRole="Appointment" ToRole="Patient" />
-          <NavigationProperty Name="Logging1" Relationship="Self.FK__Appointme__Id_re__35BCFE0A" FromRole="Appointment" ToRole="Logging" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Appointme__Id_do__619B8048" FromRole="Appointment" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Id_pa__60A75C0F" FromRole="Appointment" ToRole="Patient" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK__Appointme__Id_re__5FB337D6" FromRole="Appointment" ToRole="Registration" />
+          <NavigationProperty Name="AppointmentState" Relationship="Self.FK__Appointme__Statu__6477ECF3" FromRole="Appointment" ToRole="AppointmentState" />
           <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__Id_ap__3D5E1FD2" FromRole="Appointment" ToRole="LaboratoryTests" />
           <NavigationProperty Name="PhysicalExaminations" Relationship="Self.FK__PhysicalE__Id_ap__403A8C7D" FromRole="Appointment" ToRole="PhysicalExamination" />
+        </EntityType>
+        <EntityType Name="AppointmentState">
+          <Key>
+            <PropertyRef Name="Id_state" />
+          </Key>
+          <Property Name="Id_state" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Statu__6477ECF3" FromRole="AppointmentState" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="Doctor">
           <Key>
@@ -460,6 +491,7 @@
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NPWZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_do__619B8048" FromRole="Doctor" ToRole="Appointment" />
           <NavigationProperty Name="Logging" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Doctor" ToRole="Logging" />
         </EntityType>
         <EntityType Name="LaboratoryManager">
@@ -470,6 +502,7 @@
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Logging" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="LaboratoryManager" ToRole="Logging" />
+          <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__LabMa__5DCAEF64" FromRole="LaboratoryManager" ToRole="LaboratoryTests" />
         </EntityType>
         <EntityType Name="LaboratoryTest">
           <Key>
@@ -477,19 +510,19 @@
           </Key>
           <Property Name="Id_labTest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LabManager" Type="Int32" />
-          <Property Name="LabTech" Type="Int32" />
+          <Property Name="Id_labManager" Type="Int32" />
+          <Property Name="Id_labTech" Type="Int32" />
           <Property Name="Id_app" Type="Int32" />
           <Property Name="DoctorsNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
           <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DateTaken" Type="DateTime" Precision="0" />
+          <Property Name="RealizationDate" Type="DateTime" Precision="0" />
           <Property Name="ManagersNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ApprovalDate" Type="DateTime" Precision="0" />
+          <Property Name="ManagersApprovalDate" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Appointment" Relationship="Self.FK__Laborator__Id_ap__3D5E1FD2" FromRole="LaboratoryTests" ToRole="Appointment" />
-          <NavigationProperty Name="Logging" Relationship="Self.FK__Laborator__LabMa__3B75D760" FromRole="LaboratoryTests" ToRole="Logging" />
-          <NavigationProperty Name="Logging1" Relationship="Self.FK__Laborator__LabTe__3C69FB99" FromRole="LaboratoryTests" ToRole="Logging" />
+          <NavigationProperty Name="LaboratoryManager" Relationship="Self.FK__Laborator__LabMa__5DCAEF64" FromRole="LaboratoryTests" ToRole="LaboratoryManager" />
+          <NavigationProperty Name="LabTech" Relationship="Self.FK__Laborator__LabTe__5EBF139D" FromRole="LaboratoryTests" ToRole="LabTech" />
           <NavigationProperty Name="MedicalGlossary" Relationship="Self.FK__Laboratory__Code__3A81B327" FromRole="LaboratoryTests" ToRole="MedicalGlossary" />
         </EntityType>
         <EntityType Name="LabTech">
@@ -499,6 +532,7 @@
           <Property Name="Id_labTech" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__LabTe__5EBF139D" FromRole="LabTech" ToRole="LaboratoryTests" />
           <NavigationProperty Name="Logging" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="LabTech" ToRole="Logging" />
         </EntityType>
         <EntityType Name="Logging">
@@ -511,12 +545,8 @@
           <Property Name="Role" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Admin" Relationship="Self.FK__Admin__Id_adm__25869641" FromRole="Logging" ToRole="Admin" />
-          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_do__36B12243" FromRole="Logging" ToRole="Appointment" />
-          <NavigationProperty Name="Appointments1" Relationship="Self.FK__Appointme__Id_re__35BCFE0A" FromRole="Logging" ToRole="Appointment" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK__Doctor__Id_doc__276EDEB3" FromRole="Logging" ToRole="Doctor" />
           <NavigationProperty Name="LaboratoryManager" Relationship="Self.FK__Laborator__Id_la__2B3F6F97" FromRole="Logging" ToRole="LaboratoryManager" />
-          <NavigationProperty Name="LaboratoryTests" Relationship="Self.FK__Laborator__LabMa__3B75D760" FromRole="Logging" ToRole="LaboratoryTests" />
-          <NavigationProperty Name="LaboratoryTests1" Relationship="Self.FK__Laborator__LabTe__3C69FB99" FromRole="Logging" ToRole="LaboratoryTests" />
           <NavigationProperty Name="LabTech" Relationship="Self.FK__LabTech__Id_labT__2D27B809" FromRole="Logging" ToRole="LabTech" />
           <NavigationProperty Name="Registration" Relationship="Self.FK__Registrat__Id_re__29572725" FromRole="Logging" ToRole="Registration" />
         </EntityType>
@@ -539,7 +569,7 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Pesel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK__Address__Id_Pat__30F848ED" FromRole="Patient" ToRole="Address" />
-          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_pa__37A5467C" FromRole="Patient" ToRole="Appointment" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_pa__60A75C0F" FromRole="Patient" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="PhysicalExamination">
           <Key>
@@ -559,6 +589,7 @@
           <Property Name="Id_reg" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Id_re__5FB337D6" FromRole="Registration" ToRole="Appointment" />
           <NavigationProperty Name="Logging" Relationship="Self.FK__Registrat__Id_re__29572725" FromRole="Registration" ToRole="Logging" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -599,22 +630,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Id_do__36B12243">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Appointme__Id_do__619B8048">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id_doc" />
             </Principal>
             <Dependent Role="Appointment">
               <PropertyRef Name="Id_doc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Id_pa__37A5467C">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Appointme__Id_pa__60A75C0F">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patient">
@@ -625,15 +654,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Id_re__35BCFE0A">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Appointme__Id_re__5FB337D6">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="Registration">
+              <PropertyRef Name="Id_reg" />
             </Principal>
             <Dependent Role="Appointment">
               <PropertyRef Name="Id_reg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Statu__6477ECF3">
+          <End Role="AppointmentState" Type="Self.AppointmentState" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppointmentState">
+              <PropertyRef Name="Id_state" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="Status" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -693,27 +734,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Laborator__LabMa__3B75D760">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Laborator__LabMa__5DCAEF64">
+          <End Role="LaboratoryManager" Type="Self.LaboratoryManager" Multiplicity="0..1" />
           <End Role="LaboratoryTests" Type="Self.LaboratoryTest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="LaboratoryManager">
+              <PropertyRef Name="Id_labM" />
             </Principal>
             <Dependent Role="LaboratoryTests">
-              <PropertyRef Name="LabManager" />
+              <PropertyRef Name="Id_labManager" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Laborator__LabTe__3C69FB99">
-          <End Role="Logging" Type="Self.Logging" Multiplicity="0..1" />
+        <Association Name="FK__Laborator__LabTe__5EBF139D">
+          <End Role="LabTech" Type="Self.LabTech" Multiplicity="0..1" />
           <End Role="LaboratoryTests" Type="Self.LaboratoryTest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Logging">
-              <PropertyRef Name="Id_user" />
+            <Principal Role="LabTech">
+              <PropertyRef Name="Id_labTech" />
             </Principal>
             <Dependent Role="LaboratoryTests">
-              <PropertyRef Name="LabTech" />
+              <PropertyRef Name="Id_labTech" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -773,6 +814,7 @@
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="AppointmentStates" EntityType="Self.AppointmentState" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
           <EntitySet Name="LaboratoryManagers" EntityType="Self.LaboratoryManager" />
           <EntitySet Name="LaboratoryTests" EntityType="Self.LaboratoryTest" />
@@ -791,16 +833,20 @@
             <End Role="Logging" EntitySet="Loggings" />
             <End Role="Admin" EntitySet="Admins" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Id_do__36B12243" Association="Self.FK__Appointme__Id_do__36B12243">
-            <End Role="Logging" EntitySet="Loggings" />
+          <AssociationSet Name="FK__Appointme__Id_do__619B8048" Association="Self.FK__Appointme__Id_do__619B8048">
+            <End Role="Doctor" EntitySet="Doctors" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Id_pa__37A5467C" Association="Self.FK__Appointme__Id_pa__37A5467C">
+          <AssociationSet Name="FK__Appointme__Id_pa__60A75C0F" Association="Self.FK__Appointme__Id_pa__60A75C0F">
             <End Role="Patient" EntitySet="Patients" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Id_re__35BCFE0A" Association="Self.FK__Appointme__Id_re__35BCFE0A">
-            <End Role="Logging" EntitySet="Loggings" />
+          <AssociationSet Name="FK__Appointme__Id_re__5FB337D6" Association="Self.FK__Appointme__Id_re__5FB337D6">
+            <End Role="Registration" EntitySet="Registrations" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Statu__6477ECF3" Association="Self.FK__Appointme__Statu__6477ECF3">
+            <End Role="AppointmentState" EntitySet="AppointmentStates" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
           <AssociationSet Name="FK__Laborator__Id_ap__3D5E1FD2" Association="Self.FK__Laborator__Id_ap__3D5E1FD2">
@@ -819,12 +865,12 @@
             <End Role="Logging" EntitySet="Loggings" />
             <End Role="LaboratoryManager" EntitySet="LaboratoryManagers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Laborator__LabMa__3B75D760" Association="Self.FK__Laborator__LabMa__3B75D760">
-            <End Role="Logging" EntitySet="Loggings" />
+          <AssociationSet Name="FK__Laborator__LabMa__5DCAEF64" Association="Self.FK__Laborator__LabMa__5DCAEF64">
+            <End Role="LaboratoryManager" EntitySet="LaboratoryManagers" />
             <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
           </AssociationSet>
-          <AssociationSet Name="FK__Laborator__LabTe__3C69FB99" Association="Self.FK__Laborator__LabTe__3C69FB99">
-            <End Role="Logging" EntitySet="Loggings" />
+          <AssociationSet Name="FK__Laborator__LabTe__5EBF139D" Association="Self.FK__Laborator__LabTe__5EBF139D">
+            <End Role="LabTech" EntitySet="LabTeches" />
             <End Role="LaboratoryTests" EntitySet="LaboratoryTests" />
           </AssociationSet>
           <AssociationSet Name="FK__Laboratory__Code__3A81B327" Association="Self.FK__Laboratory__Code__3A81B327">
@@ -886,6 +932,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentStates">
+            <EntityTypeMapping TypeName="ClinicModel.AppointmentState">
+              <MappingFragment StoreEntitySet="AppointmentState">
+                <ScalarProperty Name="Id_state" ColumnName="Id_state" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Doctors">
             <EntityTypeMapping TypeName="ClinicModel.Doctor">
               <MappingFragment StoreEntitySet="Doctor">
@@ -910,15 +964,15 @@
               <MappingFragment StoreEntitySet="LaboratoryTests">
                 <ScalarProperty Name="Id_labTest" ColumnName="Id_labTest" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="LabManager" ColumnName="LabManager" />
-                <ScalarProperty Name="LabTech" ColumnName="LabTech" />
+                <ScalarProperty Name="Id_labManager" ColumnName="Id_labManager" />
+                <ScalarProperty Name="Id_labTech" ColumnName="Id_labTech" />
                 <ScalarProperty Name="Id_app" ColumnName="Id_app" />
                 <ScalarProperty Name="DoctorsNote" ColumnName="DoctorsNote" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
-                <ScalarProperty Name="DateTaken" ColumnName="DateTaken" />
+                <ScalarProperty Name="RealizationDate" ColumnName="RealizationDate" />
                 <ScalarProperty Name="ManagersNote" ColumnName="ManagersNote" />
-                <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+                <ScalarProperty Name="ManagersApprovalDate" ColumnName="ManagersApprovalDate" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>

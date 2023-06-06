@@ -66,7 +66,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
         {
             Appointment selectedAppointment = (Appointment)receptionTable.SelectedItem;
 
-            selectedAppointment.Status = "Anulowana";
+            selectedAppointment.Status = 3;
             contextDB.SaveChanges();
             refreshView();
         }
@@ -91,7 +91,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
         }
         private void receptionTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (receptionTable.SelectedItem != null && ((Appointment)receptionTable.SelectedItem).Status != "End")
+            if (receptionTable.SelectedItem != null && ((Appointment)receptionTable.SelectedItem).Status == 1)
             {
                 enableButtons();
             }

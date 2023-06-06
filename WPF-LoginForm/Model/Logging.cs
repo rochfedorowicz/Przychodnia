@@ -14,15 +14,6 @@ namespace WPF_LoginForm.Model
     
     public partial class Logging
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Logging()
-        {
-            this.Appointments = new HashSet<Appointment>();
-            this.Appointments1 = new HashSet<Appointment>();
-            this.LaboratoryTests = new HashSet<LaboratoryTest>();
-            this.LaboratoryTests1 = new HashSet<LaboratoryTest>();
-        }
-    
         public int Id_user { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
@@ -30,16 +21,8 @@ namespace WPF_LoginForm.Model
         public bool Active { get; set; }
     
         public virtual Admin Admin { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Appointment> Appointments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Appointment> Appointments1 { get; set; }
         public virtual Doctor Doctor { get; set; }
         public virtual LaboratoryManager LaboratoryManager { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LaboratoryTest> LaboratoryTests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LaboratoryTest> LaboratoryTests1 { get; set; }
         public virtual LabTech LabTech { get; set; }
         public virtual Registration Registration { get; set; }
     }

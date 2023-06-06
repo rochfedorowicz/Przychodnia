@@ -14,11 +14,19 @@ namespace WPF_LoginForm.Model
     
     public partial class Doctor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Doctor()
+        {
+            this.Appointments = new HashSet<Appointment>();
+        }
+    
         public int Id_doc { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int NPWZ { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual Logging Logging { get; set; }
     }
 }

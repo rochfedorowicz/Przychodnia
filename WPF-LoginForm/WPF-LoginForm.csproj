@@ -78,6 +78,9 @@
     <Compile Include="Model\Appointment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\AppointmentState.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Doctor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

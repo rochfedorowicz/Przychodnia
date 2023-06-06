@@ -14,10 +14,18 @@ namespace WPF_LoginForm.Model
     
     public partial class LaboratoryManager
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LaboratoryManager()
+        {
+            this.LaboratoryTests = new HashSet<LaboratoryTest>();
+        }
+    
         public int Id_labM { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
     
         public virtual Logging Logging { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LaboratoryTest> LaboratoryTests { get; set; }
     }
 }
