@@ -108,5 +108,10 @@ namespace WPF_LoginForm.Views.ReceptionistViews
         {
             cancelAppoinmentBtn.IsEnabled = true;
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WPF_LoginForm.Model;
 
 namespace WPF_LoginForm.Views.ReceptionistViews
@@ -37,6 +29,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             contextDB = parent.getContextDB();
             contextDB.Patients.Load();
             PatientTable.ItemsSource = contextDB.Patients.Local;
+            dataPicker.DisplayDateStart = DateTime.Today;
 
             doctorComboBox.ItemsSource = contextDB.Doctors.Where(el => el.Logging.Active == true).ToList() ;
         }
@@ -57,7 +50,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             newAppoinment.Id_reg = App.userId;
             newAppoinment.Id_doc = ((Doctor)doctorComboBox.SelectedItem).Id_doc;
             newAppoinment.Id_pat = ((Patient)PatientTable.SelectedItem).Id_pat;
-            newAppoinment.Description = appointmentDescTextBox.Text;
+            newAppoinment.Description = "";
             //TODO:
             //enum with appoinment state
             newAppoinment.Status = 1;
@@ -146,9 +139,9 @@ namespace WPF_LoginForm.Views.ReceptionistViews
 
         private bool canRegister()
         {
-            bool description = !string.IsNullOrWhiteSpace(appointmentDescTextBox.Text);
+            //bool description = !string.IsNullOrWhiteSpace(appointmentDescTextBox.Text);
 
-            return description && doctorComboBox != null && PatientTable.SelectedItem!=null;
+            return /*description &&*/ doctorComboBox != null && PatientTable.SelectedItem!=null;
 
         }
 
