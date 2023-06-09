@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_LoginForm.Views"
         mc:Ignorable="d"
-        Title="MakeTest" Height="238" Width="575"
+        Title="MakeTest" Height="600" Width="578"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -28,7 +28,7 @@
 
         <Border CornerRadius="10"                    
             BorderThickness="2"
-            Opacity="0.75">
+            Opacity="0.75" Margin="0,0,10,10">
 
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -177,17 +177,18 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <Label Content="Uwagi :" 
+                <Label Content="Uwagi:" 
                        HorizontalAlignment="Left" 
-                       Margin="10,10,0,0" 
+                       Margin="10,8,0,0" 
                        Grid.Row="1" 
                        VerticalAlignment="Top" 
                        Foreground="White"
+                       FontSize="16"
 
                        Width="113"/>
                 <Button x:Name="confirmTestBtn" Content="Zatwierdź badanie" 
                     Foreground="White"
-                    Margin="0,124,233,7" 
+                    Margin="0,297,263,-167" 
                     Grid.Row="1" HorizontalAlignment="Right" Width="318" Click="confirmTestBtn_Click">
 
                     <Button.Style>
@@ -214,15 +215,21 @@
                 </Button>
                 <Button x:Name="cancelTestBtn" Content="Anuluj badanie" 
                     Foreground="White"
-                    Margin="0,129,11,13" 
-                    Grid.Row="1" HorizontalAlignment="Right" Width="239" Background="#FFDC3030" Click="cancelTestBtn_Click">
+                    Margin="0,303,24,-161" 
+                    IsEnabled="false"
+                    Grid.Row="1" HorizontalAlignment="Right" Width="239"  Click="cancelTestBtn_Click">
 
                     <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#168972"/>
+                        <Style TargetType="Button">
                             <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#28AEED"/>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="Gray"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Background" Value="#FFDC3030"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" Value="#FFDC3200"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -239,15 +246,17 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <TextBox x:Name="testRemarksTextBox" 
-                    HorizontalAlignment="Left" 
-                    Margin="66,18,0,0" 
+                <TextBox x:Name="noteInput" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,36,0,0" 
                     Grid.Row="1" 
-                    TextWrapping="Wrap" 
-                    Text="Miejsce na uwagi" 
+                    TextWrapping="Wrap"
                     VerticalAlignment="Top" 
-                    Width="490" Height="101" 
+                    Width="554" Height="101" 
+                    Text ="Wpisz uwagi dotyczące badania."
                     TextChanged="TextBox_TextChanged"
+                    GotFocus="noteInputGotFocus"
+                    LostFocus="noteInputLostFocus"
                     FontWeight="Medium"
                     FontFamily="Montserrat"                            
                     Foreground="White"
@@ -256,11 +265,55 @@
                     BorderThickness="2,2,2,2"
                     VerticalContentAlignment="Top"
                     Padding="0,0,0,0"   
-                    Visibility="Visible" 
+                    Visibility="Visible"
                     IsEnabled="True">
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
                             AlignmentX="Left"/>
+                    </TextBox.Background>
+                </TextBox >
+                <Label Content="Uwagi lekarza:" HorizontalAlignment="Left" Margin="10,181,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+                <Label Content="Wynik:" HorizontalAlignment="Left" Margin="10,318,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox x:Name="doctorsNote" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,207,0,0" 
+                    Grid.Row="1" 
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top" 
+                    Width="554" Height="101"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat"                            
+                    Foreground="Black"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="2,2,2,2"
+                    VerticalContentAlignment="Top"
+                    Padding="0,0,0,0"   
+                    Visibility="Visible" 
+                    IsEnabled="false">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox x:Name="result" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,344,0,0" 
+                    Grid.Row="1" 
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top" 
+                    Width="554" Height="101"
+                    FontWeight="Medium"
+                    FontFamily="Montserrat" 
+                    Foreground="Black"
+                    CaretBrush="LightGray"
+                    BorderBrush="DarkGray"
+                    BorderThickness="2,2,2,2"
+                    VerticalContentAlignment="Top"
+                    Padding="0,0,0,0"   
+                    Visibility="Visible" 
+                    IsEnabled="false">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White"/>
                     </TextBox.Background>
                 </TextBox>
             </Grid>
