@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_LoginForm.Views"
         mc:Ignorable="d"
-        Title="MakeTest" Height="400" Width="700"
+        Title="MakeTest" Height="238" Width="575"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -24,11 +24,11 @@
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>-->
 
-    <Border CornerRadius="12" >
+    <Border CornerRadius="12">
 
-        <Border CornerRadius="10"
+        <Border CornerRadius="10"                    
             BorderThickness="2"
-            Opacity="0.75" RenderTransformOrigin="0.29,0.569">
+            Opacity="0.75">
 
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -46,9 +46,6 @@
             </Border.Background>
 
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
@@ -78,12 +75,53 @@
                                 FontSize="16"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"
-                                Grid.Column="1" HorizontalAlignment="Center" Width="25" Click="btnMinimize_Click"
+                                Grid.Column="1" HorizontalAlignment="Left" Width="25" Click="btnMinimize_Click"
                                >
 
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                            CornerRadius="9"
+                                            Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <Button x:Name="btnBack"                           
+                                BorderThickness="0"
+                                Content="↶"
+                                Foreground="White"
+                                FontSize="16"
+                                FontFamily="Montserrat"
+                                Cursor="Hand"
+                                Margin="491,0,0,0" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#C18620"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background" Value="#278BEF"/>
@@ -141,16 +179,16 @@
                 </Grid>
                 <Label Content="Wynik :" 
                        HorizontalAlignment="Left" 
-                       Margin="46,142,0,0" 
+                       Margin="10,10,0,0" 
                        Grid.Row="1" 
                        VerticalAlignment="Top" 
                        Foreground="White"
 
-                       Width="112"/>
+                       Width="113"/>
                 <Button x:Name="fininshTestBtn" Content="Zakończ badanie" 
                     Foreground="White"
-                    Margin="0,275,401,3" 
-                    Grid.Row="1" HorizontalAlignment="Right" Width="249" Click="fininshTestBtn_Click">
+                    Margin="0,124,233,7" 
+                    Grid.Row="1" HorizontalAlignment="Right" Width="318" Click="fininshTestBtn_Click">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -176,8 +214,8 @@
                 </Button>
                 <Button x:Name="cancelTestBtn" Content="Anuluj badanie" 
                     Foreground="White"
-                    Margin="0,282,56,10" 
-                    Grid.Row="1" HorizontalAlignment="Right" Width="240" Background="#FFDC3030" Click="cancelTestBtn_Click">
+                    Margin="0,129,11,13" 
+                    Grid.Row="1" HorizontalAlignment="Right" Width="239" Background="#FFDC3030" Click="cancelTestBtn_Click">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -202,79 +240,13 @@
                     </Button.Template>
                 </Button>
                 <TextBox x:Name="resultTextBox" 
-                    HorizontalAlignment="Center" 
-                    Margin="0,144,0,0" 
+                    HorizontalAlignment="Left" 
+                    Margin="66,18,0,0" 
                     Grid.Row="1" 
                     TextWrapping="Wrap" 
                     Text="Miejsce na wynik" 
                     VerticalAlignment="Top" 
                     Width="490" 
-                    Height="101"
-                    
-                    FontWeight="Medium"
-                    FontFamily="Montserrat"                            
-                    Foreground="White"
-                    CaretBrush="LightGray"
-                    BorderBrush="DarkGray"
-                    BorderThickness="2,2,2,2"
-                    VerticalContentAlignment="Top"
-                    Padding="0,0,0,0"   
-                    Visibility="Visible" 
-                    IsEnabled="True" TextChanged="resultTextBox_TextChanged">
-                    <TextBox.Background>
-                        <ImageBrush     Stretch="None"
-                            AlignmentX="Left"/>
-                    </TextBox.Background>
-                </TextBox>
-                <TextBox x:Name="DoctorsNote" 
-                    HorizontalAlignment="Left" 
-                    Margin="103,31,0,0" 
-                    Grid.Row="1" 
-                    TextWrapping="Wrap" 
-                    Text="-----------" 
-                    VerticalAlignment="Top" 
-                    Width="268" 
-                    Height="101"
-                    
-                    FontWeight="Medium"
-                    FontFamily="Montserrat"                            
-                    Foreground="White"
-                    CaretBrush="LightGray"
-                    BorderBrush="DarkGray"
-                    BorderThickness="2,2,2,2"
-                    VerticalContentAlignment="Top"
-                    Padding="0,0,0,0"   
-                    Visibility="Visible" 
-                    IsEnabled="True">
-                    <TextBox.Background>
-                        <ImageBrush     Stretch="None"
-                            AlignmentX="Left"/>
-                    </TextBox.Background>
-                </TextBox>
-                <Label Content="Uwagi lekarza :" 
-                    HorizontalAlignment="Left" 
-                    Margin="103,0,0,0" 
-                    Grid.Row="1" 
-                    VerticalAlignment="Top" 
-                    Foreground="White"
-
-                    Width="113"/>
-                <Label Content="Uwagi kierownika :" 
-                    HorizontalAlignment="Left" 
-                    Margin="400,0,0,0" 
-                    Grid.Row="1" 
-                    VerticalAlignment="Top" 
-                    Foreground="White"
-
-                    Width="112"/>
-                <TextBox x:Name="TechNote" 
-                    HorizontalAlignment="Left" 
-                    Margin="400,31,0,0" 
-                    Grid.Row="1" 
-                    TextWrapping="Wrap" 
-                    Text="-----------" 
-                    VerticalAlignment="Top" 
-                    Width="268" 
                     Height="101"
                     
                     FontWeight="Medium"
