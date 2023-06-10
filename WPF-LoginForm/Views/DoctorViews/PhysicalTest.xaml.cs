@@ -19,9 +19,11 @@ namespace WPF_LoginForm.Views.DoctorViews
     /// </summary>
     public partial class PhysicalTest : Window
     {
-        public PhysicalTest()
+        public PhysicalTest(string nameOfExamination, string result)
         {
             InitializeComponent();
+            this.nameOfExamination.Content = nameOfExamination;
+            this.result.Text = result;
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -40,7 +42,7 @@ namespace WPF_LoginForm.Views.DoctorViews
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

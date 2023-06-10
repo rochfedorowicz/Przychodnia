@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Receptionis" Height="450" Width="800"
+        Title="Receptionis" Height="218.786" Width="800"
         WindowStyle="None"
       ResizeMode="NoResize"
       WindowStartupLocation="CenterScreen"
@@ -165,53 +165,50 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <Button x:Name="confirmExaminationBtn" Content="Zatwierdź" 
-                    Foreground="White"
-                    Margin="544,312,0,0" 
-                    Grid.Row="1" Background="#FFDC3030" Visibility="Visible" Click="confirmExaminationBtn_Click">
-
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Red"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#28AEED"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="200" Height="40"
-                                CornerRadius="20"
-                                Background="{TemplateBinding Background}" Margin="-6,-12,15,3">
-                                <ContentPresenter VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Label Content="Wynik :" HorizontalAlignment="Left" Margin="37,101,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="97" Visibility="Visible"/>
-                <TextBox x:Name="physicalExaminationResultTextBox"
-                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
-                    FontSize="13"
+                <Label 
+                    Content="Wynik :" 
+                    HorizontalAlignment="Left" 
+                    Margin="37,54,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Foreground="White" 
+                    Width="97"
+                    Visibility="Visible"
+                />
+                <Label 
+                    Name="nameOfExamination" 
+                    Content="" 
+                    HorizontalAlignment="Left" 
+                    Margin="37,28,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Foreground="White" 
+                    Width="698" 
+                    Visibility="Visible"
+                    FontSize="14"
+                />
+                <TextBox x:Name="result" 
+                    HorizontalAlignment="Left" 
+                    Margin="88,59,0,0" 
+                    Grid.Row="1" 
+                    TextWrapping="Wrap" 
+                    VerticalAlignment="Top" 
+                    Width="647" 
+                    Height="97"
                     FontWeight="Medium"
                     FontFamily="Montserrat"                            
                     Foreground="White"
                     CaretBrush="LightGray"
                     BorderBrush="DarkGray"
-                    BorderThickness="0,0,0,2"
-                    Height="28"
-                    VerticalContentAlignment="Center"
-                    Margin="240,99,169,289"
-                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
-
+                    BorderThickness="2,2,2,2"
+                    VerticalContentAlignment="Top"
+                    Padding="0,0,0,0"   
+                    Visibility="Visible" 
+                    IsReadOnly="True">
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
                             AlignmentX="Left"/>
                     </TextBox.Background>
-
                 </TextBox>
             </Grid>
         </Border>

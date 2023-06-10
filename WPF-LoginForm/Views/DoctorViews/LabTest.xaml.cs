@@ -19,9 +19,12 @@ namespace WPF_LoginForm.Views.DoctorViews
     /// </summary>
     public partial class LabTest : Window
     {
-        public LabTest()
+        public LabTest(string nameOfLabTest, string result, string remarks)
         {
             InitializeComponent();
+            this.nameOfLabTest.Content = nameOfLabTest;
+            this.result.Text = result;
+            this.remarks.Text = remarks;
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
