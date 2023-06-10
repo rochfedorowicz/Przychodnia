@@ -11,7 +11,7 @@
       WindowStartupLocation="CenterScreen"
       Background="Transparent"
       AllowsTransparency="True"
-        MouseDown="Window_MouseDown"
+        MouseDown="Window_MouseDown" Height="517"
         >
 
 
@@ -101,39 +101,6 @@
 
                     </Button>
 
-                    <Button x:Name="btnBack"                           
-                                BorderThickness="0"
-                                Content="↶"
-                                Foreground="White"
-                                FontSize="16"
-                                FontFamily="Montserrat"
-                                Cursor="Hand"
-                                 Margin="716,0,0,0">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#C18620"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                            CornerRadius="9"
-                                            Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                          HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-
-                    </Button>
-
                     <Button x:Name="btnClose"                          
                                 BorderThickness="0"
                                 Content="X"
@@ -168,10 +135,8 @@
                     </Button>
                 </Grid>
                 <Button x:Name="doTestBtn" Content="Wykonaj badanie" 
-                    HorizontalAlignment="Center" 
                     Foreground="White"
-                    Margin="0,330,0,10" 
-                    Width="302" Grid.Row="1" Click="doTestBtn_Click" Cursor="Hand">
+                    Margin="278,387,313,24" Grid.Row="1" Click="doTestBtn_Click" Cursor="Hand">
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -195,34 +160,58 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <ListView d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="testTable" Grid.Row="1" Foreground="White" OpacityMask="#FF52144F" HorizontalAlignment="Center" BorderBrush="#FFE0E1E4" UseLayoutRounding="False" SelectionMode="Single" Background="{x:Null}" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="315">
+                <ListView 
+                    d:ItemsSource="{Binding joinedData}" 
+                    x:Name="testTable" 
+                    Grid.Row="1" 
+                    Foreground="White" 
+                    BorderBrush="Silver" 
+                    UseLayoutRounding="False" 
+                    SelectionMode="Single" 
+                    Background="{x:Null}" 
+                    VerticalContentAlignment="Center"
+                    SelectionChanged=" receptionTable_SelectionChanged" Height="305" VerticalAlignment="Top" Margin="-2,59,2,0" Width="820">
                     <ListView.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListViewItem}">
-                            <Setter Property="BorderBrush" Value="LightGray" />
-                            <Setter Property="BorderThickness" Value="0,0,0,1" />
-
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="YellowGreen" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Gray" />
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="id__badania" Width="60" DisplayMemberBinding="{Binding id_badania}" />
-                            <GridViewColumn Header="Kod" Width="50" DisplayMemberBinding="{Binding kod}" />
-                            <GridViewColumn Header="Data" Width="100" DisplayMemberBinding="{Binding data}" />
-                            <GridViewColumn Header="Przydział__Laboranta" Width="120" DisplayMemberBinding="{Binding przydział_laboranta}"/>
-                            <GridViewColumn Header="Przydział__Kierownika" Width="120" DisplayMemberBinding="{Binding przydzial_kierownika}"/>
-                            <GridViewColumn Header="Uwagi__lekarskie" Width="120" DisplayMemberBinding="{Binding uwagi_lekarskie}"/>
-                            <GridViewColumn Header="Uwagi__kierownika" Width="120" DisplayMemberBinding="{Binding uwagi_kierownika}"/>
-                            <GridViewColumn Header="Uwagi" Width="120" DisplayMemberBinding="{Binding uwagi}">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
+                            <GridViewColumn Header="Kod" Width="50" DisplayMemberBinding="{Binding Code}" />
+                            <GridViewColumn Header="Data" Width="100" DisplayMemberBinding="{Binding RealizationDate, StringFormat='{}{0:dd.MM.yyyy hh:mm}'}" />
+                            <GridViewColumn Header="Imię" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Nazwisko" Width="120" DisplayMemberBinding="{Binding Surname}"/>
+                            <GridViewColumn Header="Wynik" Width="300" DisplayMemberBinding="{Binding Result}"/>
+                            <GridViewColumn Header="Status" Width="120" DisplayMemberBinding="{Binding Status}">
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <TextBox x:Name="testIdTextBox"
+
+                <Rectangle HorizontalAlignment="Center" Height="39" Margin="0,19,0,0" Grid.Row="1" Stroke="DarkGray" Fill="#2B246A" VerticalAlignment="Top" Width="880"/>
+                <ComboBox
+                    Name="statusFilterCombo"
+                    HorizontalAlignment="Left"
+                    Margin="639,27,0,0"
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    Width="123">
+                    <ComboBoxItem>Wszystkie</ComboBoxItem>
+                    <ComboBoxItem>End</ComboBoxItem>
+                    <ComboBoxItem>In progress</ComboBoxItem>
+                    <ComboBoxItem>Approved</ComboBoxItem>
+                    <ComboBoxItem>Rejected</ComboBoxItem>
+                </ComboBox>
+                <Label Content="Status:" Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="577,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <TextBox x:Name="surnameTextBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="13"
                     FontWeight="Medium"
@@ -231,10 +220,9 @@
                     CaretBrush="LightGray"
                     BorderBrush="DarkGray"
                     BorderThickness="0,0,0,2"
-                    Height="28"
                     VerticalContentAlignment="Center"
-                    Margin="128,354,598,34"
-                    Padding="20,0,0,0"  Grid.Row="1">
+                    Margin="161,24,713,431"
+                    Padding="20,0,0,0"  Grid.Row="1" TextChanged="surnameTextBox_TextChanged" Width="80">
 
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
@@ -242,7 +230,42 @@
                     </TextBox.Background>
 
                 </TextBox>
-                <Label Content="     Podaj&#xD;&#xA;id__badania :" HorizontalAlignment="Left" Margin="24,342,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Height="52" Width="90"/>
+                <Label Content="Surname:" Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="80,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Button x:Name="filterBtn" Content="Filtruj"
+                        HorizontalAlignment="Left"
+                        Margin="820,26,0,0"
+                        Grid.Row="1"
+                        VerticalAlignment="Top"
+                        Height="25"
+                        Width="64"
+                        Foreground="White"
+                        Click="filterBtn_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#462AD8"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <DatePicker x:Name="dataFilterPicker"
+                            HorizontalAlignment="Left"
+                            Margin="452,27,0,0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top">
+                </DatePicker>
+                <Label Content="Data:" Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="401,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
             </Grid>
         </Border>
     </Border>
