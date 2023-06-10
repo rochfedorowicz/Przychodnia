@@ -41,7 +41,7 @@ namespace WPF_LoginForm
                               nextScreen = new Receptionist();
                               break;
                           case "DOC":
-                              nextScreen = new Doctor();
+                              nextScreen = new Doctor(userId);
                               break;
                           case "LABM":
                               nextScreen = new LabManager();

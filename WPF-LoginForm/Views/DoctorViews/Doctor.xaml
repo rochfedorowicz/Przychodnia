@@ -6,14 +6,11 @@
         mc:Ignorable="d"
         Title="Doctor" Height="450" Width="800"
         WindowStyle="None"
-      ResizeMode="NoResize"
-      WindowStartupLocation="CenterScreen"
-      Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
         MouseDown="Window_MouseDown"
-      >
-
-
-   
+>
 
     <Border CornerRadius="12">
 
@@ -51,13 +48,16 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Doctor"
-                                   Foreground="DarkGray"
-                                   FontSize="10"
-                                   FontFamily="Montserrat"
-                                   Grid.Column="0"
-                                   VerticalAlignment="Center"
-                                   Margin="10,0,0,0"/>
+                    <TextBlock 
+                        Name="Title"
+                        Text="Doctor"
+                        Foreground="DarkGray"
+                        FontSize="10"
+                        FontFamily="Montserrat"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Margin="10,0,0,0"
+                    />
 
                     <Button x:Name="btnMinimize"                           
                                 BorderThickness="0"
@@ -159,10 +159,16 @@
                     </Button>
 
                 </Grid>
-                <Button x:Name="acknowledgeAppoinmentBtn" Content="Zrealizuj  wizytę" 
+                <Button 
+                    x:Name="acknowledgeAppoinmentBtn" 
+                    Content="Otwórz wizytę" 
                     Foreground="White"
-                    Margin="193,328,0,18" 
-                    Grid.Row="1" HorizontalAlignment="Left" Width="310" Click="acknowledgeAppoinmentBtn_Click">
+                    Margin="497,358,0,10" 
+                    Grid.Row="1" 
+                    HorizontalAlignment="Left" 
+                    Width="286" 
+                    Click="acknowledgeAppoinmentBtn_Click"
+                >
 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -177,7 +183,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="280" Height="60"
+                            <Border Width="280" Height="40"
                                 CornerRadius="20"
                                 Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
@@ -186,24 +192,66 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <ListView d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="appoinmentTable" Grid.Row="1" Foreground="White" OpacityMask="#FF52144F" HorizontalAlignment="Center" BorderBrush="#FFE0E1E4" UseLayoutRounding="False" SelectionMode="Single" Background="{x:Null}" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="315">
+                <ListView 
+                    d:ItemsSource="{Binding Appointments}" 
+                    x:Name="appoinmentTable" 
+                    Grid.Row="1" 
+                    Foreground="White" 
+                    OpacityMask="#FF52144F" 
+                    HorizontalAlignment="Center" 
+                    BorderBrush="#FFE0E1E4" 
+                    UseLayoutRounding="False" 
+                    SelectionMode="Single" 
+                    Background="{x:Null}" 
+                    VerticalContentAlignment="Center" 
+                    VerticalAlignment="Top" 
+                    Height="313" 
+                    Margin="13,40,13,0" Width="770"
+                    MouseDoubleClick="appoinmentTable_MouseDoubleClick"
+                >
                     <ListView.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListViewItem}">
-                            <Setter Property="BorderBrush" Value="LightGray" />
-                            <Setter Property="BorderThickness" Value="0,0,0,1" />
-
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="YellowGreen" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Gray" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="id__wizyty" Width="60" DisplayMemberBinding="{Binding id_wizity}" />
-                            <GridViewColumn Header="Lek__wyk" Width="80" DisplayMemberBinding="{Binding lek_wyk}" />
-                            <GridViewColumn Header="id__pacjenta" Width="80" DisplayMemberBinding="{Binding id_pacj}"/>
-                            <GridViewColumn Header="Status" Width="120" DisplayMemberBinding="{Binding status}"/>
-                            <GridViewColumn Header="Diagnoza" Width="120" DisplayMemberBinding="{Binding status}"/>
-                            <GridViewColumn Header="Opis" Width="120" DisplayMemberBinding="{Binding status}"/>
-                            <GridViewColumn Header="Data__rejestracji" Width="120" DisplayMemberBinding="{Binding data_rejestracji}"/>
-                            <GridViewColumn Header="Data__zak__anul" Width="120" DisplayMemberBinding="{Binding data_zak_anul}">
+                            <GridViewColumn Header="ID" Width="20" 
+                                DisplayMemberBinding="{Binding Id_app}"/>
+                            <GridViewColumn Header="Doktor" Width="120">
+                                <GridViewColumn.DisplayMemberBinding>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Doctor.Name" />
+                                        <Binding Path="Doctor.Surname" />
+                                    </MultiBinding>
+                                </GridViewColumn.DisplayMemberBinding>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Pacjent" Width="120">
+                                <GridViewColumn.DisplayMemberBinding>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Patient.Name" />
+                                        <Binding Path="Patient.Surname" />
+                                    </MultiBinding>
+                                </GridViewColumn.DisplayMemberBinding>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Status" Width="80">
+                                <GridViewColumn.DisplayMemberBinding>
+                                    <Binding Path="AppointmentState.State" />
+                                </GridViewColumn.DisplayMemberBinding>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Diagnoza" Width="100" DisplayMemberBinding="{Binding Diagnosis}"/>
+                            <GridViewColumn Header="Opis" Width="120" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="Data rejestracji" Width="100" DisplayMemberBinding="{Binding Reg_date, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+                            <GridViewColumn Header="Data anulowania" Width="100" DisplayMemberBinding="{Binding End_date, StringFormat='{}{0:dd.MM.yyyy}'}">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
@@ -213,54 +261,109 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Label Content="   Podaj&#xA;id__wizyty :" HorizontalAlignment="Left" Margin="24,342,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Height="52" Width="90"/>
-                <TextBox x:Name="appoinmentIdTextBox"
-                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
-                    FontSize="13"
-                    FontWeight="Medium"
-                    FontFamily="Montserrat"                            
-                    Foreground="White"
-                    CaretBrush="LightGray"
-                    BorderBrush="DarkGray"
-                    BorderThickness="0,0,0,2"
-                    Height="28"
-                    VerticalContentAlignment="Center"
-                    Margin="92,349,620,39"
-                    Padding="20,0,0,0"  Grid.Row="1">
-
-                    <TextBox.Background>
-                        <ImageBrush     Stretch="None"
-                            AlignmentX="Left"/>
-                    </TextBox.Background>
-
-                </TextBox>
-                <Button x:Name="cancelAppointmentBtn" Content="Anuluj wizytę" 
-                    Foreground="White"
-                    Margin="487,329,0,22" 
-                    Grid.Row="1" HorizontalAlignment="Left" Width="309"  Background="#FFDC3030" Click="cancelAppointmentBtn_Click">
-
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#168972"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#28AEED"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="280" Height="60"
-                                CornerRadius="20"
-                                Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                <ComboBox d:ItemsSource="{Binding Doctors}"
+                          HorizontalAlignment="Left" 
+                          Margin="234,14,0,0" 
+                          Grid.Row="1" 
+                          VerticalAlignment="Top" 
+                          Width="120"
+                          Name="filterDoctorsNameCombobox" 
+                          SelectionChanged="selectionChanged"
+                >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Name" />
+                                        <Binding Path="Surname" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox d:ItemsSource="{Binding AppointmentState}"
+                    Name="filterStatusCombobox" 
+                    HorizontalAlignment="Left" 
+                    Margin="605,14,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Width="120"
+                    SelectionChanged="selectionChanged"
+                >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <Binding Path="State" />
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <DatePicker 
+                    Name="filterDataPicker" 
+                    HorizontalAlignment="Left" 
+                    Margin="418,11,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    Width="114"
+                    SelectedDateChanged="selectionChanged" 
+                />
+                <CheckBox 
+                    Name="shouldFilterByStatusCheckbox" 
+                    Foreground="White" 
+                    Content="statusu" 
+                    HorizontalAlignment="Left" 
+                    Margin="539,16,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    FontWeight="Bold" 
+                    Click="shouldFilterByStatusCheckbox_Checked"
+                />
+                <CheckBox 
+                    Name="shouldFilterDayCheckbox" 
+                    Foreground="White" 
+                    Content="dnia" 
+                    HorizontalAlignment="Left"
+                    Margin="368,16,0,385" 
+                    FontWeight="Bold" 
+                    Grid.Row="1" 
+                    Click="shouldFilterDayCheckbox_Checked"
+                />
+                <CheckBox 
+                    Name="shouldFilterByDoctorsNameCheckbox" 
+                    Foreground="White" 
+                    Content="lekarza" 
+                    HorizontalAlignment="Left" 
+                    Margin="169,16,0,0" 
+                    VerticalAlignment="Top" 
+                    FontWeight="Bold" 
+                    Grid.Row="1" 
+                    Click="shouldFilterByDoctorsNameCheckbox_Checked"
+                />
+                <Label 
+                    Name="mainLabel"
+                    Content="Filtruj względem" 
+                    Foreground="White" 
+                    HorizontalAlignment="Left" 
+                    Margin="60,10,0,0" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Top" 
+                    FontWeight="Bold"
+                />
+                <TextBlock 
+                    HorizontalAlignment="Left" 
+                    Margin="37,374,0,0" 
+                    Grid.Row="1" 
+                    TextWrapping="Wrap" 
+                    Text="" 
+                    VerticalAlignment="Top"
+                    Foreground="#D7596D" FontWeight="Bold" Width="446"
+                    Name="errorMessageTextBlock"
+                    Visibility="Hidden"
+                />
             </Grid>
         </Border>
     </Border>

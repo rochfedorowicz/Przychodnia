@@ -38,7 +38,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             contextDB.Patients.Load();
             PatientTable.ItemsSource = contextDB.Patients.Local;
 
-            doctorComboBox.ItemsSource = contextDB.Doctors.Where(el => el.Logging.Active == true).ToList() ;
+            doctorComboBox.ItemsSource = contextDB.Doctors.Where(el => el.Logging.Active == true).ToList();
         }
 
         private void filterPatients()
