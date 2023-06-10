@@ -31,9 +31,11 @@ namespace WPF_LoginForm.Views.LabManagerViews
         private String result;
         private String statusFilter;
         private String dataFilter;
+        private String surnameFilter;
         private int chosenTestId;
         IEnumerable<dynamic> joinedData;
         IEnumerable<dynamic> filteredData;
+        IEnumerable<dynamic> surnames;
 
         public ClinicEntities getContextDB()
         {
@@ -53,9 +55,13 @@ namespace WPF_LoginForm.Views.LabManagerViews
                              on a.Id_pat equals p.Id_pat
                              select new { lt.Id_labTest, lt.Code, lt.RealizationDate, p.Name, p.Surname, lt.DoctorsNote, lt.ManagersNote, lt.Result, lt.Status };
 
+            surnames = joinedData.Select(data => data.Surname).Distinct();
+            surnameFilterCombo.ItemsSource = surnames.ToList();
+
             joinedData = joinedData.OrderByDescending(data => data.RealizationDate);
             filteredData = joinedData.Where(data => data.Status == "End");
             laboratoryTestsTable.ItemsSource = filteredData.ToList();
+
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -86,6 +92,7 @@ namespace WPF_LoginForm.Views.LabManagerViews
             filteredData = joinedData;
             statusFilter = statusFilterCombo.Text;
             dataFilter = dataFilterPicker.Text;
+            surnameFilter = surnameFilterCombo.Text;
             if (statusFilter != "Wszystkie" && statusFilter != "")
             {
                 filteredData = filteredData.Where(data => data.Status == statusFilter);
@@ -94,6 +101,10 @@ namespace WPF_LoginForm.Views.LabManagerViews
             {
                 DateTime date = DateTime.ParseExact(dataFilter, "dd.MM.yyyy", CultureInfo.InvariantCulture);
                 filteredData = filteredData.Where(data => data.RealizationDate == date);
+            }
+            if (surnameFilter != "")
+            {
+                filteredData = filteredData.Where(data => data.Surname == surnameFilter);
             }
             laboratoryTestsTable.ItemsSource = filteredData.ToList();
             

@@ -12,7 +12,7 @@
       WindowStartupLocation="CenterScreen"
       Background="Transparent"
       AllowsTransparency="True"
-        MouseDown="Window_MouseDown" Height="613" Width="960"
+        MouseDown="Window_MouseDown" Height="536" Width="960"
       >
 
 
@@ -24,7 +24,7 @@
 
         <Border CornerRadius="10"                    
             BorderThickness="2"
-            Opacity="0.75" Margin="0,0,0,99">
+            Opacity="0.75" Margin="0,0,0,10">
 
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -241,14 +241,16 @@
                 <Rectangle HorizontalAlignment="Center" Height="39" Margin="0,19,0,0" Grid.Row="1" Stroke="DarkGray" Fill="#2B246A" VerticalAlignment="Top" Width="880"/>
                 <ComboBox
                     Name="statusFilterCombo"
+                    Text="End"
                     HorizontalAlignment="Left"
                     Margin="639,27,0,0"
                     Grid.Row="1"
                     VerticalAlignment="Top"
                     Width="123">
                     <ComboBoxItem>Wszystkie</ComboBoxItem>
-                    <ComboBoxItem>End</ComboBoxItem>
+                    <ComboBoxItem>Open</ComboBoxItem>
                     <ComboBoxItem>In progress</ComboBoxItem>
+                    <ComboBoxItem>End</ComboBoxItem>
                     <ComboBoxItem>Approved</ComboBoxItem>
                     <ComboBoxItem>Rejected</ComboBoxItem>
                 </ComboBox>
@@ -287,6 +289,17 @@
                             VerticalAlignment="Top">
                 </DatePicker>
                 <Label Content="Data:" Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="401,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="Nazwisko:" Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="180,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <ComboBox
+                    x:Name="surnameFilterCombo"
+                    ItemsSource="{Binding surnames}"
+                    IsEditable="true"
+                    HorizontalAlignment="Left"
+                    Margin="265,27,0,0"
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    Width="123">
+                </ComboBox>
 
             </Grid>
         </Border>
