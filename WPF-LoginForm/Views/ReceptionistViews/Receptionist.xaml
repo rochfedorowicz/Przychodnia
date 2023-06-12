@@ -354,7 +354,7 @@
                     BorderBrush="DarkGray"
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
-                    Margin="1369,62,10,493"
+                    Margin="1369,57,10,493"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
@@ -371,7 +371,7 @@
                     BorderBrush="DarkGray"
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
-                    Margin="1369,36,10,519"
+                    Margin="1369,31,10,519"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
@@ -388,7 +388,7 @@
                     BorderBrush="DarkGray"
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
-                    Margin="1369,88,10,467"
+                    Margin="1369,83,10,467"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
@@ -405,7 +405,7 @@
                     BorderBrush="DarkGray"
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
-                    Margin="1369,140,10,415"
+                    Margin="1369,135,10,415"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
@@ -422,7 +422,7 @@
                     BorderBrush="DarkGray"
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
-                    Margin="1369,166,10,389"
+                    Margin="1369,161,10,389"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
