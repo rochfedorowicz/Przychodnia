@@ -166,7 +166,6 @@ C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LabManagerViews\LabMana
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\ReceptionistViews\NewPatient.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\ReceptionistViews\Receptionist.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\ReceptionistViews\ReceptionistRegister.g.cs
-C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\ReceptionistViews\RegisterVisit.g.cs
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LabAssistantViews\MakeTest.baml
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LabManagerViews\ApproveTest.baml
 C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\obj\Debug\Views\LabManagerViews\LabManager.baml

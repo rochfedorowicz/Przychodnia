@@ -35,6 +35,9 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             contextDB = new ClinicEntities();
             contextDB.Appointments.Load();
             receptionTable.ItemsSource = contextDB.Appointments.Local;
+
+            checkBoxRegistered.IsChecked = true;
+            checkBoxToday.IsChecked = true;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -69,6 +72,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             selectedAppointment.Status = 3;
             contextDB.SaveChanges();
             refreshView();
+            filterAppoitments(null,null);
         }
 
         private void addPatientBtn_Click(object sender, RoutedEventArgs e)
@@ -108,10 +112,38 @@ namespace WPF_LoginForm.Views.ReceptionistViews
         {
             cancelAppoinmentBtn.IsEnabled = true;
         }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void filterAppoitments(object sender, RoutedEventArgs e)
         {
+            bool appoitmentRegistered = checkBoxRegistered.IsChecked == true;
+            bool appoitmentFinalized = checkBoxDone.IsChecked == true;
+            bool appoitmentCanceled = checkBoxCanceled.IsChecked == true;
+            bool onlyTodayAppoinments = checkBoxToday.IsChecked == true;
 
+            DateTime today = DateTime.Today;
+            DateTime startDate = today.Date;
+            DateTime endDate = today.Date.AddDays(1).AddTicks(-1);
+
+            if (appoitmentRegistered || appoitmentFinalized || appoitmentCanceled)
+            {
+                var appoitments = contextDB.Appointments.Where(el =>
+                    el.Patient.Name.StartsWith(pNameTextBox.Text) &&
+                    el.Patient.Surname.StartsWith(pSurameTextBox.Text) &&
+                    el.Patient.Pesel.StartsWith(pPeselTextBox.Text) &&
+                    el.Doctor.Name.StartsWith(dNameTextBox.Text) &&
+                    el.Doctor.Surname.StartsWith(dSurameTextBox.Text) &&
+                    (onlyTodayAppoinments ? el.Reg_date >= startDate && el.Reg_date <= endDate : true) &&
+                    (
+                        (el.AppointmentState.Id_state == 1 && appoitmentRegistered) ||
+                        (el.AppointmentState.Id_state == 2 && appoitmentFinalized) ||
+                        (el.AppointmentState.Id_state == 3 && appoitmentCanceled)
+                    )).ToList();
+
+                receptionTable.ItemsSource = appoitments;
+            }
+            else
+            {
+                receptionTable.ItemsSource = null;
+            }
         }
     }
 }

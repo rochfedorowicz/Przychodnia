@@ -341,12 +341,11 @@
                 <Label Content="Nazwisko:" HorizontalAlignment="Left" Margin="1304,156,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible" Height="26"/>
                 <Label Content="DOKTOR" HorizontalAlignment="Left" Margin="1303,104,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible" Height="26"/>
                 <Label Content="STATUS" HorizontalAlignment="Left" Margin="1304,182,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible" Height="26"/>
-                <CheckBox x:Name="checkBoxRegistered" Content="Umówiona" HorizontalAlignment="Left" Margin="1310,206,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="84"/>
-                <CheckBox x:Name="checkBoxDone" Content="Zrealizowana" HorizontalAlignment="Left" Margin="1399,206,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="92"/>
-                <CheckBox x:Name="checkBoxCanceled" Content="Anulowana" HorizontalAlignment="Left" Margin="1504,206,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="92"/>
+                <CheckBox x:Name="checkBoxRegistered" Content="Umówiona" HorizontalAlignment="Left" Margin="1310,206,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="84" Checked="filterAppoitments" Unchecked="filterAppoitments"/>
+                <CheckBox x:Name="checkBoxDone" Content="Zrealizowana" HorizontalAlignment="Left" Margin="1399,206,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="92" Checked="filterAppoitments" Unchecked="filterAppoitments"/>
+                <CheckBox x:Name="checkBoxCanceled" Content="Anulowana" HorizontalAlignment="Left" Margin="1504,206,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="92" Checked="filterAppoitments" Unchecked="filterAppoitments"/>
                 <Label Content="DATA" HorizontalAlignment="Left" Margin="1304,221,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible" Height="26"/>
-                <CheckBox x:Name="checkBoxToday" Content="Tylko dzisiajsze wizyty" HorizontalAlignment="Left" Margin="1310,247,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="141"/>
-                <DatePicker x:Name="dataPicker" HorizontalAlignment="Left" Margin="1310,267,0,0" Grid.Row="1" VerticalAlignment="Top" Width="218"/>
+                <CheckBox x:Name="checkBoxToday" Content="Tylko dzisiajsze wizyty" HorizontalAlignment="Left" Margin="1310,247,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Width="141" Checked="filterAppoitments" Unchecked="filterAppoitments"/>
                 <TextBox x:Name="pSurameTextBox"
                     FontWeight="Medium"
                     FontFamily="Montserrat"                            
@@ -356,7 +355,7 @@
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
                     Margin="1369,62,10,493"
-                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="">
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
@@ -373,7 +372,7 @@
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
                     Margin="1369,36,10,519"
-                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="">
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
@@ -390,7 +389,7 @@
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
                     Margin="1369,88,10,467"
-                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="">
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
@@ -407,7 +406,7 @@
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
                     Margin="1369,140,10,415"
-                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="">
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
@@ -424,7 +423,7 @@
                     BorderThickness="0,0,0,2"
                     VerticalContentAlignment="Center"
                     Margin="1369,166,10,389"
-                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" Text="">
+                    Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible" TextChanged="filterAppoitments">
 
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"

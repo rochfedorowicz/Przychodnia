@@ -9,12 +9,12 @@ WPF_LoginForm
 none
 false
 DEBUG;TRACE
-C:\Users\Dorota\source\repos\Nowy folder\Przychodnia\WPF-LoginForm\App.xaml
-18194950125
-2739969757
-43-206869594
-181472322873
-CustomControls\BindablePasswordBox.xaml;Views\AdminViews\Admin.xaml;Views\AdminViews\AdminEditUser.xaml;Views\DoctorViews\Doctor.xaml;Views\DoctorViews\DoctorVisit.xaml;Views\DoctorViews\InterviewWithThePatient.xaml;Views\DoctorViews\LabTest.xaml;Views\DoctorViews\PhysicalTest.xaml;Views\LabAssistantViews\LabAssistant.xaml;Views\LabAssistantViews\MakeTest.xaml;Views\LabManagerViews\ApproveTest.xaml;Views\LabManagerViews\LabManager.xaml;Views\LabManagerViews\LabManagerApprove.xaml;Views\LoginView.xaml;Views\ReceptionistViews\NewPatient.xaml;Views\ReceptionistViews\Receptionist.xaml;Views\ReceptionistViews\ReceptionistRegister.xaml;Views\ReceptionistViews\RegisterVisit.xaml;
+C:\Users\Jakub\Desktop\TAB\WPF-LoginForm\App.xaml
+17-1415906327
+2-1556844510
+411158075917
+18135471518
+CustomControls\BindablePasswordBox.xaml;Views\AdminViews\Admin.xaml;Views\AdminViews\AdminEditUser.xaml;Views\DoctorViews\Doctor.xaml;Views\DoctorViews\DoctorVisit.xaml;Views\DoctorViews\InterviewWithThePatient.xaml;Views\DoctorViews\LabTest.xaml;Views\DoctorViews\PhysicalTest.xaml;Views\LabAssistantViews\LabAssistant.xaml;Views\LabAssistantViews\MakeTest.xaml;Views\LabManagerViews\ApproveTest.xaml;Views\LabManagerViews\LabManager.xaml;Views\LabManagerViews\LabManagerApprove.xaml;Views\LoginView.xaml;Views\ReceptionistViews\NewPatient.xaml;Views\ReceptionistViews\Receptionist.xaml;Views\ReceptionistViews\ReceptionistRegister.xaml;
 
 False
 

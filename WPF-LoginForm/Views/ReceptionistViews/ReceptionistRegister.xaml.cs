@@ -30,6 +30,8 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             contextDB.Patients.Load();
             PatientTable.ItemsSource = contextDB.Patients.Local;
             dataPicker.DisplayDateStart = DateTime.Today;
+            dataPicker.SelectedDate = DateTime.Today;
+            hourComboBox.SelectedIndex = DateTime.Now.Hour + 1;
 
             doctorComboBox.ItemsSource = contextDB.Doctors.Where(el => el.Logging.Active == true).ToList() ;
         }
@@ -51,11 +53,14 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             newAppoinment.Id_doc = ((Doctor)doctorComboBox.SelectedItem).Id_doc;
             newAppoinment.Id_pat = ((Patient)PatientTable.SelectedItem).Id_pat;
             newAppoinment.Description = "";
-            //TODO:
-            //enum with appoinment state
             newAppoinment.Status = 1;
             newAppoinment.Diagnosis = null;
-            newAppoinment.Reg_date = DateTime.Now;
+            DateTime dt = (DateTime)dataPicker.SelectedDate;
+            double hour = hourComboBox.SelectedIndex;
+            double minutes = minuteComboBox.SelectedIndex * 5.0;
+            dt = dt.AddHours(hour);
+            dt = dt.AddMinutes(minutes);
+            newAppoinment.Reg_date = dt;
             newAppoinment.End_date = null;
 
             newAppoinment.Doctor = (Doctor)doctorComboBox.SelectedItem;
@@ -139,13 +144,23 @@ namespace WPF_LoginForm.Views.ReceptionistViews
 
         private bool canRegister()
         {
-            //bool description = !string.IsNullOrWhiteSpace(appointmentDescTextBox.Text);
+            bool validHour = dataPicker.SelectedDate == DateTime.Today && hourComboBox.SelectedIndex == DateTime.Now.Hour ? minuteComboBox.SelectedIndex * 5 > DateTime.Now.Minute :dataPicker.SelectedDate == DateTime.Today && hourComboBox.SelectedIndex < DateTime.Now.Hour ? false : true;
 
-            return /*description &&*/ doctorComboBox != null && PatientTable.SelectedItem!=null;
+            return validHour && doctorComboBox.SelectedItem != null && PatientTable.SelectedItem!=null;
 
         }
 
         private void appointmentDescTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            registerVisitBtn.IsEnabled = canRegister();
+        }
+
+        private void hourComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            registerVisitBtn.IsEnabled = canRegister();
+        }
+
+        private void minuteComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             registerVisitBtn.IsEnabled = canRegister();
         }
