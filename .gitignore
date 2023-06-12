@@ -136,3 +136,17 @@ _NCrunch*
 .vs
 WPF-LoginForm/App.config
 *.config
+WPF-LoginForm/bin/Debug/WPF-LoginForm.exe
+WPF-LoginForm/bin/Debug/WPF-LoginForm.pdb
+WPF-LoginForm/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+WPF-LoginForm/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+WPF-LoginForm/obj/Debug/Views/LoginView.g.cs
+WPF-LoginForm/obj/Debug/Views/LoginView.g.i.cs
+WPF-LoginForm/obj/Debug/WPF-LoginForm.csproj.AssemblyReference.cache
+WPF-LoginForm/obj/Debug/WPF-LoginForm.csproj.CoreCompileInputs.cache
+WPF-LoginForm/obj/Debug/WPF-LoginForm.csproj.GenerateResource.cache
+WPF-LoginForm/obj/Debug/WPF-LoginForm.exe
+WPF-LoginForm/obj/Debug/WPF-LoginForm.g.resources
+WPF-LoginForm/obj/Debug/WPF-LoginForm.pdb
+WPF-LoginForm/obj/Debug/WPF-LoginForm_MarkupCompile.cache
+WPF-LoginForm/obj/Debug/WPF-LoginForm_MarkupCompile.i.cache
