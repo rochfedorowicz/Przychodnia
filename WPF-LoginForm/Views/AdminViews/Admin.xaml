@@ -198,8 +198,8 @@
                     </ListView.ItemContainerStyle>
                     <ListView.View >
                         <GridView>
-                            <GridViewColumn Header="ID" Width="125" DisplayMemberBinding="{Binding Id_user}" />
-                            <GridViewColumn Header="Login" Width="125" DisplayMemberBinding="{Binding Login}" />
+                            <GridViewColumn Header="ID" Width="75" DisplayMemberBinding="{Binding Id_user}" />
+                            <GridViewColumn Header="Login" Width="145" DisplayMemberBinding="{Binding Login}" />
                             <GridViewColumn Header="Funkcja" Width="125" DisplayMemberBinding="{Binding Role}"/>
                             <GridViewColumn Header="Aktywny" Width="125" DisplayMemberBinding="{Binding Active}"/>
                         </GridView>

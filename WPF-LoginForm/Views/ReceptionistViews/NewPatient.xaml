@@ -334,7 +334,7 @@
                     Height="28"
                     VerticalContentAlignment="Center"
                     Margin="240,258,375,130"
-                    PreviewTextInput="NumberValidationTextBox"
+                    PreviewTextInput="HouseNumberValidationTextBox"
                     Padding="20,0,0,0"  Grid.Row="1" Visibility="Visible">
 
                     <TextBox.Background>

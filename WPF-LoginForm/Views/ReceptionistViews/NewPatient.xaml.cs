@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WPF_LoginForm.Model;
 
 namespace WPF_LoginForm.Views.ReceptionistViews
@@ -68,8 +59,6 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             newAdress.Id_Pat = newPatientId;
             newAdress.City = cityTextBox.Text;
             newAdress.Street = streetTextBox.Text;
-            //TODO:
-            //check streen number validity
             newAdress.HouseNr = streetNumberTextBox.Text;
             if (flatNumberTextBox.Text == "")
                 newAdress.FlatNr = null;
@@ -141,7 +130,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
 
             return mandatoryFields;
         }
-        private bool checkPesel(String pesel)
+        private bool checkPesel(string pesel)
         {
             if (pesel.Length != 11)
             {
@@ -169,6 +158,29 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+        private void HouseNumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            string newText = GetUpdatedText(sender, e.Text);
+            if (!IsValidHouseNumber(newText))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private string GetUpdatedText(object sender, string inputText)
+        {
+            int caretIndex = (sender as TextBox).CaretIndex;
+            string currentText = (sender as TextBox).Text;
+            string updatedText = currentText.Substring(0, caretIndex) + inputText + currentText.Substring(caretIndex + (sender as TextBox).SelectionLength);
+            return updatedText;
+        }
+
+        private bool IsValidHouseNumber(string text)
+        {
+            Regex regex = new Regex(@"^\d+[a-zA-Z]?$");
+            return regex.IsMatch(text);
+        }
+
         public bool ValidatePostalCode(string postalCode)
         {
             Regex regex = new Regex(@"^\d{2}-\d{3}$");

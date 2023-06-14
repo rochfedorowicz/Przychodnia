@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2010"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_LoginForm.Views"
         mc:Ignorable="d"
         Title="Receptionis" Height="450" Width="800"
         WindowStyle="None"
@@ -14,7 +13,6 @@
         MouseDown="Window_MouseDown"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
       >
-
 
     <Window.Resources>
         <Style TargetType="Button" x:Key="GrayedOutButtonStyle">
@@ -297,7 +295,7 @@
 
                 </Button>
                 <Label Content="Wizyta u:" HorizontalAlignment="Left" Margin="366,105,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible"/>
-                <Label Content="Opis:" HorizontalAlignment="Left" Margin="366,136,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible"/>
+                <Label Content="Data wizyty:" HorizontalAlignment="Left" Margin="366,140,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible"/>
                 <Button x:Name="registerVisitBtn" Content="Rejestruj wizytę" 
                     Foreground="White"
                     Margin="0,325,10,10" 
@@ -305,7 +303,7 @@
                     Grid.Row="1" HorizontalAlignment="Right" Width="424" Click="registerVisitBtn_Click">
 
                     <Button.Style>
-                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource GrayedOutButtonStyle}"> 
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource GrayedOutButtonStyle}">
                             <Setter Property="Background" Value="#168972"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -326,29 +324,6 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <TextBox x:Name="appointmentDescTextBox" 
-                    HorizontalAlignment="Left"
-                    Margin="464,144,0,0"
-                    Grid.Row="1"
-                    TextWrapping="Wrap"
-                    VerticalAlignment="Top"
-                    Width="306"
-                    Height="176"
-                    FontWeight="Medium"
-                    FontFamily="Montserrat"                            
-                    Foreground="White"
-                    CaretBrush="LightGray"
-                    BorderBrush="DarkGray"
-                    BorderThickness="2,2,2,2"
-                    VerticalContentAlignment="Top"
-                    Padding="0,0,0,0"   
-                    Visibility="Visible" TextChanged="appointmentDescTextBox_TextChanged" 
-                    >
-                    <TextBox.Background>
-                        <ImageBrush     Stretch="None"
-                            AlignmentX="Left"/>
-                    </TextBox.Background>
-                </TextBox>
                 <Button x:Name="addPatientBtn" Content="Dodaj nowego pacjenta" 
                     Foreground="White"
                     Margin="0,10,10,386" 
@@ -376,6 +351,50 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <DatePicker x:Name="dataPicker" HorizontalAlignment="Left" Margin="464,140,0,0" Grid.Row="1" VerticalAlignment="Top" Width="218"/>
+                <ComboBox x:Name="hourComboBox" SelectedIndex="0" Margin="464,176,232,213" Grid.Row="1" SelectionChanged="hourComboBox_SelectionChanged">
+                    <ComboBoxItem>00</ComboBoxItem>
+                    <ComboBoxItem>01</ComboBoxItem>
+                    <ComboBoxItem>02</ComboBoxItem>
+                    <ComboBoxItem>03</ComboBoxItem>
+                    <ComboBoxItem>04</ComboBoxItem>
+                    <ComboBoxItem>05</ComboBoxItem>
+                    <ComboBoxItem>06</ComboBoxItem>
+                    <ComboBoxItem>07</ComboBoxItem>
+                    <ComboBoxItem>08</ComboBoxItem>
+                    <ComboBoxItem>09</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>11</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                    <ComboBoxItem>13</ComboBoxItem>
+                    <ComboBoxItem>14</ComboBoxItem>
+                    <ComboBoxItem>15</ComboBoxItem>
+                    <ComboBoxItem>16</ComboBoxItem>
+                    <ComboBoxItem>17</ComboBoxItem>
+                    <ComboBoxItem>18</ComboBoxItem>
+                    <ComboBoxItem>19</ComboBoxItem>
+                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem>21</ComboBoxItem>
+                    <ComboBoxItem>22</ComboBoxItem>
+                    <ComboBoxItem>23</ComboBoxItem>
+                </ComboBox>
+
+                <ComboBox x:Name="minuteComboBox" SelectedIndex="0" Margin="582,176,114,213" Grid.Row="1" SelectionChanged="minuteComboBox_SelectionChanged">
+                    <ComboBoxItem>00</ComboBoxItem>
+                    <ComboBoxItem>05</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>15</ComboBoxItem>
+                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem>25</ComboBoxItem>
+                    <ComboBoxItem>30</ComboBoxItem>
+                    <ComboBoxItem>35</ComboBoxItem>
+                    <ComboBoxItem>40</ComboBoxItem>
+                    <ComboBoxItem>45</ComboBoxItem>
+                    <ComboBoxItem>50</ComboBoxItem>
+                    <ComboBoxItem>55</ComboBoxItem>
+                </ComboBox>
+                <Label Content=":" HorizontalAlignment="Left" Margin="566,177,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="15" Visibility="Visible"/>
+                <Label Content="Godzina:" HorizontalAlignment="Left" Margin="366,176,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="83" Visibility="Visible"/>
             </Grid>
         </Border>
     </Border>
