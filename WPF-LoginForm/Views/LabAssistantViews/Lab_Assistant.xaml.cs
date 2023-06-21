@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace WPF_LoginForm.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy MakeTest.xaml
+    /// Logika interakcji dla klasy Lab_Assistant.xaml
     /// </summary>
-    public partial class MakeTest : Window
+    public partial class Lab_Assistant : Window
     {
-        public MakeTest()
+        public Lab_Assistant()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
     }
 }
