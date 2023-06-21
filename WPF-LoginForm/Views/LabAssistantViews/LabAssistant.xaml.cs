@@ -56,7 +56,7 @@ namespace WPF_LoginForm.Views.LabAssistantViews
                          select new { lt.Id_labTest, lt.Code, lt.RealizationDate, p.Name, p.Surname, lt.DoctorsNote, lt.ManagersNote, lt.Result, lt.Status };
 
             joinedData = joinedData.OrderByDescending(data => data.RealizationDate);
-            filteredData = joinedData.Where(data => data.Status == "End");
+            filteredData = joinedData.Where(data => data.Status == "In progress");
             testTable.ItemsSource = filteredData.ToList();
 
         }
@@ -96,7 +96,7 @@ namespace WPF_LoginForm.Views.LabAssistantViews
 
         private void receptionTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (testTable.SelectedItem != null && ((dynamic)testTable.SelectedItem).Status == "End")
+            if (testTable.SelectedItem != null && ((dynamic)testTable.SelectedItem).Status == "In progress")
             {
                 enableButtons();
                 doctorsNote = ((dynamic)testTable.SelectedItem).DoctorsNote;

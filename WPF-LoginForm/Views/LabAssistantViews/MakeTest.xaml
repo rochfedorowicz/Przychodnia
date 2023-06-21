@@ -245,7 +245,7 @@
                     VerticalContentAlignment="Top"
                     Padding="0,0,0,0"   
                     Visibility="Visible" 
-                    IsEnabled="True">
+                    IsEnabled="False">
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
                             AlignmentX="Left"/>
@@ -286,7 +286,7 @@
                     VerticalContentAlignment="Top"
                     Padding="0,0,0,0"   
                     Visibility="Visible" 
-                    IsEnabled="True">
+                    IsEnabled="False">
                     <TextBox.Background>
                         <ImageBrush     Stretch="None"
                             AlignmentX="Left"/>
