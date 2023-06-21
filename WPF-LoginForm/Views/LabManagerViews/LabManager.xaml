@@ -248,7 +248,6 @@
                     VerticalAlignment="Top"
                     Width="123">
                     <ComboBoxItem>Wszystkie</ComboBoxItem>
-                    <ComboBoxItem>Open</ComboBoxItem>
                     <ComboBoxItem>In progress</ComboBoxItem>
                     <ComboBoxItem>End</ComboBoxItem>
                     <ComboBoxItem>Approved</ComboBoxItem>

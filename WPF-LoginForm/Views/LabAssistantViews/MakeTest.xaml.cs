@@ -21,6 +21,7 @@ namespace WPF_LoginForm.Views.LabAssistantViews
     /// </summary>
     public partial class MakeTest : Window
     {
+        public int user;
         private ClinicEntities contextDB;
         private LabAssistant parent;
         public int idLabTest;
@@ -64,6 +65,8 @@ namespace WPF_LoginForm.Views.LabAssistantViews
                     labTest.Result = resultTextBox.Text;
                 }
                 labTest.Status = gStatus;
+                labTest.RealizationDate = DateTime.Now;
+                labTest.Id_labTech = user;
                 contextDB.SaveChanges();
                 parent.refreshView();
             }

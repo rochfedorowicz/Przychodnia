@@ -24,6 +24,7 @@ namespace WPF_LoginForm.Views.LabManagerViews
     
     public partial class LabManagerApprove : Window
     {
+        public int user;
         private ClinicEntities contextDB;
         private LabManager parent;
         public int idLabTest;
@@ -78,6 +79,9 @@ namespace WPF_LoginForm.Views.LabManagerViews
                     labTest.ManagersNote = noteInput.Text;
                 }
                 labTest.Status = gStatus;
+                labTest.ManagersApprovalDate = DateTime.Now;
+                labTest.Id_labManager = user;
+
                 contextDB.SaveChanges();
                 parent.refreshView();
             }
