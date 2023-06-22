@@ -92,6 +92,7 @@ namespace WPF_LoginForm.Views.ReceptionistViews
             receptionTable.UnselectAll();
             ICollectionView view = CollectionViewSource.GetDefaultView(contextDB.Appointments.Local);
             view.Refresh();
+            filterAppoitments(null, null);
         }
         private void receptionTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
