@@ -26,6 +26,7 @@ namespace WPF_LoginForm.Views.LabManagerViews
     /// </summary>
     public partial class LabManager : Window
     {
+        int user;
         private ClinicEntities contextDB;
         private String doctorsNote;
         private String result;
@@ -41,9 +42,10 @@ namespace WPF_LoginForm.Views.LabManagerViews
         {
             return contextDB;
         }
-        public LabManager()
+        public LabManager(int userId)
         {
             InitializeComponent();
+            user = userId;
             contextDB = new ClinicEntities();
             contextDB.LaboratoryTests.Load();
             contextDB.Patients.Load();
@@ -84,6 +86,7 @@ namespace WPF_LoginForm.Views.LabManagerViews
             nextScreen.doctorsNote.Text = doctorsNote;
             nextScreen.result.Text = result;
             nextScreen.idLabTest = chosenTestId;
+            nextScreen.user = user;
             nextScreen.Show();
         }
 

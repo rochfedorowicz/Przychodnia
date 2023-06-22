@@ -24,6 +24,7 @@ namespace WPF_LoginForm.Views.LabAssistantViews
     /// </summary>
     public partial class LabAssistant : Window
     {
+        int user;
         private ClinicEntities contextDB;
         private String doctorsNote;
         private String techNote;
@@ -40,8 +41,9 @@ namespace WPF_LoginForm.Views.LabAssistantViews
         {
             return contextDB;
         }
-        public LabAssistant()
+        public LabAssistant(int userId)
         {
+            user = userId;
             InitializeComponent();
             doTestBtn.IsEnabled = false;
             contextDB = new ClinicEntities();
@@ -53,9 +55,9 @@ namespace WPF_LoginForm.Views.LabAssistantViews
                          on lt.Id_app equals a.Id_app
                          join p in contextDB.Patients
                          on a.Id_pat equals p.Id_pat
-                         select new { lt.Id_labTest, lt.Code, lt.RealizationDate, p.Name, p.Surname, lt.DoctorsNote, lt.ManagersNote, lt.Result, lt.Status };
+                         select new { lt.Id_labTest, lt.Code, lt.CreateDate, p.Name, p.Surname, lt.DoctorsNote, lt.ManagersNote, lt.Result, lt.Status };
 
-            joinedData = joinedData.OrderByDescending(data => data.RealizationDate);
+            joinedData = joinedData.OrderByDescending(data => data.CreateDate);
             filteredData = joinedData.Where(data => data.Status == "In progress");
             testTable.ItemsSource = filteredData.ToList();
 
@@ -135,7 +137,7 @@ namespace WPF_LoginForm.Views.LabAssistantViews
             if (dataFilter != "")
             {
                 DateTime date = DateTime.ParseExact(dataFilter, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-                filteredData = filteredData.Where(data => data.RealizationDate == date);
+                filteredData = filteredData.Where(data => data.CreateDate == date);
             }
             if (surnameFilter != "")
             {
@@ -151,6 +153,7 @@ namespace WPF_LoginForm.Views.LabAssistantViews
             nextScreen.TechNote.Text = techNote;
             nextScreen.DoctorsNote.Text = doctorsNote;
             nextScreen.idLabTest = chosenTestId;
+            nextScreen.user = user;
             nextScreen.Show();
         }
 
